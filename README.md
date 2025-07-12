@@ -17,6 +17,10 @@
   php artisan migrate
   php artisan db:seed
   ```
+  シンボリックリンクを張る
+  ```
+  php artisan storage:link
+  ```
 
 ## 実行環境
 <ul>

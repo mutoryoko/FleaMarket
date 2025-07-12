@@ -1,11 +1,12 @@
 .header {
-    max-width: 1540px;
     background-color: black;
 }
 
 .header__inner {
+    max-width: 1540px;
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 20px;
+    margin: 0 auto;
 }
 
