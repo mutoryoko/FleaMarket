@@ -13,13 +13,12 @@
     <header class="header">
         <div class="header__inner">
             <a href=""><img src="{{ asset('storage/materials/logo.svg') }}" alt="ロゴ"></a>
-            {{-- @if (Auth::check()) --}}
             <div class="login-user__function">
                 <form class="search-form" action="" method="GET">
                     <input class="search-form__input" type="text" name="keyword" placeholder="なにをお探しですか？">
                 </form>
                 <div class="login-out__btn">
-                    <a href="">ログアウト</a>
+                    <a href="">ログイン・ログアウト</a>
                 </div>
                 <div class="mypage__btn">
                     <a href="">マイページ</a>
@@ -28,7 +27,6 @@
                     <a href="">出品</a>
                 </div>
             </div>
-            {{-- @endif --}}
         </div>
     </header>
 
