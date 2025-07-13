@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('item_image');
             $table->integer('price');
             $table->integer('condition')->comment('商品の状態:1~4');
-            $table->string('brand')->comment('ブランド名');
+            $table->string('brand')->comment('ブランド名')->nullable();
             $table->string('description')->comment('商品説明');
             $table->timestamps();
         });
