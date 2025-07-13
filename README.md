@@ -11,14 +11,12 @@
   docker compose exec php bash
   composer install
   ```
- .env.exampleファイルからenvファイルを作成し、環境変数を変更
+ .env.exampleファイルからenvファイルを作成する。<br />
+ データベースやメールの環境変数を変更する。
   ```
   php artisan key:generate
   php artisan migrate
   php artisan db:seed
-  ```
-  シンボリックリンクを張る
-  ```
   php artisan storage:link
   ```
 
