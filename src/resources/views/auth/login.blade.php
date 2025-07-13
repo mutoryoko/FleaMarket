@@ -12,9 +12,9 @@
         <form class="register-form" action="" method="POST">
         @csrf
             <label class="form-label"><div>メールアドレス</div></label>
-            <input type="text" name="email" >
+            <input type="text" name="email" value="{{ old('email') }}" />
             <label class="form-label"><div>パスワード</div></label>
-            <input type="password" name="password">
+            <input type="password" name="password" />
 
             <div class="login-form__btn">
                 <button class="register-form__btn--submit" type="submit">登録する</button>
