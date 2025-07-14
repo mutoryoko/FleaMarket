@@ -19,13 +19,7 @@
     margin: 0 auto;
 }
 
-.form-item {
+.auth-form__item {
     width: 100%;
     margin-bottom: 20px;
-}
-
-.form-item__input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
 }
