@@ -14,17 +14,22 @@
     display: flex;
 }
 
-.auth-form__item {
-    width: 100%;
-    margin-bottom: 20px;
+.user-form {
+    width: 680px;
+    margin: 0 auto;
 }
 
-.auth-form__label {
+.user-form__item {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.user-form__label {
     font-size: 18px;
     font-weight: bold;
 }
 
-.auth-form__input {
+.user-form__input {
     width: 680px;
     padding: 10px;
     margin-top: 5px;
@@ -42,7 +47,7 @@
     cursor: pointer;
 }
 
-.auth-form__link {
+.user-form__link {
     margin-top: 30px;
     text-align: center;
 }

@@ -3,38 +3,36 @@
 @section('title', 'プロフィール設定')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/profile.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/edit.css')}}">
 @endsection
 
 @section('content')
     <div class="content">
-        <h2>プロフィール設定</h2>
-        <form class="profile-form" action="" method="POST" enctype="multipart/form-data">
+        <h2 class="title">プロフィール設定</h2>
+        <form class="user-form" action="" method="POST" enctype="multipart/form-data">
         @csrf
-            <label class="form-label">
+            <div class="user-form__item">
                 <img src="" alt="">
-                <input type="file" name="user_image">
-            </label>
-            <label class="form-label">
-                <div>ユーザー名</div>
-                <input type="text" name="">
-            </label>
-            <label class="form-label">
-                <div>郵便番号</div>
-                <input type="text" name="postcode">
-            </label>
-            <label class="form-label">
-                <div>住所</div>
-                <input type="text" name="address">
-            </label>
-            <label class="form-label">
-                <div>建物名</div>
-                <input type="text" name="building">
-            </label>
-
-            <div class="register-form__btn">
-                <button class="register-form__btn--submit" type="submit">更新する</button>
+                <input class="form__input" type="file" name="user_image">
             </div>
+            <div class="user-form__item">
+                <label class="user-form__label"><div>ユーザー名</div></label>
+                <input class="user-form__input" type="text" name="name">
+            </div>
+            <div class="user-form__item">
+                <label class="user-form__label"><div>郵便番号</div></label>
+                <input class="user-form__input" type="text" name="postcode">
+            </div>
+            <div class="user-form__item">
+                <label class="user-form__label"><div>住所</div></label>
+                <input class="user-form__input" type="text" name="address">
+            </div>
+            <div class="user-form__item">
+                <label class="user-form__label"><div>建物名</div></label>
+                <input class="user-form__input" type="text" name="building">
+            </div>
+
+            <button class="submit-btn" type="submit">更新する</button>
         </form>
     </div>
 @endsection
