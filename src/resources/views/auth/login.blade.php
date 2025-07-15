@@ -9,8 +9,8 @@
 @section('content')
     <div class="content">
         <h2 class="title">ログイン</h2>
-        <form class="user-form" action="" method="POST">
-        @csrf
+        <form class="user-form" action="/login" method="POST">
+            @csrf
             <div class="user-form__item">
                 <label class="user-form__label"><div>メールアドレス</div></label>
                 <input class="user-form__input" type="text" name="email" value="{{ old('email') }}" />

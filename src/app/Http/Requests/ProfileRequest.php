@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class ProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,9 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => 'required | max:20',
-            'email' => 'required | email',
-            'password' => 'required | min:8 | confirmed',
-            'password_confirmation' =>'required'
+            'user_image' => 'nullable | image | mimes:png,jpg,jpeg',
+            'postcode' => 'required | regex:/^\d{3}-\d{4}$/',
+            'address' => 'required'
         ];
     }
 
@@ -36,12 +36,11 @@ class RegisterRequest extends FormRequest
         return [
             'name.required' => 'お名前を入力してください',
             'name.max' => 'お名前は20文字以内で入力してください',
-            'email.required' => 'メールアドレスを入力してください',
-            'email.email' => 'メールアドレスはメール形式で入力してください',
-            'password.required' => 'パスワードを入力してください',
-            'password.min' => 'パスワードは8文字以上で入力してください',
-            'password.confirmed' => 'パスワードと一致しません',
-            'password_confirmation.required' => 'パスワードと一致しません'
+            'user_image.image' => '画像はjpg,jpeg,png形式で登録してください',
+            'user_image.mimes' => '画像はjpg,jpeg,png形式で登録してください',
+            'postcode.required' => '郵便番号を入力してください',
+            'postcode.regex' => '郵便番号はハイフンを含めた8桁で入力してください',
+            'address.required' => '住所を入力してください'
         ];
     }
 }

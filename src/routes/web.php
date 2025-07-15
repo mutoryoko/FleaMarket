@@ -17,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ItemController::class, 'index'])->name('index');
+
 Route::get('/register', [UserController::class, 'registerForm'])->name('registerForm');
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::get('/login', [UserController::class, 'loginForm'])->name('loginForm');
+Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::get('/mypage/profile', [MypageController::class, 'edit'])->name('edit');
+Route::post('/mypage/profile', [MypageController::class, 'update'])->name('update');

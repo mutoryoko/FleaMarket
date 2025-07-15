@@ -19,7 +19,7 @@ class UserController extends Controller
         $validated = $request->validated();
         User::create($validated);
 
-        return view('edit');
+        return view('mypage.edit');
     }
 
     public function loginForm()
@@ -30,5 +30,15 @@ class UserController extends Controller
     public function login(LoginRequest $request)
     {
         //
+    }
+
+    public function logout(Request $request)
+    {
+        User::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
