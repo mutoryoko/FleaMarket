@@ -9,8 +9,8 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $items = Item::only(['item_name', 'item_image']);
+        $items = Item::all();
 
-        return view('index', compact('item'));
+        return view('index', compact('items'));
     }
 }
