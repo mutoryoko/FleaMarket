@@ -52,7 +52,7 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-    public function favoriteByUsers()
+    public function favoriteItems()
     {
         return $this->belongsToMany(Item::class, 'favorites')->withTimestamps();
     }
