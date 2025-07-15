@@ -7,5 +7,7 @@
 @endsection
 
 @section('content')
-    
+    {{-- <div>
+        <livewire:product-tabs />
+    </div> --}}
 @endsection
