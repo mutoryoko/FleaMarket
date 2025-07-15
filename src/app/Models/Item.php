@@ -12,4 +12,19 @@ class Item extends Model
     protected $fillable = [
         'user_id', 'item_name', 'item_image', 'condition', 'price', 'brand', 'description',
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function favoriteItems()
+    {
+        return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
