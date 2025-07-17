@@ -13,7 +13,7 @@ class Profile extends Model
         'user_id', 'user_image', 'postcode', 'address', 'building',
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

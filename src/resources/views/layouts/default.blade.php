@@ -35,7 +35,6 @@
     <main>
         @yield('content')
     </main>
-
     @livewireScripts
 </body>
 </html>
