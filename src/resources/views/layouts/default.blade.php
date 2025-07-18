@@ -13,7 +13,7 @@
 <body>
     <header class="header">
         <div class="header__inner">
-            <a href=""><img src="{{ asset('storage/materials/logo.svg') }}" alt="ロゴ"></a>
+            <a href="{{ route('index') }}"><img src="{{ asset('storage/materials/logo.svg') }}" alt="ロゴ"></a>
             <div class="login-user__function">
                 <form class="search-form" action="" method="GET">
                     <input class="search-form__input" type="text" name="keyword" placeholder="なにをお探しですか？">

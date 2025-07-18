@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ItemController::class, 'index'])->name('index');
+Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('detail');
 
 Route::get('/register', [UserController::class, 'registerForm'])->name('registerForm');
 Route::post('/register', [UserController::class, 'register'])->name('register');

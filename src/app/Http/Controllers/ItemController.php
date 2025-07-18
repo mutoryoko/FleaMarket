@@ -9,8 +9,13 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $items = Item::get(['name', 'image']);
+        $items = Item::get(['id', 'name', 'image']);
 
         return view('index', compact('items'));
+    }
+
+    public function detail()
+    {
+        return view('detail');
     }
 }
