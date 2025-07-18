@@ -38,7 +38,7 @@ class ItemsTableSeeder extends Seeder
             [
                 'user_id' => 3,
                 'name' => '玉ねぎ3束',
-                'image' => 'item-images/onion.jpg',
+                'image' => 'item-images/onions.jpg',
                 'condition' => 3,
                 'price' => 300,
                 'brand' => 'なし',
