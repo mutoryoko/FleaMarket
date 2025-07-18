@@ -10,35 +10,42 @@ class UsersTableSeeder extends Seeder
 {
     public function run()
     {
-        $param = [
-            'name' => '山田太郎',
-            'email' => 'taro@sample.com',
-            'password' => 'password1',
-        ];
-        DB::table('users')->insert($param);
-        $param = [
-            'name' => '田中次郎',
-            'email' => 'jiro@sample.com',
-            'password' => 'password2',
-        ];
-        DB::table('users')->insert($param);
-        $param = [
-            'name' => '佐々木三郎',
-            'email' => 'saburo@sample.com',
-            'password' => 'password3',
-        ];
-        DB::table('users')->insert($param);
-        $param = [
-            'name' => '鈴木四郎',
-            'email' => 'shiro@sample.com',
-            'password' => 'password4',
-        ];
-        DB::table('users')->insert($param);
-        $param = [
-            'name' => '稲垣五郎',
-            'email' => 'goro@sample.com',
-            'password' => 'password5',
-        ];
-        DB::table('users')->insert($param);
+        DB::table('users')->insert([
+            [
+                'name' => '山田太郎',
+                'email' => 'taro@example.com',
+                'password' => 'password1',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => '田中次郎',
+                'email' => 'jiro@test.com',
+                'password' => 'password2',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => '佐々木三郎',
+                'email' => 'saburo@laravel.co.jp',
+                'password' => 'password3',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => '鈴木四郎',
+                'email' => 'shiro@sample.com',
+                'password' => 'password4',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => '稲垣五郎',
+                'email' => 'goro@laravel.com',
+                'password' => 'password5',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
     }
 }
