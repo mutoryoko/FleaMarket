@@ -7,11 +7,8 @@
 @endsection
 
 @section('content')
-    {{-- <div>
-        <livewire:product-tabs />
-    </div> --}}
     <div class="content">
-        <div class="item-tabs">
+        <div class="item-list__tabs">
             <a href="">おすすめ</a>
             <a href="">マイリスト</a>
         </div>

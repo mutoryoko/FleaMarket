@@ -1,5 +1,5 @@
 .header {
-    background-color: black;
+    background-color: #000;
 }
 
 .header__inner {
@@ -8,11 +8,47 @@
     justify-content: space-between;
     padding: 20px;
     margin: 0 auto;
+    align-items: center;
 }
 
-.login-user__function {
-    display: flex;
+.search-form__input {
+    width: 300px;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 15px;
 }
+
+.auth-user__function {
+    display: flex;
+    align-items: center;
+}
+
+.logout__btn,
+.login__btn,
+.mypage__btn {
+    border: none;
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+.logout__btn {
+    background-color: #000;
+    cursor: pointer;
+}
+
+.sell-items__btn {
+    display: inline-block;
+    background-color: #fff;
+    text-decoration: none;
+    color: #000;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 15px;
+}
+
+/* ユーザー登録・ログインページ */
 
 .user-form {
     width: 680px;
