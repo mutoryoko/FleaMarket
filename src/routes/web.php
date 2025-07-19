@@ -18,8 +18,7 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::middleware(['auth'])->group(function () {
     Route::get('/mypage', [MypageController::class, 'index'])->name('profile');
     Route::get('/mypage/profile', [MypageController::class, 'edit'])->name('edit');
-    Route::post('/mypage/profile', [MypageController::class, 'update'])->name('update');
+    Route::put('/mypage/profile', [MypageController::class, 'update'])->name('update');
 
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 });
-

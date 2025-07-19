@@ -20,9 +20,11 @@ class UserController extends Controller
     {
         $validated = $request->validated();
         $validated['password'] = Hash::make($request->password);
-        User::create($validated);
+        $user = User::create($validated);
 
-        return view('mypage.edit');
+        Auth::login($user);
+
+        return to_route('edit');
     }
 
     public function loginForm()
