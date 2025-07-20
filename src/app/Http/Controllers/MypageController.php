@@ -13,7 +13,10 @@ class MypageController extends Controller
 {
     public function index()
     {
-        return view('mypage.profile');
+        $user = Auth::user();
+        $profile = $user->profile;
+
+        return view('mypage.profile', compact('user', 'profile'));
     }
 
     public function edit()

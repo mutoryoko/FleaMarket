@@ -12,7 +12,7 @@
 }
 
 .search-form__input {
-    width: 300px;
+    width: 350px;
     border: none;
     border-radius: 3px;
     padding: 10px 15px;
@@ -46,6 +46,10 @@
     border: none;
     border-radius: 3px;
     padding: 10px 15px;
+}
+
+.content {
+    max-width: 1540px;
 }
 
 /* ユーザー登録・ログインページ */
@@ -91,4 +95,39 @@
 .error {
     color: red;
     margin-top: 5px;
+}
+
+/* 商品一覧表示 */
+
+.item-cards__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 60px;
+    margin: 20px auto;
+}
+
+.item-card {
+    width: calc(100% / 4 - 60px);
+    margin-right: 40px;
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+
+.item-card:hover {
+    opacity: 0.8;
+}
+
+.item-image__wrapper {
+    width: 100%;
+    object-fit: contain;
+}
+
+.item-image {
+    width: 100%;
+}
+
+.item-name {
+    font-size: 18px;
+    font-weight: normal;
+    padding-top: 5px;
 }
