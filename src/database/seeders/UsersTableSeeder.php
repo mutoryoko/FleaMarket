@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'name' => '佐々木三郎',
-                'email' => 'saburo@laravel.co.jp',
+                'email' => 'saburo@laravel.com',
                 'password' => Hash::make('password3'),
                 'created_at' => now(),
                 'updated_at' => now(),

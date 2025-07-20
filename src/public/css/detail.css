@@ -1,0 +1,5 @@
+.content {
+    max-width: 1540px;
+    display: flex;
+    padding: 60px;
+}

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\User;
+use App\Models\Profile;
+use App\Models\Comment;
+use App\Models\Category;
 
 class ItemController extends Controller
 {
@@ -14,8 +18,19 @@ class ItemController extends Controller
         return view('index', compact('items'));
     }
 
-    public function detail()
+    public function myList()
     {
-        return view('detail');
+        //
     }
+
+    public function detail(string $id)
+    {
+        $item = Item::find($id);
+        $userImage = Profile::get(['user_image']);
+        $category = Category::get(['name']);
+
+        return view('detail', compact('item', 'userImage', 'category'));
+    }
+
+
 }
