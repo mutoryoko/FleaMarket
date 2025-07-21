@@ -29,6 +29,7 @@ class MypageController extends Controller
 
     public function update(ProfileRequest $request)
     {
+        /** @var \App\Models\User $user */
         $user = Auth::user();
         $profile = $user->profile;
         $data = $request->validated();
@@ -38,6 +39,11 @@ class MypageController extends Controller
                 Storage::disk('public')->delete($profile->user_image);
             }
             $data['user_image'] = $request->file('user_image')->store('profile-images', 'public');
+        }
+
+        if (isset($data['user_name'])) {
+            $user->update(['name' => $data['user_name']]);
+            unset($data['user_name']); // profileには不要のため
         }
 
         if ($profile) {

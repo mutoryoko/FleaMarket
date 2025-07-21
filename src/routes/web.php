@@ -20,5 +20,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mypage/profile', [MypageController::class, 'edit'])->name('edit');
     Route::put('/mypage/profile', [MypageController::class, 'update'])->name('update');
 
+    Route::get('/sell', [ItemController::class, 'sellForm'])->name('sellForm');
+
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 });
