@@ -32,5 +32,13 @@ class ItemController extends Controller
         return view('detail', compact('item', 'userImage', 'category'));
     }
 
+    public function sellForm()
+    {
+        return view('sell');
+    }
 
+    public function store()
+    {
+        //
+    }
 }

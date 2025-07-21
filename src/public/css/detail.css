@@ -1,5 +1,72 @@
 .content {
     max-width: 1540px;
     display: flex;
+    justify-content: center;
     padding: 60px;
+}
+
+.item-image__wrapper {
+    width: 40%;
+}
+
+.item-info__wrapper {
+    width: 40%;
+}
+
+.item-info {
+    margin-bottom: 20px;
+}
+
+.item-name {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.item-price {
+    font-size: 32px;
+}
+
+.yen, .tax {
+    font-size: 20px;
+}
+
+.purchase__btn {
+    display: block;
+    text-align: center;
+    background-color: rgb(255, 85, 85);
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.ttl {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.item-comments {
+    margin-bottom: 20px;
+}
+
+.comment__label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.comment__text {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.comment__btn--submit {
+    border: none;
+    width: 100%;
+    background-color: rgb(255, 85, 85);
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
 }

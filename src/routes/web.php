@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/mypage/profile', [MypageController::class, 'update'])->name('update');
 
     Route::get('/sell', [ItemController::class, 'sellForm'])->name('sellForm');
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->name('purchase');
 
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 });

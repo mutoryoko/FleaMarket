@@ -36,7 +36,7 @@
                         <a class="mypage__btn" href="{{ route('profile') }}">マイページ</a>
                     </li>
                     <li class="header__nav--item">
-                        <a class="sell-items__btn" href="">出品</a>
+                        <a class="sell-items__btn" href="{{ route('sellForm') }}">出品</a>
                     </li>
                 </ul>
             </nav>
