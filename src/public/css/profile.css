@@ -1,6 +1,7 @@
 .profile {
     display: flex;
-    width: 50%;
+    align-items: center;
+    width: 70%;
     margin: 60px auto;
 }
 
@@ -15,6 +16,17 @@
 
 .user-name {
     font-size: 28px;
-    margin-right: 50px;
+}
+
+.edit-btn--link {
+    height: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(255, 85, 85);
+    text-align: center;
+    border: 2px solid rgb(255, 85, 85);
+    border-radius: 5px;
+    padding: 10px 25px;
+    margin-left: 100px;
 }
 
