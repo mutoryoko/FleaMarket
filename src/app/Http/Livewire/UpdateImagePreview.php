@@ -11,6 +11,7 @@ class UpdateImagePreview extends Component
 
     public $image; // 新しく選んだ画像
     public $existingImage; // DBに保存された画像
+    public $fileName = '選択されていません';
 
     public function mount($existingImagePath)
     {
@@ -19,7 +20,12 @@ class UpdateImagePreview extends Component
 
     public function updatedImage()
     {
-        // 既存画像の表示は非表示に（オプション）
+        $this->validate([
+            'image' => 'image'
+        ]);
+        // ファイル名を更新
+        $this->fileName = $this->image->getClientOriginalName();
+        // 既存画像を非表示
         $this->existingImage = null;
     }
 

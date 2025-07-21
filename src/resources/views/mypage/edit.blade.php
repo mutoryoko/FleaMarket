@@ -12,13 +12,8 @@
         <form class="user-form" action="{{ route('update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-            <div class="user-form__item">
-                {{-- @livewire('update-image-preview', ['existingImagePath' => $profile->user_image]) --}}
-                <div class="upload-btn">
-                    <label class="file-upload__btn">
-                        <input wire:model="image" type="file" name="user_image">
-                    </label>
-                </div>
+            <div class="user-form__item image-form">
+                @livewire('update-image-preview', ['existingImagePath' => $profile->user_image])
                 @error('user_image')
                     <p class="error">{{ $message }}</p>
                 @enderror

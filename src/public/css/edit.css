@@ -9,3 +9,34 @@
     text-align: center;
     margin: 0 auto 30px;
 }
+
+.image-preview {
+    width: 680px;
+    display: flex;
+    align-items: center;
+}
+
+.file-upload__wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+}
+
+.file-upload__btn {
+    width: 130px;
+    height: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(255, 85, 85);
+    text-align: center;
+    padding: 10px 15px;
+    margin-right: 8px;
+    border: 2px solid rgb(255, 85, 85);
+    border-radius: 5px;
+}
+
+.file__name {
+    width: 200px;
+    font-size: 14px;
+}
+
