@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             ProfilesTableSeeder::class,
             ItemsTableSeeder::class,
             CategoriesTableSeeder::class,
+            CategoriesItemsTableSeeder::class,
         ]);
     }
 }
