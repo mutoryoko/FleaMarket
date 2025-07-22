@@ -9,7 +9,7 @@
 @section('content')
     <div class="content">
         <div class="item-image__wrapper">
-            <img src="{{'storage/'.$item->image }}" alt="商品画像">
+            <img class="item-image" src="{{ asset('storage/'.$item->image) }}" alt="商品画像">
         </div>
         <div class="item-info__wrapper">
             <div class="item-info">
@@ -19,7 +19,7 @@
             <div class="item-info">
                 <p class="item-price"><span class="yen">¥</span>{{ number_format($item->price) }}<span class="tax">（税込）</span></p>
             </div>
-            <div class="item-info">
+            <div class="favorites-comments__btn">
                 <a href="">いいね</a>
                 <a href="">コメント</a>
             </div>
@@ -40,12 +40,13 @@
                 </div>
                 <div class="condition">
                     <h4 class="small-ttl">商品の状態</h4>
+                    {{-- app/Helpers/helper.phpにテキストあり --}}
                     <p class="condition__text">{{ $item->condition_text }}</p>
                 </div>
             </div>
             <div class="item-comments">
-                <h3 class="comments-count">コメント（数字）</h3>
-                <img src="{{ asset('storage/'.$userImage) }}" alt="ユーザーのアイコン">
+                <h3 class="comments-count ttl">コメント（数字）</h3>
+                <img src="" alt="ユーザーのアイコン">
                 <p>コメントした人の名前</p>
                 <p>コメント表示</p>
             </div>

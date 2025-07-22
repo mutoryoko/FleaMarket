@@ -30,9 +30,10 @@
     color: rgb(255, 85, 85);
     text-align: center;
     padding: 10px 15px;
-    margin-right: 8px;
+    margin-right: 10px;
     border: 2px solid rgb(255, 85, 85);
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .file__name {

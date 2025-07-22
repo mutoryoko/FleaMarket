@@ -1,6 +1,5 @@
 /storage/app/livewire-tmp/*
 !/storage/app/livewire-tmp/.gitkeep
-/storage/app/public/materials/*
 
 /node_modules
 /public/hot

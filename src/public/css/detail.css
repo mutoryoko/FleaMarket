@@ -7,6 +7,11 @@
 
 .item-image__wrapper {
     width: 40%;
+    padding: 20px;
+}
+
+.item-image {
+    width: 90%;
 }
 
 .item-info__wrapper {
@@ -14,13 +19,13 @@
 }
 
 .item-info {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .item-name {
     font-size: 40px;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .item-price {
@@ -28,7 +33,7 @@
 }
 
 .yen, .tax {
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .purchase__btn {
@@ -39,16 +44,34 @@
     color: white;
     font-weight: bold;
     padding: 10px;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .ttl {
     font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.small-ttl {
+    margin-right: 30px;
+}
+
+.category, .condition {
+    display: flex;
     margin-bottom: 10px;
+    align-items: center;
+}
+
+.category__name {
+    background-color: lightgray;
+    font-size: 14px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-right: 10px;
 }
 
 .item-comments {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .comment__label {
