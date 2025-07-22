@@ -32,13 +32,15 @@
             </div>
             <div class="item-info">
                 <h3 class="ttl">商品の情報</h3>
-                <div>
-                    <h3>カテゴリー</h3>
-                    <input type="radio">
+                <div class="category">
+                    <h4 class="small-ttl">カテゴリー</h4>
+                    @foreach ($categories as $category)
+                        <p class="category__name">{{ $category }}</p>
+                    @endforeach
                 </div>
-                <div>
-                    <h3>商品の状態</h3>
-                    <p>{{ $item->condition }}</p>
+                <div class="condition">
+                    <h4 class="small-ttl">商品の状態</h4>
+                    <p class="condition__text">{{ $item->condition_text }}</p>
                 </div>
             </div>
             <div class="item-comments">

@@ -43,4 +43,9 @@ class Item extends Model
     {
         return $this->hasOne(Transaction::class);
     }
+
+    public function getConditionTextAttribute(): string
+    {
+        return getConditionText($this->condition);
+    }
 }

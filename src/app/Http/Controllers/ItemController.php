@@ -27,9 +27,9 @@ class ItemController extends Controller
     {
         $item = Item::find($id);
         $userImage = Profile::get(['user_image']);
-        $category = Category::get(['name']);
+        $categories = $item->categories()->pluck('name')->toArray();
 
-        return view('detail', compact('item', 'userImage', 'category'));
+        return view('detail', compact('item', 'userImage', 'categories'));
     }
 
     public function sellForm()
