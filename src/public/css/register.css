@@ -1,9 +1,9 @@
-.login-user__function {
+.search-form,
+.header__nav {
     display: none;
 }
 
 .content {
-    max-width: 1540px;
     padding: 60px 0;
 }
 

@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}" />
     @yield('css')
     @livewireStyles
 </head>
 <body>
     <header class="header">
         <div class="header__inner">
-            <a href="{{ route('index') }}"><img src="{{ asset('storage/materials/logo.svg') }}" alt="ロゴ"></a>
+            <a href="{{ route('index') }}"><img src="{{ asset('storage/materials/logo.svg') }}" alt="ロゴ" /></a>
             <form class="search-form" action="" method="GET">
-                <input class="search-form__input" type="text" name="keyword" placeholder="なにをお探しですか？">
+                <input class="search-form__input" type="text" name="keyword" placeholder="なにをお探しですか？" />
             </form>
             <nav class="header__nav">
                 <ul class="auth-user__function">

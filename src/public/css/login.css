@@ -1,4 +1,5 @@
-.login-user__function {
+.search-form,
+.header__nav {
     display: none;
 }
 

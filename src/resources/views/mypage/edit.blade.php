@@ -3,7 +3,7 @@
 @section('title', 'プロフィール設定')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/edit.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/edit.css')}}" />
 @endsection
 
 @section('content')

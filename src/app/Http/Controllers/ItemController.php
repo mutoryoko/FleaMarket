@@ -33,7 +33,9 @@ class ItemController extends Controller
 
     public function sellForm()
     {
-        return view('sell');
+        $categories = Category::get(['id', 'name']);
+
+        return view('sell', compact('categories'));
     }
 
     public function store()

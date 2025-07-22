@@ -3,13 +3,13 @@
 @section('title', '商品詳細')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/detail.css') }}" />
 @endsection
 
 @section('content')
     <div class="content">
         <div class="item-image__wrapper">
-            <img class="item-image" src="{{ asset('storage/'.$item->image) }}" alt="商品画像">
+            <img class="item-image" src="{{ asset('storage/'.$item->image) }}" alt="商品画像" />
         </div>
         <div class="item-info__wrapper">
             <div class="item-info">
@@ -46,7 +46,7 @@
             </div>
             <div class="item-comments">
                 <h3 class="comments-count ttl">コメント（数字）</h3>
-                <img src="" alt="ユーザーのアイコン">
+                <img src="" alt="ユーザーのアイコン" />
                 <p>コメントした人の名前</p>
                 <p>コメント表示</p>
             </div>
