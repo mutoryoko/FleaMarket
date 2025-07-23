@@ -9,11 +9,11 @@
 @section('content')
     <div class="content">
         <div class="item-image__wrapper">
-            <img class="item-image" src="{{ asset('storage/'.$item->image) }}" alt="商品画像" />
+            <img class="item-image" src="{{ asset('storage/'.$item->item_image) }}" alt="商品画像" />
         </div>
         <div class="item-info__wrapper">
             <div class="item-info">
-                <h2 class="item-name">{{ $item->name }}</h2>
+                <h2 class="item-name">{{ $item->item_name }}</h2>
                 <p class="item-brand">{{ $item->brand ?? '' }}</p>
             </div>
             <div class="item-info">

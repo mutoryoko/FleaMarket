@@ -15,7 +15,7 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $items = Item::get(['id', 'name', 'image']);
+        $items = Item::get(['id', 'item_name', 'item_image']);
 
         return view('index', compact('items'));
     }
