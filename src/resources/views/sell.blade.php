@@ -26,7 +26,7 @@
             <h4 class="form__label category__ttl">カテゴリー</h4>
             @foreach ($categories as $category)
                 <label class="category__label">
-                    <input type="checkbox">{{ $category->name }}</input>
+                    <input name="categories" type="checkbox">{{ $category->name }}</input>
                 </label>
                 <input type="hidden" value="{{ $category->id }}">
             @endforeach
