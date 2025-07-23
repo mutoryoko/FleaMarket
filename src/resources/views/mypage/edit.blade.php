@@ -13,7 +13,7 @@
         @csrf
         @method('PUT')
             <div class="user-form__item image-form">
-                @livewire('update-image-preview', ['existingImagePath' => $profile->user_image])
+                @livewire('profile-image-preview', ['existingImagePath' => $profile->user_image])
                 @error('user_image')
                     <p class="error">{{ $message }}</p>
                 @enderror
@@ -43,7 +43,6 @@
                 <label for="building" class="user-form__label"><div>建物名</div></label>
                 <input id="building" class="user-form__input" type="text" name="building" value="{{ old('building', $profile->building) }}">
             </div>
-            <input type="hidden" value="user_id">
             <button class="submit-btn" type="submit">更新する</button>
         </form>
     </div>

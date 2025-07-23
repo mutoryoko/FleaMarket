@@ -18,7 +18,7 @@ class ExhibitionRequest extends FormRequest
             'categories' => 'required',
             'condition' => 'required',
             'item_name' => 'required|string|max:255',
-            'bland' => 'nullable',
+            'bland' => 'nullable|string|max:255',
             'description' => 'required|string|max:255',
             'price' => 'required|integer|min:0',
         ];

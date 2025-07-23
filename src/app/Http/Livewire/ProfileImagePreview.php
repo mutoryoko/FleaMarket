@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class UpdateImagePreview extends Component
+class ProfileImagePreview extends Component
 {
     use WithFileUploads;
 
@@ -31,6 +31,6 @@ class UpdateImagePreview extends Component
 
     public function render()
     {
-        return view('livewire.update-image-preview');
+        return view('livewire.profile-image-preview');
     }
 }

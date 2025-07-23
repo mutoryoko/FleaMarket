@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ExhibitionRequest;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\User;
 use App\Models\Profile;
 use App\Models\Comment;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
@@ -38,8 +40,15 @@ class ItemController extends Controller
         return view('sell', compact('categories'));
     }
 
-    public function store()
+    public function store(ExhibitionRequest $request)
     {
-        
+        $user = Auth::user();
+        $form = $request->validated();
+        $form['user_id'] = $user->id;
+        $form['item_image'] = $request->file('item_image')->store('item-images', 'public');
+
+        Item::create($form);
+
+        return to_route('profile');
     }
 }

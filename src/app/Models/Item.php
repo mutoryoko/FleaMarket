@@ -19,7 +19,7 @@ class Item extends Model
         'description',
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
@@ -39,7 +39,7 @@ class Item extends Model
         return $this->belongsToMany(Category::class)->withTimestamps();
     }
 
-    public function transactions()
+    public function transaction()
     {
         return $this->hasOne(Transaction::class);
     }

@@ -11,8 +11,8 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('name');
-            $table->string('image');
+            $table->string('item_name');
+            $table->string('item_image');
             $table->integer('price');
             $table->integer('condition')->comment('商品の状態:1~4');
             $table->string('brand')->comment('ブランド名')->nullable();

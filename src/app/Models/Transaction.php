@@ -18,7 +18,7 @@ class Transaction extends Model
         'shipping_building',
     ];
 
-    public function items()
+    public function item()
     {
         return $this->belongsTo(Item::class);
     }

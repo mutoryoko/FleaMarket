@@ -1,0 +1,15 @@
+<div class="item-image__wrapper" style="max-height: 200px;">
+    <div class="image__wrapper">
+        @if($image)
+            <img src="{{ $previewUrl }}" alt="プレビュー" style="max-height: 200px;" />
+        @endif
+    </div>
+
+    <label class="file-upload__btn">
+        画像を選択する
+        <input wire:model="image" type="file" name="item_image" style="display:none;" />
+    </label>
+    @if($fileName)
+        <span class="file__name">{{ $fileName }}</span>
+    @endif
+</div>
