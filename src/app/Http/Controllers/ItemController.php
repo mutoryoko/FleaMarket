@@ -27,7 +27,7 @@ class ItemController extends Controller
 
     public function detail(string $id)
     {
-        $item = Item::find($id);
+        $item = Item::findOrFail($id);
         $categories = $item->categories()->pluck('name')->toArray();
 
         return view('detail', compact('item', 'categories'));
@@ -44,10 +44,17 @@ class ItemController extends Controller
     {
         $user = Auth::user();
         $form = $request->validated();
+
         $form['user_id'] = $user->id;
+        $form['brand'] = $request->input('brand');
         $form['item_image'] = $request->file('item_image')->store('item-images', 'public');
 
-        Item::create($form);
+        $categoryIds = $form['categories'] ?? [];
+        unset($form['categories']);
+
+        $item = Item::create($form);
+
+        $item->categories()->attach($categoryIds);
 
         return to_route('profile');
     }
