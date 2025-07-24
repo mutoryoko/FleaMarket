@@ -18,11 +18,12 @@ class PurchaseController extends Controller
         return view('purchase', compact('item', 'user', 'profile'));
     }
 
-    public function edit()
+    public function edit(string $id)
     {
+        $item = Item::findOrFail($id);
         $user = Auth::user();
         $profile = $user->profile;
 
-        return view('address', compact('user', 'profile'));
+        return view('address', compact('item', 'user', 'profile'));
     }
 }

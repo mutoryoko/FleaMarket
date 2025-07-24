@@ -8,17 +8,19 @@
 
 @section('content')
     <div class="content">
-        <div class="confirm">
+        <div class="confirmation__wrapper">
             <div class="item-info">
-                <div>
-                    <img src="" alt="">
+                <div class="item-image__wrapper">
+                    <img class="item-image" src="{{ asset('storage/'.$item->item_image) }}" alt="商品画像" />
                 </div>
-                <h2>{{ $item->item_name }}</h2>
-                <p><span class="yen">¥</span>{{ $item->price }}</p>
+                <div>
+                    <h2 class="item-name">{{ $item->item_name }}</h2>
+                    <p class="item-price"><span class="yen">¥</span>{{ number_format($item->price) }}</p>
+                </div>
             </div>
             <div class="payment-method">
-                <h3>支払い方法</h3>
-                <select name="payment_method">
+                <h3 class="small-ttl">支払い方法</h3>
+                <select name="payment_method" class="payment__select">
                     <option>選択してください</option>
                     <option value="1">コンビニ払い</option>
                     <option value="2">カード払い</option>
@@ -26,26 +28,27 @@
             </div>
             <div class="shipping-info">
                 <div class="shipping__head">
-                    <h3>配送先</h3>
-                    <a href="">変更する</a>
+                    <h3 class="small-ttl">配送先</h3>
+                    <a class="shipping__link" href="{{ route('address', ['item_id' => $item->id]) }}">変更する</a>
                 </div>
-                <p>{{ $profile->postcode }}</p>
-                <p>{{ $profile->address }}</p>
-                <p>{{ $profile->building ?? '' }}</p>
+                <p class="postcode">〒{{ $profile->postcode }}</p>
+                <p class="address">{{ $profile->address }}</p>
+                <p class="building">{{ $profile->building ?? '' }}</p>
             </div>
         </div>
-        <div class="payment">
-            <form action="">
-                <table class="payment-form">
-                    <tr>
-                        <th>商品代金</th>
-                        <td><span class="yen">¥</span>{{ $item->price }}</td>
+        <div class="payment__wrapper">
+            <form class="payment-form" action="">
+                <table class="payment-table">
+                    <tr class="table-row">
+                        <th class="table-th">商品代金</th>
+                        <td class="table-td table__price"><span class="yen">¥</span>{{ number_format($item->price) }}</td>
                     </tr>
-                    <tr>
-                        <th>支払い方法</th>
-                        <td>コンビニ or カード</td>
+                    <tr class="table-row">
+                        <th class="table-th">支払い方法</th>
+                        <td class="table-td">コンビニ or カード</td>
                     </tr>
                 </table>
+                <button class="submit-btn" type="submit">購入する</button>
             </form>
         </div>
     </div>

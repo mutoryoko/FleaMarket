@@ -23,7 +23,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/sell', [ItemController::class, 'sellForm'])->name('sellForm');
     Route::post('/sell', [ItemController::class, 'store'])->name('sell');
+
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->name('purchase');
+    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'edit'])->name('address');
 
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 });
