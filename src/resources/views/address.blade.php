@@ -9,7 +9,7 @@
 @section('content')
     <div class="content">
         <h2 class="title">住所の変更</h2>
-        <form class="user-form" action="" method="POST">
+        <form class="user-form" action="{{ route('address.update', ['item_id' => $item->id]) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="user-form__item">
