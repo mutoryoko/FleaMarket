@@ -3,13 +3,13 @@
 @section('title', 'ログイン')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/login.css')}}" />
+    <link rel="stylesheet" href="{{ asset('css/login-address.css')}}" />
 @endsection
 
 @section('content')
     <div class="content">
         <h2 class="title">ログイン</h2>
-        <form class="user-form" action="/login" method="POST">
+        <form class="user-form" action="{{ route('login') }}" method="POST">
             @csrf
             <div class="user-form__item">
                 <label class="user-form__label"><div>メールアドレス</div></label>
