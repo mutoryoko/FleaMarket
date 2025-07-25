@@ -24,7 +24,7 @@ class UserController extends Controller
 
         Auth::login($user);
 
-        return to_route('edit');
+        return to_route('profile.edit');
     }
 
     public function loginForm()
@@ -39,7 +39,7 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->route('index');
+            return to_route('index');
         }
 
         return back()->withErrors([

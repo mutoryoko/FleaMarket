@@ -9,7 +9,7 @@
 @section('content')
     <div class="content">
         <h2 class="title">プロフィール設定</h2>
-        <form class="user-form" action="{{ route('update') }}" method="POST" enctype="multipart/form-data">
+        <form class="user-form" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
             <div class="user-form__item image-form">

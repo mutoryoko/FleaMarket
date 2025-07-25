@@ -29,7 +29,7 @@
             <div class="shipping-info">
                 <div class="shipping__head">
                     <h3 class="small-ttl">配送先</h3>
-                    <a class="shipping__link" href="{{ route('address', ['item_id' => $item->id]) }}">変更する</a>
+                    <a class="shipping__link" href="{{ route('address.edit', ['item_id' => $item->id]) }}">変更する</a>
                 </div>
                 <p class="postcode">〒{{ $profile->postcode }}</p>
                 <p class="address">{{ $profile->address }}</p>

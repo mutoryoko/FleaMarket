@@ -18,14 +18,15 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/mypage', [MypageController::class, 'index'])->name('profile');
-    Route::get('/mypage/profile', [MypageController::class, 'edit'])->name('edit');
-    Route::put('/mypage/profile', [MypageController::class, 'update'])->name('update');
+    Route::get('/mypage/profile', [MypageController::class, 'edit'])->name('profile.edit');
+    Route::put('/mypage/profile', [MypageController::class, 'update'])->name('profile.update');
 
     Route::get('/sell', [ItemController::class, 'sellForm'])->name('sellForm');
     Route::post('/sell', [ItemController::class, 'store'])->name('sell');
 
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->name('purchase');
-    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'edit'])->name('address');
+    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'edit'])->name('address.edit');
+    Route::put('/purchase/address/{item_id}', [PurchaseController::class, 'update'])->name('address.update');
 
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 });

@@ -11,6 +11,7 @@
         <h2 class="title">住所の変更</h2>
         <form class="user-form" action="" method="POST">
             @csrf
+            @method('PUT')
             <div class="user-form__item">
                 <label for="postcode" class="user-form__label"><div>郵便番号</div></label>
                 <input id="postcode" class="user-form__input" type="text" name="postcode" value="{{ old('postcode', $profile->postcode) }}">
