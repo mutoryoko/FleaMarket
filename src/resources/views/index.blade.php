@@ -9,22 +9,20 @@
 @section('content')
     <div class="content">
         <div class="item-list__tabs">
-            <a href="">おすすめ</a>
+            <a class="recommend" href="">おすすめ</a>
             <a href="">マイリスト</a>
         </div>
         <div class="item-cards__wrapper">
-            @if(!empty($items))
-                @foreach ($items as $item)
+            @forelse($items as $item)
                 <div class="item-card">
                     <div class="item-image__wrapper">
                         <a href="{{ route('detail', ['item_id' => $item->id]) }}"><img class="item-image" src="{{ asset('storage/'.$item->item_image) }}" alt="商品画像" /></a>
                     </div>
                     <h2 class="item-name">{{ $item->item_name }}</h2>
                 </div>
-                @endforeach
-            @elseif(empty($items))
+            @empty
                 <p>商品がありません</p>
-            @endif
+            @endforelse
         </div>
     </div>
 @endsection
