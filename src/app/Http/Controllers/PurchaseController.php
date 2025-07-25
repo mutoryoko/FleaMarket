@@ -8,22 +8,27 @@ use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
-    public function index(string $id)
+    private function getItemAndProfile($id)
     {
         $item = Item::findOrFail($id);
         $user = Auth::user();
         $profile = $user->profile;
 
-        return view('purchase', compact('item', 'user', 'profile'));
+        return compact('item', 'user', 'profile');
+    }
+
+    public function index(string $id)
+    {
+        $data = $this->getItemAndProfile($id);
+
+        return view('purchase', $data);
     }
 
     public function edit(string $id)
     {
-        $item = Item::findOrFail($id);
-        $user = Auth::user();
-        $profile = $user->profile;
+        $data = $this->getItemAndProfile($id);
 
-        return view('address', compact('item', 'user', 'profile'));
+        return view('address', $data);
     }
 
     public function update(AddressRequest $request, string $id)
@@ -37,5 +42,10 @@ class PurchaseController extends Controller
         $profile->update($updateData);
 
         return to_route('purchase', ['item_id' => $item->id]);
+    }
+
+    public function buyItem()
+    {
+        //
     }
 }

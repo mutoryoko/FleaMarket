@@ -7,23 +7,28 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
 
-
 class MypageController extends Controller
 {
-    public function index()
+    private function getProfile()
     {
         $user = Auth::user();
         $profile = $user->profile;
 
-        return view('mypage.profile', compact('user', 'profile'));
+        return compact('user', 'profile');
+    }
+
+    public function index()
+    {
+        $profileData = $this->getProfile();
+
+        return view('mypage.profile', $profileData);
     }
 
     public function edit()
     {
-        $user= Auth::user();
-        $profile = $user->profile;
+        $profileData = $this->getProfile();
 
-        return view('mypage.edit', compact('user', 'profile'));
+        return view('mypage.edit', $profileData);
     }
 
     public function update(ProfileRequest $request)
