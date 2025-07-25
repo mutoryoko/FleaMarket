@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
@@ -53,6 +52,6 @@ class MypageController extends Controller
             Profile::create($data);
         }
 
-        return to_route('index');
+        return to_route('profile');
     }
 }

@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ExhibitionRequest;
-use Illuminate\Http\Request;
 use App\Models\Item;
-use App\Models\User;
 use App\Models\Profile;
 use App\Models\Comment;
 use App\Models\Category;
