@@ -1,7 +1,7 @@
 .content {
     display: flex;
     justify-content: center;
-    padding: 60px;
+    padding: 60px 80px;
 }
 
 .item-image__wrapper {
@@ -11,6 +11,9 @@
 
 .item-image {
     width: 90%;
+    height: 450px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .item-info__wrapper {
