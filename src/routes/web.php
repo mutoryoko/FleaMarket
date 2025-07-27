@@ -4,6 +4,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\UserController;
+use App\Http\Requests\PurchaseRequest;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/sell', [ItemController::class, 'store'])->name('sell');
 
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->name('purchase');
+    Route::post('/purchase/{item_id}', [PurchaseController::class, 'buyItem'])->name('buyItem');
     Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'edit'])->name('address.edit');
     Route::put('/purchase/address/{item_id}', [PurchaseController::class, 'update'])->name('address.update');
 

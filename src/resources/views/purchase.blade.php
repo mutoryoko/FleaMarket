@@ -8,36 +8,50 @@
 
 @section('content')
     <div class="content">
-        <div class="confirmation__wrapper">
-            <div class="item-info">
-                <div class="item-image__wrapper">
-                    <img class="item-image" src="{{ asset('storage/'.$item->item_image) }}" alt="商品画像" />
+        <form class="payment-form" action="{{ route('buyItem', ['item_id' => $item->id]) }}" method="POST">
+        @csrf
+            <div class="confirmation__wrapper">
+                <div class="item-info">
+                    <div class="item-image__wrapper">
+                        <img class="item-image" src="{{ asset('storage/'.$item->item_image) }}" alt="商品画像" />
+                    </div>
+                    <div>
+                        <h2 class="item-name">{{ $item->item_name }}</h2>
+                        <p class="item-price"><span class="yen">¥</span>{{ number_format($item->price) }}</p>
+                    </div>
                 </div>
-                <div>
-                    <h2 class="item-name">{{ $item->item_name }}</h2>
-                    <p class="item-price"><span class="yen">¥</span>{{ number_format($item->price) }}</p>
+                <div class="payment-method">
+                    <h3 class="small-ttl">支払い方法</h3>
+                    <select name="payment_method" class="payment__select">
+                        <option value="">選択してください</option>
+                        <option value="1" {{ old('payment_method') == '1' ? 'selected' : '' }}>
+                            コンビニ払い
+                        </option>
+                        <option value="2" {{ old('payment_method') == '2' ? 'selected' : '' }}>
+                            カード払い
+                        </option>
+                    </select>
+                    @error('payment_method')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="shipping-info">
+                    <div class="shipping__head">
+                        <h3 class="small-ttl">配送先</h3>
+                        <a class="shipping__link" href="{{ route('address.edit', ['item_id' => $item->id]) }}">変更する</a>
+                    </div>
+                    <p class="postcode">〒{{ $profile->postcode }}</p>
+                    <input name="shipping_postcode" type="hidden" value="{{ $profile->postcode }}">
+                    <p class="address">{{ $profile->address }}</p>
+                    <input name="shipping_address" type="hidden" value="{{ $profile->address }}">
+                    <p class="building">{{ $profile->building ?? '' }}</p>
+                    <input name="shipping_building" type="hidden" value="{{ $profile->building }}">
+                    @if ($errors->hasAny(['shipping_postcode', 'shipping_address']))
+                        <p class="error">{{ $message }}</p>
+                    @endif
                 </div>
             </div>
-            <div class="payment-method">
-                <h3 class="small-ttl">支払い方法</h3>
-                <select name="payment_method" class="payment__select">
-                    <option>選択してください</option>
-                    <option value="1">コンビニ払い</option>
-                    <option value="2">カード払い</option>
-                </select>
-            </div>
-            <div class="shipping-info">
-                <div class="shipping__head">
-                    <h3 class="small-ttl">配送先</h3>
-                    <a class="shipping__link" href="{{ route('address.edit', ['item_id' => $item->id]) }}">変更する</a>
-                </div>
-                <p class="postcode">〒{{ $profile->postcode }}</p>
-                <p class="address">{{ $profile->address }}</p>
-                <p class="building">{{ $profile->building ?? '' }}</p>
-            </div>
-        </div>
-        <div class="payment__wrapper">
-            <form class="payment-form" action="">
+            <div class="payment__wrapper">
                 <table class="payment-table">
                     <tr class="table-row">
                         <th class="table-th">商品代金</th>
@@ -49,7 +63,7 @@
                     </tr>
                 </table>
                 <button class="submit-btn" type="submit">購入する</button>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 @endsection
