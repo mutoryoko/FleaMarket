@@ -17,23 +17,7 @@
             <a class="edit-btn--link" href="{{ route('profile.edit') }}">プロフィールを編集</a>
         </div>
     </div>
-    <div class="item-list__tabs">
-        <a href="">出品した商品</a>
-        <a href="">購入した商品</a>
-    </div>
-    <div class="item-cards__wrapper">
-        @if(!empty($items))
-            @foreach ($items as $item)
-            <div class="item-card">
-                <div class="item-image__wrapper">
-                    <a href="{{ route('detail', ['item_id' => $item->id]) }}"><img class="item-image" src="{{ asset('storage/'.$item->image) }}" alt="商品画像"></a>
-                </div>
-                <h2 class="item-name">{{ $item->name }}</h2>
-            </div>
-            @endforeach
-        @elseif(empty($items))
-        <p>商品がありません</p>
-        @endif
-    </div>
+
+    <livewire:transaction-tabs />
 </div>
 @endsection
