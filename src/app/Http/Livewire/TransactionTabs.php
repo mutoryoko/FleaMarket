@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Request;
 use App\Models\Transaction;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +11,14 @@ use Livewire\Component;
 class TransactionTabs extends Component
 {
     public $tab = 'selling';
+
+    public function mount()
+    {
+        $page = Request::query('page');
+        if (in_array($page, ['sell', 'buy'])) {
+            $this->tab = $page === 'sell' ? 'selling' : 'buying';
+        }
+    }
 
     public function selectTab($tab)
     {

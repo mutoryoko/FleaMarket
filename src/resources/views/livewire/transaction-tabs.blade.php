@@ -1,9 +1,9 @@
 <div>
     <div class="tabs">
-        <button wire:click="selectTab('selling')" class="{{ $tab === 'selling' ? 'active' : '' }}">
+        <button wire:click="selectTab('selling')" onclick="history.pushState(null, '', '?page=sell')" class="{{ $tab === 'selling' ? 'active' : '' }}">
             出品した商品
         </button>
-        <button wire:click="selectTab('buying')" class="{{ $tab === 'buying' ? 'active' : '' }}">
+        <button wire:click="selectTab('buying')" onclick="history.pushState(null, '', '?page=buy')" class="{{ $tab === 'buying' ? 'active' : '' }}">
             購入した商品
         </button>
     </div>
@@ -18,7 +18,7 @@
                     <h2 class="item-name">{{ $sellingItem->item_name }}</h2>
                 </div>
             @empty
-                <div>出品した商品がありません。</div>
+                <p>出品した商品がありません。</p>
             @endforelse
         @elseif ($tab === 'buying')
             @forelse ($buyingItems as $buyingItem)
@@ -29,7 +29,7 @@
                     <h2 class="item-name">{{ $buyingItem->item_name }}</h2>
                 </div>
             @empty
-                <div>購入した商品がありません。</div>
+                <p>購入した商品がありません。</p>
             @endforelse
         @endif
     </div>
