@@ -20,7 +20,8 @@
             <h4 class="form__label category__ttl">カテゴリー</h4>
             @foreach ($categories as $category)
                 <label class="category__label">
-                    <input name="categories[]" type="checkbox" value="{{ $category->id }}">{{ $category->name }}</input>
+                    <input class="category__check" name="categories[]" type="checkbox" value="{{ $category->id }}" {{ is_array(old('categories')) && in_array($category->id, old('categories')) ? 'checked' : ''}} />
+                    {{ $category->name }}
                 </label>
             @endforeach
             @error('categories')
@@ -43,14 +44,14 @@
             <h3 class="small-ttl">商品名と説明</h3>
             <div class="form__item">
                 <h4 class="form__label">商品名</h4>
-                <input class="form__item--input" type="text" name="item_name" value="{{ old('item_name')}}">
+                <input class="form__item--input" type="text" name="item_name" value="{{ old('item_name')}}" />
                 @error('item_name')
                     <p class="error">{{ $message }}</p>
                 @enderror
             </div>
             <div class="form__item">
                 <h4 class="form__label">ブランド名</h4>
-                <input class="form__item--input" type="text" name="brand" value="{{ old('brand')}}">
+                <input class="form__item--input" type="text" name="brand" value="{{ old('brand')}}" />
             </div>
             <div class="form__item">
                 <h4 class="form__label">商品の説明</h4>
@@ -61,7 +62,7 @@
             </div>
             <div class="form__item">
                 <h4 class="form__label">販売価格</h4>
-                <input class="form__item--input" type="text" name="price" value="{{ old('price')}}">
+                <input class="form__item--input" type="text" name="price" value="{{ old('price')}}" />
                 @error('price')
                     <p class="error">{{ $message }}</p>
                 @enderror
