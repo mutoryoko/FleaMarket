@@ -18,7 +18,11 @@
                     <div class="item-image__wrapper">
                         <a href="{{ route('detail', ['item_id' => $item->id]) }}"><img class="item-image" src="{{ asset('storage/'.$item->item_image) }}" alt="商品画像" /></a>
                     </div>
-                    <h2 class="item-name">{{ $item->item_name }}</h2>
+                    <h2 class="item-name">{{ $item->item_name }}
+                        @if(in_array($item->id, $soldItemIds))
+                            <span class="sold">sold</span>
+                        @endif
+                    </h2>
                 </div>
             @empty
                 <p>商品がありません</p>

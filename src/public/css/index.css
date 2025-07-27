@@ -34,3 +34,8 @@
     font-weight: normal;
     padding-top: 5px;
 }
+
+.sold {
+    color: red;
+    margin-left: 10px;
+}
