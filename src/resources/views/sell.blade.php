@@ -11,35 +11,42 @@
         <h2 class="title">商品の出品</h2>
         <form class="sell-form" action="{{ route('sell') }}" method="POST" enctype="multipart/form-data">
         @csrf
-            <h4 class="form__label">商品画像</h4>
-            @livewire('item-image-preview')
-            @error('item_image')
+            <div>
+                <h4 class="form__label">商品画像</h4>
+                @livewire('item-image-preview')
+                @error('item_image')
                 <p class="error">{{ $message }}</p>
-            @enderror
+                @enderror
+            </div>
+
             <h3 class="small-ttl">商品の詳細</h3>
-            <h4 class="form__label category__ttl">カテゴリー</h4>
-            @foreach ($categories as $category)
+            <div>
+                <h4 class="form__label category__ttl">カテゴリー</h4>
+                @foreach ($categories as $category)
                 <label class="category__label">
                     <input class="category__check" name="categories[]" type="checkbox" value="{{ $category->id }}" {{ is_array(old('categories')) && in_array($category->id, old('categories')) ? 'checked' : ''}} />
                     {{ $category->name }}
                 </label>
-            @endforeach
-            @error('categories')
-                <p class="error">{{ $message }}</p>
-            @enderror
-            <h4 class="form__label condition__ttl">商品の状態</h4>
-            @php
-                $selectedCondition = old('condition', $item->condition ?? '');
-            @endphp
-            <select class="form__select" name="condition">
-                <option>選択してください</option>
-                @foreach(conditionOptions() as $value => $label)
-                    <option value="{{ $value }}" {{ $selectedCondition == $value ? 'selected' : '' }}>{{ $label }}</option>
                 @endforeach
-            </select>
-            @error('condition')
+                @error('categories')
                 <p class="error">{{ $message }}</p>
-            @enderror
+                @enderror
+            </div>
+            <div>
+                <h4 class="form__label condition__ttl">商品の状態</h4>
+                @php
+                $selectedCondition = old('condition', $item->condition ?? '');
+                @endphp
+                <select class="form__select" name="condition">
+                    <option>選択してください</option>
+                    @foreach(conditionOptions() as $value => $label)
+                        <option value="{{ $value }}" {{ $selectedCondition == $value ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @error('condition')
+                <p class="error">{{ $message }}</p>
+                @enderror
+            </div>
 
             <h3 class="small-ttl">商品名と説明</h3>
             <div class="form__item">
