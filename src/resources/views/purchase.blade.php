@@ -22,7 +22,7 @@
                 </div>
                 <div class="payment-method">
                     <h3 class="small-ttl">支払い方法</h3>
-                    <select name="payment_method" class="payment__select">
+                    <select name="payment_method" class="payment__select" id="payment_method">
                         <option value="">選択してください</option>
                         <option value="1" {{ old('payment_method') == '1' ? 'selected' : '' }}>
                             コンビニ払い
@@ -59,11 +59,33 @@
                     </tr>
                     <tr class="table-row">
                         <th class="table-th">支払い方法</th>
-                        <td class="table-td">コンビニ or カード</td>
+                        <td class="table-td" id="selected-payment-method">選択されていません</td>
                     </tr>
                 </table>
                 <button class="submit-btn" type="submit">購入する</button>
             </div>
         </form>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const paymentSelect = document.getElementById('payment_method');
+            const paymentDisplay = document.getElementById('selected-payment-method');
+
+            const methodNames = {
+                '1': 'コンビニ払い',
+                '2': 'カード払い'
+            };
+
+            const selected = paymentSelect.value;
+            if (selected && methodNames[selected]) {
+                paymentDisplay.textContent = methodNames[selected];
+            }
+
+            paymentSelect.addEventListener('change', function () {
+                const selectedValue = this.value;
+                paymentDisplay.textContent = methodNames[selectedValue] || '選択されていません';
+            });
+        });
+    </script>
 @endsection
