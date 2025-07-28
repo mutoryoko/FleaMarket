@@ -19,11 +19,11 @@
             <div class="item-info">
                 <p class="item-price"><span class="yen">¥</span>{{ number_format($item->price) }}<span class="tax">（税込）</span></p>
             </div>
-            <div class="favorites-comments__icons">
-                <form class="favorite-form" action="" method="POST">
+            <div class="likes-comments__icons">
+                <form class="like-form" action="" method="POST">
                 @csrf
-                    <div class="favorite-icon">
-                        <a href=""><img class="favorite-icon__img" src="{{ asset('storage/materials/star-icon.png') }}" alt="いいねのアイコン"></a>
+                    <div class="like-icon">
+                        <a href=""><img class="like-icon__img" src="{{ asset('storage/materials/star-icon.png') }}" alt="いいねのアイコン"></a>
                         <input type="hidden" value="">
                         <p class="count">0</p>
                     </div>

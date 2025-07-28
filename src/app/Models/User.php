@@ -52,8 +52,8 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-    public function favoriteItems()
+    public function likeItems()
     {
-        return $this->belongsToMany(Item::class, 'favorites')->withTimestamps();
+        return $this->belongsToMany(Item::class, 'likes')->withTimestamps();
     }
 }

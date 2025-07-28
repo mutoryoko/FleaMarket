@@ -38,17 +38,17 @@
     font-size: 24px;
 }
 
-.favorites-comments__icons {
+.likes-comments__icons {
     display: flex;
     padding: 0 40px;
 }
 
-.favorite-icon {
+.like-icon {
     width: 30px;
     margin-right: 60px;
 }
 
-.favorite-icon__img {
+.like-icon__img {
     width: 100%;
 }
 
