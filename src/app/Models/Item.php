@@ -24,9 +24,9 @@ class Item extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function likedByUsers()
+    public function likes()
     {
-        return $this->belongsToMany(User::class, 'likes')->withTimestamps();
+        return $this->belongsToMany(User::class, 'likes', 'item_id', 'user_id')->withTimestamps();
     }
 
     public function comments()

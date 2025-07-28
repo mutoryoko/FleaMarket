@@ -1,16 +1,18 @@
 <?php
 
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\UserController;
-use App\Http\Requests\PurchaseRequest;
 use Illuminate\Support\Facades\Route;
 
 
 
 Route::get('/', [ItemController::class, 'index'])->name('index');
 Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('detail');
+// Route::post('/detail/{item_id}/like', [LikeController::class, 'store'])->name('like');
+// Route::delete('/detail/{item_id}/like', [LikeController::class, 'destroy'])->name('unlike');
 
 Route::get('/register', [UserController::class, 'registerForm'])->name('registerForm');
 Route::post('/register', [UserController::class, 'register'])->name('register');

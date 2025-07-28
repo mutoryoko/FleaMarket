@@ -19,15 +19,28 @@
             <div class="item-info">
                 <p class="item-price"><span class="yen">¥</span>{{ number_format($item->price) }}<span class="tax">（税込）</span></p>
             </div>
+
             <div class="likes-comments__icons">
-                <form class="like-form" action="" method="POST">
-                @csrf
-                    <div class="like-icon">
-                        <a href=""><img class="like-icon__img" src="{{ asset('storage/materials/star-icon.png') }}" alt="いいねのアイコン"></a>
-                        <input type="hidden" value="">
-                        <p class="count">0</p>
-                    </div>
-                </form>
+                {{-- いいね機能 --}}
+                {{-- @if(auth()->user()->likes->contains($item->id))
+                    <form class="like-form" action="{{ route('unlike')}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <div class="like-icon">
+                            <button type="submit"><img class="like-icon__img" src="{{ asset('storage/materials/star-icon-yellow.png') }}" alt="いいね取り消しのアイコン"></button>
+                            <p class="count">0</p>
+                        </div>
+                    </form>
+                @else --}}
+                    <form class="like-form" action="" method="POST">
+                        @csrf
+                        <div class="like-icon">
+                            <img class="like-icon__img" src="{{ asset('storage/materials/star-icon.png') }}" alt="いいねのアイコン">
+                            <p class="count">0</p>
+                        </div>
+                    </form>
+                {{-- @endif --}}
+
                 <div class="comment-icon">
                     <img class="comment-icon__img" src="{{ asset('storage/materials/comment-icon.png') }}" alt="コメントのアイコン">
                     <p class="count">0</p>
