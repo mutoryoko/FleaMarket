@@ -21,7 +21,7 @@
 }
 
 .item-info {
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
 
 .item-name {
@@ -36,6 +36,32 @@
 
 .yen, .tax {
     font-size: 24px;
+}
+
+.favorites-comments__icons {
+    display: flex;
+    padding: 0 40px;
+}
+
+.favorite-icon {
+    width: 30px;
+    margin-right: 60px;
+}
+
+.favorite-icon__img {
+    width: 100%;
+}
+
+.comment-icon {
+    width: 30px;
+}
+
+.comment-icon__img {
+    width: 100%;
+}
+
+.count {
+    text-align: center;
 }
 
 .purchase__btn {

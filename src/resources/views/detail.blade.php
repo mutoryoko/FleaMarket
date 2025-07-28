@@ -19,9 +19,19 @@
             <div class="item-info">
                 <p class="item-price"><span class="yen">¥</span>{{ number_format($item->price) }}<span class="tax">（税込）</span></p>
             </div>
-            <div class="favorites-comments__btn">
-                <a href="">いいね</a>
-                <a href="">コメント</a>
+            <div class="favorites-comments__icons">
+                <form class="favorite-form" action="" method="POST">
+                @csrf
+                    <div class="favorite-icon">
+                        <a href=""><img class="favorite-icon__img" src="{{ asset('storage/materials/star-icon.png') }}" alt="いいねのアイコン"></a>
+                        <input type="hidden" value="">
+                        <p class="count">0</p>
+                    </div>
+                </form>
+                <div class="comment-icon">
+                    <img class="comment-icon__img" src="{{ asset('storage/materials/comment-icon.png') }}" alt="コメントのアイコン">
+                    <p class="count">0</p>
+                </div>
             </div>
             <div>
                 <a class="purchase__btn" href="{{ route('purchase', ['item_id' => $item->id]) }}">購入手続きへ</a> 
