@@ -20,11 +20,6 @@ class TransactionTabs extends Component
         }
     }
 
-    public function selectTab($tab)
-    {
-        $this->tab = $tab;
-    }
-
     public function render()
     {
         $user = Auth::user();

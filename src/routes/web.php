@@ -5,6 +5,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\TransactionTabs;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,6 +26,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mypage', [MypageController::class, 'index'])->name('profile');
     Route::get('/mypage/profile', [MypageController::class, 'edit'])->name('profile.edit');
     Route::put('/mypage/profile', [MypageController::class, 'update'])->name('profile.update');
+    Route::get('/mypage?page=sell', TransactionTabs::class)->name('mypage.sell');
+    Route::get('/mypage?page=buy', TransactionTabs::class)->name('mypage.buy');
 
     Route::get('/sell', [ItemController::class, 'sellForm'])->name('sellForm');
     Route::post('/sell', [ItemController::class, 'store'])->name('sell');

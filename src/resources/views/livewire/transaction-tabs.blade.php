@@ -1,11 +1,11 @@
 <div>
     <div class="tabs">
-        <button wire:click="selectTab('selling')" onclick="history.pushState(null, '', '?page=sell')" class="{{ $tab === 'selling' ? 'active' : '' }}">
+        <a href="{{ route('mypage.sell') }}" class="{{ $tab === 'selling' ? 'active' : '' }} sell-tab">
             出品した商品
-        </button>
-        <button wire:click="selectTab('buying')" onclick="history.pushState(null, '', '?page=buy')" class="{{ $tab === 'buying' ? 'active' : '' }}">
+        </a>
+        <a href="{{ route('mypage.buy') }}" class="{{ $tab === 'buying' ? 'active' : '' }} buy-tab">
             購入した商品
-        </button>
+        </a>
     </div>
 
     <div class="tab-content mt-4">
@@ -48,8 +48,9 @@
             margin: 0 auto;
         }
 
-        .tabs button {
-            border: none;
+        .sell-tab, .buy-tab {
+            display: inline-block;
+            color: #000;
             background: transparent;
             font-size: 18px;
             font-weight: bold;
