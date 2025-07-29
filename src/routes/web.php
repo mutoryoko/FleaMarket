@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ItemController::class, 'index'])->name('index');
 Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('detail');
-// Route::post('/detail/{item_id}/like', [LikeController::class, 'store'])->name('like');
-// Route::delete('/detail/{item_id}/like', [LikeController::class, 'destroy'])->name('unlike');
 
 Route::get('/register', [UserController::class, 'registerForm'])->name('registerForm');
 Route::post('/register', [UserController::class, 'register'])->name('register');
@@ -20,6 +18,10 @@ Route::get('/login', [UserController::class, 'loginForm'])->name('loginForm');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::middleware(['auth'])->group(function () {
+
+    Route::post('/detail/{item_id}/like', [LikeController::class, 'store'])->name('like');
+    Route::delete('/items/{item_id}/unlike', [LikeController::class, 'destroy'])->name('unlike');
+
     Route::get('/mypage', [MypageController::class, 'index'])->name('profile');
     Route::get('/mypage/profile', [MypageController::class, 'edit'])->name('profile.edit');
     Route::put('/mypage/profile', [MypageController::class, 'update'])->name('profile.update');

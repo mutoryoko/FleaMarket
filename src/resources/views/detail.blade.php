@@ -22,24 +22,25 @@
 
             <div class="likes-comments__icons">
                 {{-- いいね機能 --}}
-                {{-- @if(auth()->user()->likes->contains($item->id))
-                    <form class="like-form" action="{{ route('unlike')}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <div class="like-icon">
-                            <button type="submit"><img class="like-icon__img" src="{{ asset('storage/materials/star-icon-yellow.png') }}" alt="いいね取り消しのアイコン"></button>
-                            <p class="count">0</p>
-                        </div>
-                    </form>
-                @else --}}
-                    <form class="like-form" action="" method="POST">
-                        @csrf
-                        <div class="like-icon">
-                            <img class="like-icon__img" src="{{ asset('storage/materials/star-icon.png') }}" alt="いいねのアイコン">
-                            <p class="count">0</p>
-                        </div>
-                    </form>
-                {{-- @endif --}}
+                <div class="like-icon">
+                    @if(Auth::check() && Auth::user()->likeItems($item->id))
+                        <form class="like-form" action="{{ route('unlike', ['item_id' => $item->id] )}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="like-btn">
+                                <img class="like-icon__img" src="{{ asset('storage/materials/star-icon-yellow.png') }}" alt="いいね済みのアイコン">
+                            </button>
+                        </form>
+                    @else
+                        <form class="like-form" action="{{ route('like', ['item_id' => $item->id] )}}" method="POST">
+                            @csrf
+                            <button type="submit" class="like-btn">
+                                <img class="like-icon__img" src="{{ asset('storage/materials/star-icon.png') }}" alt="いいね前のアイコン">
+                            </button>
+                        </form>
+                    @endif
+                    <p class="count">{{ $item->likes()->count() }}</p>
+                </div>
 
                 <div class="comment-icon">
                     <img class="comment-icon__img" src="{{ asset('storage/materials/comment-icon.png') }}" alt="コメントのアイコン">
