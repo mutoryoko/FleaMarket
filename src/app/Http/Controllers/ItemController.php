@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ExhibitionRequest;
 use App\Models\Item;
-use App\Models\Profile;
-use App\Models\Comment;
 use App\Models\Category;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;

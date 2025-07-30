@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MypageController;
@@ -20,8 +21,10 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::post('/detail/{item_id}/like', [LikeController::class, 'store'])->name('like');
-    Route::delete('/items/{item_id}/unlike', [LikeController::class, 'destroy'])->name('unlike');
+    Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('like');
+    Route::delete('/item/{item_id}/unlike', [LikeController::class, 'destroy'])->name('unlike');
+
+    Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])->name('comment');
 
     Route::get('/mypage', [MypageController::class, 'index'])->name('profile');
     Route::get('/mypage/profile', [MypageController::class, 'edit'])->name('profile.edit');

@@ -74,7 +74,7 @@
                 <p>コメントした人の名前</p>
                 <p>コメント表示</p>
             </div>
-            <form class="comment-form" action="" method="POST">
+            <form class="comment-form" action="{{ route('comment') }}" method="POST">
                 @csrf
                 <label for="comment"><div class="comment__label">商品へのコメント</div></label>
                 <textarea class="comment__text" name="content" id="comment" cols="30" rows="10"></textarea>
