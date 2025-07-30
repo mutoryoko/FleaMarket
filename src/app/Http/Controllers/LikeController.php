@@ -9,13 +9,6 @@ use App\Models\Item;
 
 class LikeController extends Controller
 {
-    /**
-     * 商品にいいねを付ける
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Item  $item
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store($item_id)
     {
         /** @var \App\Models\User $user */
@@ -29,13 +22,7 @@ class LikeController extends Controller
 
         return redirect()->back();
     }
-    /**
-     * 商品のいいね解除
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Item  $item
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function destroy($item_id)
     {
         /** @var \App\Models\User $user */

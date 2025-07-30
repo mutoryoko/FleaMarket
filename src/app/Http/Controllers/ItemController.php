@@ -6,6 +6,8 @@ use App\Http\Requests\ExhibitionRequest;
 use App\Models\Item;
 use App\Models\Category;
 use App\Models\Transaction;
+use App\Models\Comment;
+use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
@@ -26,9 +28,10 @@ class ItemController extends Controller
     public function detail(string $id)
     {
         $item = Item::findOrFail($id);
+        $comments = Comment::get(['content']);
         $categories = $item->categories()->pluck('name')->toArray();
 
-        return view('detail', compact('item', 'categories'));
+        return view('detail', compact('item', 'categories', 'comments'));
     }
 
     public function sellForm()

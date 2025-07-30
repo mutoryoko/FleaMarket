@@ -69,12 +69,16 @@
                 </div>
             </div>
             <div class="item-comments">
-                <h3 class="comments-count ttl">コメント（数字）</h3>
-                <img src="" alt="ユーザーのアイコン" />
-                <p>コメントした人の名前</p>
-                <p>コメント表示</p>
+                <h3 class="comments-count ttl">コメント（{{ $comments->count() }}）</h3>
+                @forelse($comments as $comment)
+                    <img src="" alt="ユーザーのアイコン" />
+                    <p>ユーザー名</p>
+                    <p>{{ $comment->content }}</p>
+                @empty
+                    <p>コメントはありません</p>
+                @endforelse
             </div>
-            <form class="comment-form" action="{{ route('comment') }}" method="POST">
+            <form class="comment-form" action="{{ route('comment', ['item_id' => $item->id]) }}" method="POST">
                 @csrf
                 <label for="comment"><div class="comment__label">商品へのコメント</div></label>
                 <textarea class="comment__text" name="content" id="comment" cols="30" rows="10"></textarea>
