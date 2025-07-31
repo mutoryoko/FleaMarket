@@ -28,8 +28,8 @@ class ItemController extends Controller
     public function detail(string $id)
     {
         $item = Item::findOrFail($id);
-        $comments = Comment::get(['content']);
         $categories = $item->categories()->pluck('name')->toArray();
+        $comments = Comment::where('item_id', $id)->with(['user.profile'])->get();
 
         return view('detail', compact('item', 'categories', 'comments'));
     }

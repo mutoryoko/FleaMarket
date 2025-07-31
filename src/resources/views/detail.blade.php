@@ -41,15 +41,16 @@
                     @endif
                     <p class="count">{{ $item->likes()->count() }}</p>
                 </div>
-
                 <div class="comment-icon">
                     <img class="comment-icon__img" src="{{ asset('storage/materials/comment-icon.png') }}" alt="コメントのアイコン">
-                    <p class="count">0</p>
+                    <p class="count">{{ $comments->count() }}</p>
                 </div>
             </div>
+
             <div>
-                <a class="purchase__btn" href="{{ route('purchase', ['item_id' => $item->id]) }}">購入手続きへ</a> 
+                <a class="purchase__btn" href="{{ route('purchase', ['item_id' => $item->id]) }}">購入手続きへ</a>
             </div>
+
             <div class="item-info">
                 <h3 class="ttl">商品説明</h3>
                 <p class="description-content">{{ $item->description }}</p>
@@ -68,22 +69,36 @@
                     <p class="condition__text">{{ $item->condition_text }}</p>
                 </div>
             </div>
+
             <div class="item-comments">
-                <h3 class="comments-count ttl">コメント（{{ $comments->count() }}）</h3>
+                <h3 class="comments-counter ttl">コメント（{{ $comments->count() }}）</h3>
                 @forelse($comments as $comment)
-                    <img src="" alt="ユーザーのアイコン" />
-                    <p>ユーザー名</p>
-                    <p>{{ $comment->content }}</p>
+                    <div class="user-info">
+                        @if($comment->user->profile && $comment->user->profile->user_image)
+                        <div class="user-image__wrapper">
+                            <img src="{{ asset('storage/'. $comment->user->profile->user_image) }}" alt="ユーザーアイコン" class="user-image" />
+                        </div>
+                            @else
+                            <img src="{{ asset('storage/profile-images/no-image.png')}}" alt="no-image">
+                        @endif
+                        <p class="user-name">{{ $comment->user->name}}</p>
+                    </div>
+                    <p class="comment-content">{{ $comment->content }}</p>
                 @empty
-                    <p>コメントはありません</p>
+                    <p class="no-comment">コメントはありません</p>
                 @endforelse
             </div>
+
             <form class="comment-form" action="{{ route('comment', ['item_id' => $item->id]) }}" method="POST">
                 @csrf
-                <label for="comment"><div class="comment__label">商品へのコメント</div></label>
+                <label for="comment"><div class="form-label">商品へのコメント</div></label>
                 <textarea class="comment__text" name="content" id="comment" cols="30" rows="10"></textarea>
+                @error('content')
+                    <p class="error">{{ $message }}</p>
+                @enderror
                 <button class="comment__btn--submit" type="submit">コメントを送信する</button>
             </form>
+
         </div>
     </div>
 @endsection
