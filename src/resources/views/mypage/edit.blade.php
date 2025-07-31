@@ -13,7 +13,7 @@
         @csrf
         @method('PUT')
             <div class="user-form__item image-form">
-                @livewire('profile-image-preview', ['existingImagePath' => $profile->user_image])
+                @livewire('profile-image-preview', ['existingImagePath' => $profile->user_image ?? ''])
                 @error('user_image')
                     <p class="error">{{ $message }}</p>
                 @enderror
@@ -27,21 +27,21 @@
             </div>
             <div class="user-form__item">
                 <label for="postcode" class="user-form__label"><div>郵便番号</div></label>
-                <input id="postcode" class="user-form__input" type="text" name="postcode" value="{{ old('postcode', $profile->postcode) }}">
+                <input id="postcode" class="user-form__input" type="text" name="postcode" value="{{ old('postcode', $profile->postcode ?? '') }}">
                 @error('postcode')
                     <p class="error">{{ $message }}</p>
                 @enderror
             </div>
             <div class="user-form__item">
                 <label for="address" class="user-form__label"><div>住所</div></label>
-                <input id="address" class="user-form__input" type="text" name="address" value="{{ old('address', $profile->address) }}">
+                <input id="address" class="user-form__input" type="text" name="address" value="{{ old('address', $profile->address ?? '') }}">
                 @error('address')
                     <p class="error">{{ $message }}</p>
                 @enderror
             </div>
             <div class="user-form__item">
                 <label for="building" class="user-form__label"><div>建物名</div></label>
-                <input id="building" class="user-form__input" type="text" name="building" value="{{ old('building', $profile->building) }}">
+                <input id="building" class="user-form__input" type="text" name="building" value="{{ old('building', $profile->building ?? '') }}">
             </div>
             <button class="submit-btn" type="submit">更新する</button>
         </form>
