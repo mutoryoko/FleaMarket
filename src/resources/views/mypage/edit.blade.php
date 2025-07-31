@@ -20,7 +20,7 @@
             </div>
             <div class="user-form__item">
                 <label for="user_name" class="user-form__label"><div>ユーザー名</div></label>
-                <input id="user_name" class="user-form__input" type="text" name="user_name" value="{{ old('user_name', $user->name ) }}">
+                <input id="user_name" class="user-form__input" type="text" name="user_name" value="{{ old('user_name', $user->name ?? '') }}">
                 @error('user_name')
                     <p class="error">{{ $message }}</p>
                 @enderror
