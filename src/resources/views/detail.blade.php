@@ -75,11 +75,13 @@
                 @forelse($comments as $comment)
                     <div class="user-info">
                         @if($comment->user->profile && $comment->user->profile->user_image)
-                        <div class="user-image__wrapper">
-                            <img src="{{ asset('storage/'. $comment->user->profile->user_image) }}" alt="ユーザーアイコン" class="user-image" />
-                        </div>
-                            @else
-                            <img src="{{ asset('storage/profile-images/no-image.png')}}" alt="no-image">
+                            <div class="user-image__wrapper">
+                                <img src="{{ asset('storage/'.$comment->user->profile->user_image) }}" alt="ユーザーアイコン" class="user-image" />
+                            </div>
+                        @else
+                            <div class="user-image__wrapper">
+                                <img src="{{ asset('storage/profile-images/no-image.png')}}" alt="no-image">
+                            </div>
                         @endif
                         <p class="user-name">{{ $comment->user->name}}</p>
                     </div>

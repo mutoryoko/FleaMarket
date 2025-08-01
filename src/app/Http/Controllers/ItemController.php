@@ -7,8 +7,8 @@ use App\Models\Item;
 use App\Models\Category;
 use App\Models\Transaction;
 use App\Models\Comment;
-use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 class ItemController extends Controller
 {
@@ -18,11 +18,6 @@ class ItemController extends Controller
         $soldItemIds = Transaction::pluck('item_id')->toArray();
 
         return view('index', compact('items', 'soldItemIds'));
-    }
-
-    public function myList()
-    {
-        //
     }
 
     public function detail(string $id)

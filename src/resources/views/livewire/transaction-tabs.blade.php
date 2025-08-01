@@ -13,7 +13,9 @@
             @forelse ($sellingItems as $sellingItem)
                 <div class="item-card">
                     <div class="item-image__wrapper">
-                        <a href="{{ route('detail', ['item_id' => $sellingItem->id]) }}"><img class="item-image" src="{{ asset('storage/'.$sellingItem->item_image) }}" alt="商品画像"></a>
+                        <a href="{{ route('detail', ['item_id' => $sellingItem->id]) }}">
+                            <img class="item-image" src="{{ asset('storage/'.$sellingItem->item_image) }}" alt="商品画像">
+                        </a>
                     </div>
                     <h2 class="item-name">{{ $sellingItem->item_name }}</h2>
                 </div>
@@ -24,7 +26,9 @@
             @forelse ($buyingItems as $buyingItem)
                 <div class="item-card">
                     <div class="item-image__wrapper">
-                        <a href="{{ route('detail', ['item_id' => $buyingItem->id]) }}"><img class="item-image" src="{{ asset('storage/'.$buyingItem->item_image) }}" alt="商品画像"></a>
+                        <a href="{{ route('detail', ['item_id' => $buyingItem->id]) }}">
+                            <img class="item-image" src="{{ asset('storage/'.$buyingItem->item_image) }}" alt="商品画像">
+                        </a>
                     </div>
                     <h2 class="item-name">{{ $buyingItem->item_name }}</h2>
                 </div>

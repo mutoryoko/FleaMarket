@@ -6,12 +6,14 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\RecommendMylistTabs;
 use App\Http\Livewire\TransactionTabs;
 use Illuminate\Support\Facades\Route;
 
 
 
 Route::get('/', [ItemController::class, 'index'])->name('index');
+Route::get('/?tab=mylist', RecommendMylistTabs::class)->name('myList');
 Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('detail');
 
 Route::get('/register', [UserController::class, 'registerForm'])->name('registerForm');
@@ -20,7 +22,6 @@ Route::get('/login', [UserController::class, 'loginForm'])->name('loginForm');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::middleware(['auth'])->group(function () {
-
     Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('like');
     Route::delete('/item/{item_id}/unlike', [LikeController::class, 'destroy'])->name('unlike');
 
