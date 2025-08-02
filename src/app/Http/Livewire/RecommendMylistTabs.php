@@ -14,12 +14,14 @@ class RecommendMylistTabs extends Component
 
     public function mount()
     {
+        $this->activeTab = Auth::check() ? 'myList' : 'recommend';
+
         $tabParam = strtolower(Request::query('tab', ''));
 
         if ($tabParam === 'mylist') {
             $this->activeTab = 'myList';
         } else {
-            $this->activeTab = Auth::check() ? 'myList' : 'recommend';
+            $this->activeTab = 'recommend';
         }
     }
 

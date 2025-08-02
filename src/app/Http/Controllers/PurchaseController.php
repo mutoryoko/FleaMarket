@@ -34,6 +34,7 @@ class PurchaseController extends Controller
         return view('address', $data);
     }
 
+    //配送先変更処理
     public function update(AddressRequest $request, string $id)
     {
         $item = Item::findOrFail($id);

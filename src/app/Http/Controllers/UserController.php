@@ -39,7 +39,7 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return to_route('index');
+            return to_route('myList');
         }
 
         return back()->withErrors([

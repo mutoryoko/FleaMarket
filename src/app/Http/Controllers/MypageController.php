@@ -31,6 +31,7 @@ class MypageController extends Controller
         return view('mypage.edit', $profileData);
     }
 
+    // プロフィールの登録、更新処理
     public function update(ProfileRequest $request)
     {
         /** @var \App\Models\User $user */
@@ -47,7 +48,7 @@ class MypageController extends Controller
 
         if (isset($data['user_name'])) {
             $user->update(['name' => $data['user_name']]);
-            unset($data['user_name']); // profileには不要のため
+            unset($data['user_name']); // profileテーブルには不要のため
         }
 
         if ($profile) {
@@ -57,6 +58,6 @@ class MypageController extends Controller
             Profile::create($data);
         }
 
-        return to_route('profile');
+        return to_route('myList');
     }
 }

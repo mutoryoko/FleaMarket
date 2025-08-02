@@ -5,19 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ExhibitionRequest;
 use App\Models\Item;
 use App\Models\Category;
-use App\Models\Transaction;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
+
 
 class ItemController extends Controller
 {
     public function index()
     {
-        $items = Item::get(['id', 'item_name', 'item_image']);
-        $soldItemIds = Transaction::pluck('item_id')->toArray();
-
-        return view('index', compact('items', 'soldItemIds'));
+        return view('index');
     }
 
     public function detail(string $id)
