@@ -24,7 +24,9 @@ class PurchaseController extends Controller
     {
         $data = $this->getItemAndProfile($id);
 
-        return view('purchase', $data);
+        $isSold = Transaction::where('item_id', $id)->exists();
+
+        return view('purchase', array_merge($data, compact('isSold')));
     }
 
     public function edit(string $id)

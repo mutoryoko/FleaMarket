@@ -113,3 +113,12 @@
     font-size: 28px;
 }
 
+.isSold {
+    width: 100%;
+    background: rgb(153, 153, 153);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+}

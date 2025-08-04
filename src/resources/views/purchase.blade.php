@@ -62,7 +62,11 @@
                         <td class="table-td" id="selected-payment-method">選択されていません</td>
                     </tr>
                 </table>
-                <button class="submit-btn" type="submit">購入する</button>
+                @if($isSold)
+                    <button class="isSold" disabled>売り切れ</button>
+                @else
+                    <button class="submit-btn" type="submit">購入する</button>
+                @endif
             </div>
         </form>
     </div>
