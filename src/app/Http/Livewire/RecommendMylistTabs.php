@@ -27,7 +27,7 @@ class RecommendMylistTabs extends Component
 
     public function render()
     {
-        $items = Item::get(['id', 'item_name', 'item_image']);
+        $items = Item::where('user_id', '!=', Auth::id())->get(['id', 'item_name', 'item_image']);
         /** @var \App\Models\User|null $user */
         $user = Auth::user();
         $likedItemIds = $user ? $user->likes()->pluck('item_id')->toArray() : [];
