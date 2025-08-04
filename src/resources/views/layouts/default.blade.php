@@ -14,8 +14,8 @@
     <header class="header">
         <div class="header__inner">
             <a href="{{ route('index') }}"><img src="{{ asset('storage/materials/logo.svg') }}" alt="ロゴ" /></a>
-            <form class="search-form" action="" method="GET">
-                <input class="search-form__input" type="text" name="keyword" placeholder="なにをお探しですか？" />
+            <form class="search-form" action="{{ route('index')}}" method="GET">
+                <input class="search-form__input" type="text" name="search" placeholder="なにをお探しですか？" value="{{ request('search') }}"/>
             </form>
             <nav class="header__nav">
                 <ul class="auth-user__function">

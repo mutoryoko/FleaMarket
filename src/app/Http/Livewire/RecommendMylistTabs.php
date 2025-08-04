@@ -12,6 +12,12 @@ class RecommendMylistTabs extends Component
 {
     public $activeTab = 'recommend';
 
+    public string $search = '';
+
+    protected $queryString = [
+        'search' => ['except' => ''],
+    ];
+
     public function mount()
     {
         $this->activeTab = Auth::check() ? 'myList' : 'recommend';
@@ -27,7 +33,14 @@ class RecommendMylistTabs extends Component
 
     public function render()
     {
-        $items = Item::where('user_id', '!=', Auth::id())->get(['id', 'item_name', 'item_image']);
+        $query = Item::where('user_id', '!=', Auth::id());
+
+        if ($this->search) {
+            $query->where('item_name', 'like', '%' . $this->search . '%');
+        }
+
+        $items = $query->get(['id', 'item_name', 'item_image']);
+
         /** @var \App\Models\User|null $user */
         $user = Auth::user();
         $likedItemIds = $user ? $user->likes()->pluck('item_id')->toArray() : [];
