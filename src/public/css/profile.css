@@ -30,3 +30,33 @@
     margin-left: 100px;
 }
 
+/* タブ */
+.tabs {
+    border-bottom: 1px solid #000;
+    padding-left: 100px;
+}
+
+.tab-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px 40px;
+    padding: 50px 60px;
+    margin: 0 auto;
+}
+
+.sell-tab,
+.buy-tab {
+    display: inline-block;
+    color: #000;
+    background: transparent;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 10px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.tabs .active {
+    color: rgb(255, 85, 85);
+}
+

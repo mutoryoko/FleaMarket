@@ -1,9 +1,9 @@
-<div class="image-preview" style="max-width: 150px">
-    <div class="image__wrapper">
+<div class="user-image__preview">
+    <div class="user-image__wrapper">
         @if ($image)
-            <img src="{{ $image->temporaryUrl() }}" alt="プレビュー" style="max-width: 150px;" />
+            <img class="preview" src="{{ $image->temporaryUrl() }}" alt="プレビュー" />
         @elseif ($existingImage)
-            <img src="{{ asset('storage/'.$existingImage) }}" alt="現在の画像" style="max-width: 150px;" />
+            <img class="preview" src="{{ asset('storage/'.$existingImage) }}" alt="現在の画像" />
         @endif
     </div>
     <div class="file-upload__wrapper">

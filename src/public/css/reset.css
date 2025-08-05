@@ -172,3 +172,8 @@ input,
 select {
     vertical-align: middle;
 }
+
+input,
+textarea {
+    box-sizing: border-box;
+}

@@ -1,7 +1,7 @@
 <div class="item-image__wrapper" style="max-height: 200px;">
-    <div class="image__wrapper">
+    <div class="image__wrapper" style="margin-left: 20px;">
         @if($image)
-            <img src="{{ $previewUrl }}" alt="プレビュー" style="max-height: 200px; margin-bottom: 10px;" />
+            <img src="{{ $previewUrl }}" alt="プレビュー" style="max-height: 180px;" />
         @endif
     </div>
 

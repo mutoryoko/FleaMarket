@@ -3,7 +3,7 @@
 @section('title', 'ログイン')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/login-address.css')}}" />
+    <link rel="stylesheet" href="{{ asset('css/login.css')}}" />
 @endsection
 
 @section('content')
@@ -26,10 +26,8 @@
                 @enderror
             </div>
 
-            <button class="submit-btn" type="submit">ログインする</button>
-            <div class="user-form__link">
-                <a href="{{ route('registerForm') }}">会員登録はこちら</a>
-            </div>
+            <button class="submit-btn login-btn" type="submit">ログインする</button>
+            <a class="user-form__link" href="{{ route('registerForm') }}">会員登録はこちら</a>
         </form>
     </div>
 @endsection

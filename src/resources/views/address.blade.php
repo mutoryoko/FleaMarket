@@ -3,7 +3,7 @@
 @section('title', '送付先変更')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/login-address.css')}}" />
+    <link rel="stylesheet" href="{{ asset('css/address.css')}}" />
 @endsection
 
 @section('content')

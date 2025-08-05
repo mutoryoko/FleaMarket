@@ -94,7 +94,7 @@
             <form class="comment-form" action="{{ route('comment', ['item_id' => $item->id]) }}" method="POST">
                 @csrf
                 <label for="comment"><div class="form-label">商品へのコメント</div></label>
-                <textarea class="comment__text" name="content" id="comment" cols="30" rows="10"></textarea>
+                <textarea class="comment__text" name="content" id="comment" rows="8"></textarea>
                 @error('content')
                     <p class="error">{{ $message }}</p>
                 @enderror

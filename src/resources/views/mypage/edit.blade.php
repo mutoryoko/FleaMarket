@@ -12,7 +12,7 @@
         <form class="user-form" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-            <div class="user-form__item image-form">
+            <div class="user-form__item">
                 @livewire('profile-image-preview', ['existingImagePath' => $profile->user_image ?? ''])
                 @error('user_image')
                     <p class="error">{{ $message }}</p>
@@ -43,7 +43,7 @@
                 <label for="building" class="user-form__label"><div>建物名</div></label>
                 <input id="building" class="user-form__input" type="text" name="building" value="{{ old('building', $profile->building ?? '') }}">
             </div>
-            <button class="submit-btn" type="submit">更新する</button>
+            <button class="submit-btn update-btn" type="submit">更新する</button>
         </form>
     </div>
 @endsection

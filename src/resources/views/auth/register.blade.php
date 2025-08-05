@@ -49,10 +49,8 @@
                 @enderror
             </div>
 
-            <button class="submit-btn" type="submit">登録する</button>
-            <div class="user-form__link">
-                <a href="{{ route('loginForm') }}">ログインはこちら</a>
-            </div>
+            <button class="submit-btn register-btn" type="submit">登録する</button>
+            <a class="user-form__link" href="{{ route('loginForm') }}">ログインはこちら</a>
         </form>
     </div>
 @endsection
