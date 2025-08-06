@@ -4,6 +4,7 @@
     padding: 60px 80px;
 }
 
+/* 商品画像 */
 .item-image__wrapper {
     width: 40%;
     padding: 20px;
@@ -16,12 +17,9 @@
     object-position: center;
 }
 
+/* 商品説明・情報 */
 .item-info__wrapper {
     width: 40%;
-}
-
-.item-info {
-    margin-bottom: 24px;
 }
 
 .item-name {
@@ -32,15 +30,18 @@
 
 .item-price {
     font-size: 32px;
+    margin: 20px 0;
 }
 
 .yen, .tax {
     font-size: 24px;
 }
 
+/* いいね・コメント */
 .likes-comments__icons {
     display: flex;
-    padding: 0 40px;
+    align-items: center;
+    padding: 0 30px;
 }
 
 .like-btn {
@@ -71,6 +72,7 @@
     text-align: center;
 }
 
+/* 購入ボタン〜商品の状態 */
 .purchase__btn {
     display: block;
     text-align: center;
@@ -78,23 +80,36 @@
     font-size: 18px;
     color: white;
     font-weight: bold;
-    padding: 10px;
-    margin: 20px 0;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 20px 0 30px;
 }
 
 .ttl {
-    font-size: 24px;
-    margin-bottom: 15px;
+    font-size: 26px;
+    margin-bottom: 24px;
+}
+
+.description-content {
+    margin-bottom: 30px;
 }
 
 .small-ttl {
-    margin-right: 30px;
+    font-size: 18px;
+    margin-right: 40px;
 }
 
 .category, .condition {
     display: flex;
-    margin-bottom: 10px;
     align-items: center;
+}
+
+.category {
+    margin-bottom: 10px;
+}
+
+.condition {
+    margin-bottom: 30px;
 }
 
 .category__name {
@@ -105,18 +120,19 @@
     margin-right: 10px;
 }
 
+/* コメント欄 */
 .item-comments {
     margin-bottom: 40px;
 }
 
-.comment-counter {
-    margin-bottom: 15px;
+.comments-counter {
+    font-size: 24px;
 }
 
 .user-info {
     display: flex;
     align-items: center;
-    margin: 25px 0 10px;
+    margin: 20px 0 10px;
 }
 
 .user-image__wrapper {
@@ -145,10 +161,11 @@
 }
 
 .no-comment {
-    padding-left: 15px;
+    margin: 20px 15px 0;
 }
 
 .form-label {
+    font-size: 18px;
     font-weight: bold;
     margin-bottom: 5px;
 }
@@ -159,13 +176,14 @@
 }
 
 .comment__btn--submit {
-    border: none;
     width: 100%;
+    border: none;
+    border-radius: 5px;
     background-color: rgb(255, 85, 85);
     font-size: 18px;
     color: white;
     font-weight: bold;
-    padding: 5px;
-    margin-top: 20px;
+    padding: 10px;
+    margin-top: 30px;
     cursor: pointer;
 }

@@ -12,13 +12,9 @@
             <img class="item-image" src="{{ asset('storage/'.$item->item_image) }}" alt="商品画像" />
         </div>
         <div class="item-info__wrapper">
-            <div class="item-info">
-                <h2 class="item-name">{{ $item->item_name }}</h2>
-                <p class="item-brand">{{ $item->brand ?? '' }}</p>
-            </div>
-            <div class="item-info">
-                <p class="item-price"><span class="yen">¥</span>{{ number_format($item->price) }}<span class="tax">（税込）</span></p>
-            </div>
+            <h2 class="item-name">{{ $item->item_name }}</h2>
+            <p class="item-brand">{{ $item->brand ?? '' }}</p>
+            <p class="item-price"><span class="yen">¥</span>{{ number_format($item->price) }}<span class="tax">（税込）</span></p>
 
             <div class="likes-comments__icons">
                 {{-- いいね機能 --}}
@@ -51,11 +47,11 @@
                 <a class="purchase__btn" href="{{ route('purchase', ['item_id' => $item->id]) }}">購入手続きへ</a>
             </div>
 
-            <div class="item-info">
+            <div>
                 <h3 class="ttl">商品説明</h3>
                 <p class="description-content">{{ $item->description }}</p>
             </div>
-            <div class="item-info">
+            <div>
                 <h3 class="ttl">商品の情報</h3>
                 <div class="category">
                     <h4 class="small-ttl">カテゴリー</h4>
@@ -71,7 +67,7 @@
             </div>
 
             <div class="item-comments">
-                <h3 class="comments-counter ttl">コメント（{{ $comments->count() }}）</h3>
+                <h3 class="comments-counter">コメント（{{ $comments->count() }}）</h3>
                 @forelse($comments as $comment)
                     <div class="user-info">
                         @if($comment->user->profile && $comment->user->profile->user_image)
@@ -94,7 +90,7 @@
             <form class="comment-form" action="{{ route('comment', ['item_id' => $item->id]) }}" method="POST">
                 @csrf
                 <label for="comment"><div class="form-label">商品へのコメント</div></label>
-                <textarea class="comment__text" name="content" id="comment" rows="8"></textarea>
+                <textarea class="comment__text" name="content" id="comment" rows="8">{{ old('content') }}</textarea>
                 @error('content')
                     <p class="error">{{ $message }}</p>
                 @enderror
