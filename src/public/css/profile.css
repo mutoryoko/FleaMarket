@@ -1,17 +1,28 @@
-.profile {
+.profile__wrapper {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px auto;
+}
+
+.user-info {
     display: flex;
     align-items: center;
-    width: 70%;
-    margin: 60px auto;
 }
 
-.profile-image__wrapper {
-    width: 100px;
-    margin-right: 50px;
+.user-image__wrapper {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin-right: 60px;
 }
 
-.profile-image {
+.user-img {
     width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: contain;
 }
 
 .user-name {
