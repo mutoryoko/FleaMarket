@@ -72,7 +72,7 @@
     text-align: center;
 }
 
-/* 購入ボタン〜商品の状態 */
+/* 購入ボタン*/
 .purchase__btn {
     display: block;
     text-align: center;
@@ -82,6 +82,18 @@
     font-weight: bold;
     border-radius: 5px;
     padding: 15px;
+    margin: 20px 0 30px;
+}
+
+/* 売り切れボタン */
+.isSold {
+    width: 100%;
+    background: rgb(153, 153, 153);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
     margin: 20px 0 30px;
 }
 

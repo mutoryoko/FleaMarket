@@ -6,6 +6,7 @@ use App\Http\Requests\ExhibitionRequest;
 use App\Models\Item;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -21,8 +22,9 @@ class ItemController extends Controller
         $item = Item::findOrFail($id);
         $categories = $item->categories()->pluck('name')->toArray();
         $comments = Comment::where('item_id', $id)->with(['user.profile'])->get();
+        $isSold = Transaction::where('item_id', $id)->exists();
 
-        return view('detail', compact('item', 'categories', 'comments'));
+        return view('detail', compact('item', 'categories', 'comments', 'isSold'));
     }
 
     public function sellForm()

@@ -44,7 +44,11 @@
             </div>
 
             <div>
-                <a class="purchase__btn" href="{{ route('purchase', ['item_id' => $item->id]) }}">購入手続きへ</a>
+                @if($isSold)
+                    <button class="isSold" disabled>売り切れ</button>
+                @else
+                    <a class="purchase__btn" href="{{ route('purchase', ['item_id' => $item->id]) }}">購入手続きへ</a>
+                @endif
             </div>
 
             <div>
