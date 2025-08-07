@@ -19,21 +19,19 @@
                 @enderror
             </div>
 
-            <h3 class="small-ttl">商品の詳細</h3>
+            <h3 class="sub-ttl">商品の詳細</h3>
             <div>
-                <h4 class="form__label category__ttl">カテゴリー</h4>
+                <h4 class="category__ttl">カテゴリー</h4>
                 @foreach ($categories as $category)
-                <label class="category__label">
-                    <input class="category__check" name="categories[]" type="checkbox" value="{{ $category->id }}" {{ is_array(old('categories')) && in_array($category->id, old('categories')) ? 'checked' : ''}} />
-                    {{ $category->name }}
-                </label>
+                    <input id="{{ $category->id }}" class="category__check" name="categories[]" type="checkbox" value="{{ $category->id }}" {{ is_array(old('categories')) && in_array($category->id, old('categories')) ? 'checked' : ''}} />
+                    <label for="{{ $category->id }}" class="category__label">{{ $category->name }}</label>
                 @endforeach
                 @error('categories')
                 <p class="error">{{ $message }}</p>
                 @enderror
             </div>
             <div>
-                <h4 class="form__label condition__ttl">商品の状態</h4>
+                <h4 class="condition__ttl">商品の状態</h4>
                 @php
                 $selectedCondition = old('condition', $item->condition ?? '');
                 @endphp
@@ -48,7 +46,7 @@
                 @enderror
             </div>
 
-            <h3 class="small-ttl">商品名と説明</h3>
+            <h3 class="sub-ttl">商品名と説明</h3>
             <div class="form__item">
                 <h4 class="form__label">商品名</h4>
                 <input class="form__item--input" type="text" name="item_name" value="{{ old('item_name')}}" />

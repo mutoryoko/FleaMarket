@@ -46,15 +46,46 @@
     font-size: 14px;
 }
 
-.small-ttl {
+.sub-ttl {
     font-size: 24px;
     padding: 10px 0;
     border-bottom: 1px solid #000;
     margin: 40px 0 30px;
 }
 
+/* カテゴリー選択 */
+.category__ttl {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.category__check {
+    display: none;
+}
+
+.category__label {
+    display: inline-block;
+    border: 1.5px solid rgb(255, 85, 85);
+    border-radius: 50px;
+    color: rgb(255, 85, 85);
+    padding: 7px 15px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.category__check:checked + .category__label {
+    display: inline-block;
+    background: rgb(255, 85, 85);
+    border: 1.5px solid rgb(255, 85, 85);
+    border-radius: 20px;
+    color: #fff;
+    padding: 6px 15px;
+    cursor: pointer;
+}
+
 .condition__ttl {
-    margin-top: 30px;
+    font-size: 18px;
+    margin: 30px 0 8px;
 }
 
 .form__select {
@@ -64,7 +95,7 @@
 
 .form__label {
     font-size: 18px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .form__item {
@@ -72,7 +103,7 @@
 }
 
 .form__item:last-of-type {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 .form__item--input,
