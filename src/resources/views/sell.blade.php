@@ -65,9 +65,10 @@
                     <p class="error">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="form__item">
+            <div class="form__item price-form">
                 <h4 class="form__label">販売価格</h4>
-                <input class="form__item--input" type="text" name="price" value="{{ old('price')}}" />
+                <input class="form__item--input price-input" type="text" name="price" value="{{ old('price')}}" />
+                <span class="yen">¥</span>
                 @error('price')
                     <p class="error">{{ $message }}</p>
                 @enderror

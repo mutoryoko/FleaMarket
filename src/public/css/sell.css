@@ -111,3 +111,19 @@
     width: 100%;
     padding: 10px;
 }
+
+/* 販売価格欄に¥マーク */
+.price-form {
+    position: relative;
+}
+
+.price-input {
+    padding-left: 30px;
+}
+
+.yen {
+    position: absolute;
+    top: 35px;
+    left: 10px;
+    font-size: 18px;
+}
