@@ -138,9 +138,9 @@
 /* タブレット表示 */
 @media screen and (max-width: 850px) {
     .header__inner {
-            max-width: 850px;
-            padding: 10px 20px;
-        }
+        max-width: 850px;
+        padding: 10px 20px;
+    }
 
     .header__logo {
         width: 220px;
