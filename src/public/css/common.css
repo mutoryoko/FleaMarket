@@ -50,6 +50,7 @@
 
 .content {
     max-width: 1540px;
+    margin: 0 auto;
 }
 
 /* ユーザー登録・ログイン・住所変更ページ */
@@ -97,6 +98,17 @@
 .error {
     color: red;
     margin-top: 5px;
+}
+
+@media screen and (max-width: 850px) {
+    .user-form {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .user-form__input {
+        width: 100%;
+    }
 }
 
 /* 商品画像表示 */

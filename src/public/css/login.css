@@ -17,3 +17,10 @@
 .login-btn {
     margin-top: 40px;
 }
+
+@media screen and (max-width: 850px) {
+    .title {
+        width: 60%;
+        font-size: 32px;
+    }
+}
