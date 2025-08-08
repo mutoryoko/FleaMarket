@@ -123,3 +123,54 @@
     font-size: 16px;
     padding: 10px;
 }
+
+/* タブレット表示 */
+@media screen and (max-width: 850px) {
+    .payment-form {
+        padding: 40px 30px;
+    }
+
+    .item-image__wrapper {
+        width: 160px;
+    }
+
+    .item-image {
+        height: 160px;
+    }
+
+    .item-name {
+        font-size: 30px;
+    }
+
+    .item-price {
+        font-size: 28px;
+    }
+
+    .small-ttl {
+        margin-left: 20px;
+    }
+
+    .payment__wrapper {
+        width: 35%;
+    }
+
+    .payment-table {
+        margin-bottom: 30px;
+    }
+
+    .table-row {
+        height: 90px;
+    }
+
+    .table-th {
+        font-size: 14px;
+    }
+
+    .table-td {
+        font-size: 16px;
+    }
+
+    .table__price {
+        font-size: 28px;
+    }
+}
