@@ -199,3 +199,58 @@
     margin-top: 30px;
     cursor: pointer;
 }
+
+/* タブレット表示 */
+@media screen and (max-width: 850px) {
+    .content {
+        justify-content: space-between;
+        padding: 30px;
+    }
+
+    .item-image__wrapper {
+        width: 43%;
+    }
+
+    .item-image {
+        height: 300px;
+    }
+
+    .item-info__wrapper {
+        width: 52%;
+    }
+
+    .item-name {
+        font-size: 30px;
+    }
+
+    .item-brand {
+        font-size: 14px;
+    }
+
+    .item-price {
+        font-size: 28px;
+    }
+
+    .yen, .tax {
+        font-size: 20px;
+    }
+
+    .purchase__btn {
+        font-size: 18px;
+    }
+
+    .ttl {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .small-ttl,
+    .form-label,
+    .comment__btn--submit {
+        font-size: 16px;
+    }
+
+    .comments-counter {
+        font-size: 24px;
+    }
+}
