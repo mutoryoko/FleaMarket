@@ -1,7 +1,6 @@
 .tabs {
     border-bottom: 1px solid #000;
-    padding-top: 40px;
-    padding-left: 100px;
+    padding: 40px 0 0 100px;
 }
 
 .tab-content {
@@ -31,4 +30,15 @@
 .sold {
     color: red;
     margin-left: 10px;
+}
+
+@media screen and (max-width: 850px) {
+    .tabs {
+        padding: 20px 0 0 40px;
+    }
+
+    .tab-content {
+        gap: 40px 5%;
+        padding: 30px 40px;
+    }
 }
