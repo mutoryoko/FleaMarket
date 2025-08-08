@@ -71,6 +71,7 @@
     color: rgb(255, 85, 85);
 }
 
+/* タブレット表示 */
 @media screen and (max-width: 850px) {
     .profile__wrapper {
         width: 80%;

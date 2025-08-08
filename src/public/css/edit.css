@@ -35,7 +35,6 @@
 }
 
 .file-upload__btn {
-    width: 130px;
     height: 20px;
     font-size: 18px;
     font-weight: bold;
@@ -49,7 +48,6 @@
 }
 
 .file__name {
-    width: 200px;
     font-size: 14px;
 }
 
@@ -57,3 +55,32 @@
     margin-top: 20px;
 }
 
+/* タブレット表示 */
+@media screen and (max-width: 850px) {
+    .title {
+        width: 60%;
+        font-size: 32px;
+    }
+
+    .user-image__preview {
+        width: 100%;
+    }
+
+    .user-image__wrapper {
+        width: 100px;
+        height: 100px;
+    }
+
+    .file-upload__wrapper {
+        margin-left: 30px;
+    }
+
+    .file-upload__btn {
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+
+    .file__name {
+        font-size: 12px;
+    }
+}
