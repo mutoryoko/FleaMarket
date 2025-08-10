@@ -1,9 +1,9 @@
 <div>
     <div class="tabs">
-        <a href="{{ route('index') }}" class="{{ $activeTab === 'recommend' ? 'active' : '' }} recommend-tab">
+        <a href="{{ route('index', ['search' => $this->search ?: null]) }}" class="{{ $activeTab === 'recommend' ? 'active' : '' }} recommend-tab">
             おすすめ
         </a>
-        <a href="{{ route('myList') }}" class="{{ $activeTab === 'myList' ? 'active' : '' }} myList-tab">
+        <a href="{{ route('index',  ['tab' => 'mylist', 'search' => $this->search ?: null]) }}" class="{{ $activeTab === 'mylist' ? 'active' : '' }} myList-tab">
             マイリスト
         </a>
     </div>
@@ -25,7 +25,7 @@
             @empty
                 <p>商品がありません</p>
             @endforelse
-        @elseif ($activeTab === 'myList')
+        @elseif ($activeTab === 'mylist')
             @forelse($myListItems as $item)
                 <div class="item-card">
                     <div class="item-image__wrapper">
@@ -40,7 +40,7 @@
                     </h2>
                 </div>
             @empty
-                <p>マイリストに商品がありません</p>
+                <p>商品がありません</p>
             @endforelse
         @endif
     </div>

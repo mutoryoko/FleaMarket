@@ -6,7 +6,6 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Transaction;
 use App\Models\Item;
-use Illuminate\Support\Facades\Request;
 
 class RecommendMylistTabs extends Component
 {
@@ -16,16 +15,17 @@ class RecommendMylistTabs extends Component
 
     protected $queryString = [
         'search' => ['except' => ''],
+        'activeTab' => ['as' => 'tab', 'except' => 'recommend'],
     ];
 
     public function mount()
     {
-        $this->activeTab = Auth::check() ? 'myList' : 'recommend';
+        $this->activeTab = Auth::check() ? 'mylist' : 'recommend';
 
-        $tabParam = strtolower(Request::query('tab', ''));
+        $tabParam = strtolower(request()->query('tab', ''));
 
         if ($tabParam === 'mylist') {
-            $this->activeTab = 'myList';
+            $this->activeTab = 'mylist';
         } else {
             $this->activeTab = 'recommend';
         }
@@ -33,9 +33,17 @@ class RecommendMylistTabs extends Component
 
     public function render()
     {
-        $query = Item::where('user_id', '!=', Auth::id());
+        $query = Item::query();
 
-        if ($this->search) {
+        if ($this->activeTab === 'recommend') {
+            $query->where('user_id', '!=', Auth::id());
+        } elseif ($this->activeTab === 'mylist') {
+            $query->whereHas('likes', function ($q) {
+                $q->where('user_id', Auth::id());
+            });
+        }
+
+        if ($this->search !== '') {
             $query->where('item_name', 'like', '%' . $this->search . '%');
         }
 

@@ -14,8 +14,11 @@
     <header class="header">
         <div class="header__inner">
             <a href="{{ route('index') }}"><img class="header__logo" src="{{ asset('storage/materials/logo.svg') }}" alt="ロゴ" /></a>
-            <form class="search-form" action="{{ route('index')}}" method="GET">
+            <form class="search-form" method="GET">
                 <input class="search-form__input" type="text" name="search" placeholder="なにをお探しですか？" value="{{ request('search') }}"/>
+                @if(request('tab') === 'mylist')
+                    <input type="hidden" name="tab" value="mylist">
+                @endif
             </form>
             <nav class="header__nav">
                 <ul class="auth-user__function">
