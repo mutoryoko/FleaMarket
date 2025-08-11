@@ -11,7 +11,11 @@
     <div class="profile__wrapper">
         <div class="user-info">
             <div class="user-image__wrapper">
-                <img class="user-img" src="{{ asset('storage/'.$profile->user_image) }}" alt="プロフィール画像">
+                @if(!empty($profile->user_image))
+                    <img class="user-img" src="{{ asset('storage/'.$profile->user_image) }}" alt="プロフィール画像">
+                @else
+                    <img class="user-img" src="{{ asset('storage/profile-images/no-image.png') }}" alt="no-image">
+                @endif
             </div>
             <h2 class="user-name">{{ $user->name }}</h2>
         </div>
