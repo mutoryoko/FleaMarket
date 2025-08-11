@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 
 class UserController extends Controller
 {
@@ -22,9 +23,11 @@ class UserController extends Controller
         $validated['password'] = Hash::make($request->password);
         $user = User::create($validated);
 
+        event(new Registered($user));
+
         Auth::login($user);
 
-        return to_route('profile.edit');
+        return to_route('verification.notice');
     }
 
     public function loginForm()
