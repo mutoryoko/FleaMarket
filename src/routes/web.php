@@ -18,6 +18,11 @@ Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('detail')
 
 Route::get('/register', [UserController::class, 'registerForm'])->name('registerForm');
 Route::post('/register', [UserController::class, 'register'])->name('register');
+
+// Route::get('/email/verify', function () {
+//     return view('auth.verify-email');
+// })->middleware('auth')->name('verification.notice');
+
 Route::get('/login', [UserController::class, 'loginForm'])->name('loginForm');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
