@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LikeController;
@@ -58,9 +59,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/sell', [ItemController::class, 'store'])->name('sell');
 
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->name('purchase');
-    Route::post('/purchase/{item_id}', [PurchaseController::class, 'buyItem'])->name('buyItem');
+    // Route::post('/purchase/{item_id}', [PurchaseController::class, 'buyItem'])->name('buyItem');　//stripe利用のため削除予定
     Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'edit'])->name('address.edit');
     Route::put('/purchase/address/{item_id}', [PurchaseController::class, 'update'])->name('address.update');
+
+    // 応用:stripe決済
+    Route::post('/checkout', [StripeController::class, 'checkout'])->name('checkout');
+    Route::get('/checkout/success', [StripeController::class, 'success'])->name('checkout.success');
+    Route::get('/checkout/cancel', [StripeController::class, 'cancel'])->name('checkout.cancel');
+    Route::post('/stripe/webhook', [StripeController::class, 'webhook'])->name('stripe.webhook');
 
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 });

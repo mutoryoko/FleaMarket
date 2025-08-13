@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="content">
-        <form class="payment-form" action="{{ route('buyItem', ['item_id' => $item->id]) }}" method="POST">
+        <form class="payment-form" action="{{ route('checkout') }}" method="POST">
         @csrf
             <div class="confirmation__wrapper">
                 <div class="item-info">
@@ -65,6 +65,7 @@
                 @if($isSold)
                     <button class="isSold" disabled>売り切れ</button>
                 @else
+                    <input type="hidden" name="item_id" value="{{ $item->id }}">
                     <button class="submit-btn" type="submit">購入する</button>
                 @endif
             </div>
