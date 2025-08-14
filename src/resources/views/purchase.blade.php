@@ -24,10 +24,10 @@
                     <h3 class="small-ttl">支払い方法</h3>
                     <select name="payment_method" class="payment__select" id="payment_method">
                         <option value="">選択してください</option>
-                        <option value="1" {{ old('payment_method') == '1' ? 'selected' : '' }}>
+                        <option value="konbini" {{ old('payment_method') == '1' ? 'selected' : '' }}>
                             コンビニ払い
                         </option>
-                        <option value="2" {{ old('payment_method') == '2' ? 'selected' : '' }}>
+                        <option value="card" {{ old('payment_method') == '2' ? 'selected' : '' }}>
                             カード払い
                         </option>
                     </select>
@@ -78,8 +78,8 @@
             const paymentDisplay = document.getElementById('selected-payment-method');
 
             const methodNames = {
-                '1': 'コンビニ払い',
-                '2': 'カード払い'
+                'konbini': 'コンビニ払い',
+                'card': 'カード払い'
             };
 
             const selected = paymentSelect.value;
