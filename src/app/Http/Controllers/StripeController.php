@@ -61,6 +61,9 @@ class StripeController extends Controller
                 'metadata' => [
                     'user_id' => $userId,
                     'product_id' => $itemId,
+                    'shipping_postcode' => $request->shipping_postcode,
+                    'shipping_address' => $request->shipping_address,
+                    'shipping_building' => $request->shipping_building,
                 ],
             ]);
 
@@ -109,15 +112,13 @@ class StripeController extends Controller
         if ($event->type == 'checkout.session.completed') {
             $session = $event->data->object;
 
-            $address = $session->shipping_details?->address;
-
             Transaction::create([
                 'item_id' => $session->metadata->product_id,
                 'buyer_id' => $session->metadata->user_id,
                 'payment_method' => 2,
-                'shipping_postcode' => $address?->postal_code,
-                'shipping_address' => ($address?->state ?? '') . ($address?->city ?? '') . ($address?->line1 ?? ''),
-                'shipping_building' => $address?->line2,
+                'shipping_postcode' => $session->metadata->shipping_postcode,
+                'shipping_address' => $session->metadata->shipping_address,
+                'shipping_building' => $session->metadata->shipping_building,
             ]);
         }
 

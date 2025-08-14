@@ -43,6 +43,9 @@ Route::post('/email/verification-notification', function (Request $request) {
 Route::get('/login', [UserController::class, 'loginForm'])->name('loginForm');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
+// 【応用】 Stripe Webhook
+Route::post('/stripe/webhook', [StripeController::class, 'webhook'])->name('stripe.webhook');
+
 Route::middleware(['auth'])->group(function () {
     Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('like');
     Route::delete('/item/{item_id}/unlike', [LikeController::class, 'destroy'])->name('unlike');
@@ -67,7 +70,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/checkout', [StripeController::class, 'checkout'])->name('checkout');
     Route::get('/checkout/success', [StripeController::class, 'success'])->name('checkout.success');
     Route::get('/checkout/cancel', [StripeController::class, 'cancel'])->name('checkout.cancel');
-    Route::post('/stripe/webhook', [StripeController::class, 'webhook'])->name('stripe.webhook');
 
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 });
