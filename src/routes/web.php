@@ -4,13 +4,13 @@ use App\Http\Controllers\StripeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\RecommendMylistTabs;
 use App\Http\Livewire\TransactionTabs;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
 
@@ -23,22 +23,17 @@ Route::get('/register', [UserController::class, 'registerForm'])->name('register
 Route::post('/register', [UserController::class, 'register'])->name('register');
 
 // メール認証画面
-Route::get('/email/verify', function () {
-    return view('mail.verify-email');
-})->middleware('auth')->name('verification.notice');
+Route::get('/email/verify', [MailController::class, 'notice'])->name('verification.notice');
 
 // メール認証リンクのクリック処理（認証完了アクション）
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();  // 認証済みに更新
-    return redirect('/mypage/profile');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+Route::get('/email/verify/{id}/{hash}', [MailController::class, 'verify'
+])->middleware(['signed'])->name('verification.verify');
 
 // 認証メール再送信
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-
-    return back()->with('status', 'verification-link-sent');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+Route::post('/email/verification-notification-guest',[MailController::class, 'sendForGuest'
+])->middleware(['throttle:6,1'])->name('verification.send.guest');
+Route::post('/email/verification-notification',[MailController::class, 'send'
+])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::get('/login', [UserController::class, 'loginForm'])->name('loginForm');
 Route::post('/login', [UserController::class, 'login'])->name('login');

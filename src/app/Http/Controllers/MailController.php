@@ -1,0 +1,63 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Verified;
+use App\Notifications\VerifyEmailCustom;
+
+class MailController extends Controller
+{
+    public function notice()
+    {
+        return view('mail.verify-email');
+    }
+
+    public function verify(Request $request, $id, $hash)
+    {
+        $user = User::findOrFail($id);
+
+        // ハッシュが正しいか確認
+        if (! hash_equals(sha1($user->getEmailForVerification()), $hash)) {
+            abort(403, 'Invalid verification link.');
+        }
+
+        // まだ認証していない場合は認証済みにする
+        if (! $user->hasVerifiedEmail()) {
+            $user->markEmailAsVerified();
+            event(new Verified($user));
+        }
+
+        Auth::login($user);
+
+        return to_route('profile.edit')->with('status', 'メールアドレス認証が完了しました。');
+    }
+
+    // 未ログイン時の再送信
+    public function sendForGuest(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+        ]);
+
+        $user = User::where('email', $request->email)->firstOrFail();
+
+        if ($user->hasVerifiedEmail()) {
+            return back()->with('status', 'このメールアドレスはすでに認証済みです。');
+        }
+
+        $user->notify(new VerifyEmailCustom());
+
+        return back()->with('status', '認証メールを再送しました。');
+    }
+
+    // ログイン時の再送信
+    public function send(Request $request)
+    {
+        $request->user()->sendEmailVerificationNotification();
+
+        return back()->with('status', 'verification-link-sent');
+    }
+}

@@ -108,6 +108,11 @@
     margin-top: 5px;
 }
 
+.session {
+    color: lightseagreen;
+    padding: 20px 40px;
+}
+
 /* 商品画像表示 */
 .item-card {
     width: calc(100% / 4 - 30px);

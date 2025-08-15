@@ -25,8 +25,6 @@ class UserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
-
         return to_route('verification.notice');
     }
 
@@ -41,6 +39,14 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+
+            /** @var \App\Models\User $user */
+            $user = Auth::user();
+            // メール認証チェック
+            if (! $user->hasVerifiedEmail()) {
+                Auth::logout();
+                return to_route('verification.notice');
+            }
 
             return to_route('myList');
         }

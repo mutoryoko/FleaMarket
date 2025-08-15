@@ -6,7 +6,7 @@
     </head>
     <body>
         <p>{{ $user->name }} 様</p>
-        <p>この度は、Coachtechフリマアプリにご登録いただき、ありがとうございます。</p>
+        <p>Coachtechフリマアプリにご登録いただき、ありがとうございます。</p>
         <p>下のボタンをクリックしてメールアドレスを認証してください。</p>
         <p>
             <a href="{{ $verificationUrl }}" style="display:inline-block; padding:10px 20px; background:#3490dc; color:#fff; text-decoration:none; border-radius:5px;">
