@@ -58,6 +58,6 @@ class MailController extends Controller
     {
         $request->user()->sendEmailVerificationNotification();
 
-        return back()->with('status', 'verification-link-sent');
+        return back()->with('status', '認証メールを再送しました。');
     }
 }

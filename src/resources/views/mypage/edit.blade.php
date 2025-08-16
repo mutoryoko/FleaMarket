@@ -7,10 +7,12 @@
 @endsection
 
 @section('content')
-    @if (session('status'))
-        <p class="session">{{ session('status') }}</p>
-    @endif
     <div class="content">
+        {{-- メール認証の通知 --}}
+        @if (session('status'))
+            <p class="session">{{ session('status') }}</p>
+        @endif
+
         <h2 class="title">プロフィール設定</h2>
         <form class="user-form" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf

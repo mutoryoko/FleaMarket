@@ -25,7 +25,7 @@ class UserController extends Controller
 
         event(new Registered($user));
 
-        return to_route('verification.notice');
+        return to_route('verification.notice')->with('email', $request->email);
     }
 
     public function loginForm()

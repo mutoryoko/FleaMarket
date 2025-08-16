@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+    {{-- メール認証の通知 --}}
     @if (session('status'))
         <p class="session">{{ session('status') }}</p>
     @endif
@@ -16,12 +17,12 @@
             <a class="verify__btn" href="https://mailtrap.io/inboxes">認証はこちらから</a>
             <form action="{{ route('verification.send.guest') }}" method="POST">
                 @csrf
-                <input type="hidden" name="email" value="{{ old('email', $email ?? '') }}" />
+                <input type="hidden" name="email" value="{{ old('email', session('email')) }}" />
                 <button class="send-mail__btn" type="submit">認証メールを再送する</button>
             </form>
         @endguest
         @auth
-            <p class="text">登録していただいているメールアドレスの認証を完了してください。</p>
+            <p class="text">登録しているメールアドレスの認証を完了してください。</p>
             <a class="verify__btn" href="https://mailtrap.io/inboxes">認証はこちらから</a>
             <form action="{{ route('verification.send') }}" method="POST">
                 @csrf
