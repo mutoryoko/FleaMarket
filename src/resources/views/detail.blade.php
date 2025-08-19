@@ -37,6 +37,7 @@
                     @endif
                     <p class="count">{{ $item->likes()->count() }}</p>
                 </div>
+
                 <div class="comment-icon">
                     <img class="comment-icon__img" src="{{ asset('storage/materials/comment-icon.png') }}" alt="コメントのアイコン">
                     <p class="count">{{ $comments->count() }}</p>
@@ -60,7 +61,7 @@
                 <div class="category">
                     <h4 class="small-ttl">カテゴリー</h4>
                     @foreach ($categories as $category)
-                        <p class="category__name">{{ $category }}</p>
+                        <p class="category__name">{{ $category->name }}</p>
                     @endforeach
                 </div>
                 <div class="condition">

@@ -20,7 +20,7 @@ class ItemController extends Controller
     public function detail(string $id)
     {
         $item = Item::findOrFail($id);
-        $categories = $item->categories()->pluck('name')->toArray();
+        $categories = $item->categories;
         $comments = Comment::where('item_id', $id)->with(['user.profile'])->get();
         $isSold = Transaction::where('item_id', $id)->exists();
 
