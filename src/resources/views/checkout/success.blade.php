@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <title>購入完了</title>
-    </head>
-    <body>
-        <h1>お支払いありがとうございます！</h1>
-        <p>商品の購入が完了しました。</p>
-        <a href="/">トップページへ戻る</a>
-</body>
-</html>
+@extends('layouts.default')
+
+@section('title', '購入完了')
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/checkout.css') }}">
+@endsection
+
+@section('content')
+    <div class="content">
+        <h1 class="head">ご購入いただきありがとうございます！</h1>
+        <p>商品のお支払いが完了しました。</p>
+        <a class="back__link" href="{{ route('mypage.buy')}}">マイページへ戻る</a>
+    </div>
+@endsection

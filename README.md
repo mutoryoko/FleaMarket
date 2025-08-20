@@ -1,12 +1,13 @@
 # FleaMarket App
 
-### Dockerビルド
+## Dockerビルド
 ```
 git clone git@github.com:mutoryoko/FleaMarket.git
 docker compose up -d --build
 ```
+- - -
 
-### Laravel環境構築
+## Laravel環境構築
 ```
 docker compose exec php bash
 composer install
@@ -41,8 +42,8 @@ php artisan migrate
 php artisan db:seed
 php artisan storage:link
 ```
-
-### テスト環境構築
+- - -
+## テスト環境構築
 .envファイルをコピーして.env.testingを作成。<br />
 .env.testingファイルのAPP_ENVとAPP_KEYを以下に変更。
 ```

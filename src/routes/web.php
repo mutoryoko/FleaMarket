@@ -38,9 +38,6 @@ Route::post('/email/verification-notification',[MailController::class, 'send'
 Route::get('/login', [UserController::class, 'loginForm'])->name('loginForm');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
-// 【応用】 Stripe Webhook
-Route::post('/stripe/webhook', [StripeController::class, 'webhook'])->name('stripe.webhook');
-
 Route::middleware(['auth'])->group(function () {
     Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('like');
     Route::delete('/item/{item_id}/unlike', [LikeController::class, 'destroy'])->name('unlike');
