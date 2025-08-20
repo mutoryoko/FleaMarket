@@ -8,7 +8,8 @@
 
 @section('content')
     <div class="content">
-        <h1 class="head">ご購入いただきありがとうございます！</h1>
+        <div class="thanks">Thank you!</div>
+        <h1 class="head">ご購入いただき、ありがとうございます！</h1>
         <p>商品のお支払いが完了しました。</p>
         <a class="back__link" href="{{ route('mypage.buy')}}">マイページへ戻る</a>
     </div>
