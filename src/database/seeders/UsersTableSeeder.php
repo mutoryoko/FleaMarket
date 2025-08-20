@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('password1'),
                 'created_at' => now(),
                 'updated_at' => now(),
+                'email_verified_at' => now(),
             ],
             [
                 'name' => '田中次郎',
@@ -25,6 +26,7 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('password2'),
                 'created_at' => now(),
                 'updated_at' => now(),
+                'email_verified_at' => now(),
             ],
             [
                 'name' => '佐々木三郎',
@@ -32,6 +34,7 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('password3'),
                 'created_at' => now(),
                 'updated_at' => now(),
+                'email_verified_at' => now(),
             ],
             [
                 'name' => '鈴木四郎',
@@ -39,6 +42,7 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('password4'),
                 'created_at' => now(),
                 'updated_at' => now(),
+                'email_verified_at' => now(),
             ],
             [
                 'name' => '稲垣五郎',
@@ -46,6 +50,7 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('password5'),
                 'created_at' => now(),
                 'updated_at' => now(),
+                'email_verified_at' => now(),
             ],
         ]);
     }

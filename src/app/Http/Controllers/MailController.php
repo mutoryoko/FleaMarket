@@ -38,11 +38,14 @@ class MailController extends Controller
     // 未ログイン時の再送信
     public function sendForGuest(Request $request)
     {
-        $request->validate([
-            'email' => 'required|email|exists:users,email',
-        ]);
+        // ログイン時に一時保存したメールアドレスを取り出す
+        $email = $request->session()->get('unverified_email');
 
-        $user = User::where('email', $request->email)->firstOrFail();
+        if (!$email) {
+            return back()->withErrors(['status' => 'セッションが切れています。再度ログインしてください。']);
+        }
+
+        $user = User::where('email', $email)->firstOrFail();
 
         if ($user->hasVerifiedEmail()) {
             return back()->with('status', 'このメールアドレスはすでに認証済みです。');

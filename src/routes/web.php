@@ -11,8 +11,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Livewire\RecommendMylistTabs;
 use App\Http\Livewire\TransactionTabs;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-
 
 
 Route::get('/', [ItemController::class, 'index'])->name('index');
@@ -22,21 +20,18 @@ Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('detail')
 Route::get('/register', [UserController::class, 'registerForm'])->name('registerForm');
 Route::post('/register', [UserController::class, 'register'])->name('register');
 
+Route::get('/login', [UserController::class, 'loginForm'])->name('loginForm');
+Route::post('/login', [UserController::class, 'login'])->name('login');
+
+// メール認証リンクのクリック処理（認証完了アクション）
+Route::get('/email/verify/{id}/{hash}', [MailController::class, 'verify'])->middleware(['signed'])->name('verification.verify');
+
 // メール認証画面
 Route::get('/email/verify', [MailController::class, 'notice'])->name('verification.notice');
 
-// メール認証リンクのクリック処理（認証完了アクション）
-Route::get('/email/verify/{id}/{hash}', [MailController::class, 'verify'
-])->middleware(['signed'])->name('verification.verify');
-
 // 認証メール再送信
-Route::post('/email/verification-notification-guest',[MailController::class, 'sendForGuest'
-])->middleware(['throttle:6,1'])->name('verification.send.guest');
-Route::post('/email/verification-notification',[MailController::class, 'send'
-])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
-Route::get('/login', [UserController::class, 'loginForm'])->name('loginForm');
-Route::post('/login', [UserController::class, 'login'])->name('login');
+Route::post('/email/verification-notification-guest', [MailController::class, 'sendForGuest'])->middleware(['throttle:6,1'])->name('verification.send.guest');
+Route::post('/email/verification-notification', [MailController::class, 'send'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('like');
@@ -54,11 +49,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/sell', [ItemController::class, 'store'])->name('sell');
 
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->name('purchase');
-    // Route::post('/purchase/{item_id}', [PurchaseController::class, 'buyItem'])->name('buyItem');　//stripe利用のため削除予定
-    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'edit'])->name('address.edit');
-    Route::put('/purchase/address/{item_id}', [PurchaseController::class, 'update'])->name('address.update');
+    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'edit'
+    ])->name('address.edit');
+    Route::put('/purchase/address/{item_id}', [PurchaseController::class, 'update'
+    ])->name('address.update');
 
-    // 応用:stripe決済
+    // stripe決済
     Route::post('/checkout', [StripeController::class, 'checkout'])->name('checkout');
     Route::get('/checkout/success', [StripeController::class, 'success'])->name('checkout.success');
     Route::get('/checkout/cancel', [StripeController::class, 'cancel'])->name('checkout.cancel');

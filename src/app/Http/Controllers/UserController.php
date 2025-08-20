@@ -44,7 +44,10 @@ class UserController extends Controller
             $user = Auth::user();
             // メール認証チェック
             if (! $user->hasVerifiedEmail()) {
+                // ログアウトでメールアドレスが消えないように一時保存
+                $request->session()->put('unverified_email', $user->email);
                 Auth::logout();
+
                 return to_route('verification.notice');
             }
 

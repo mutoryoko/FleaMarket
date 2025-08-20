@@ -14,10 +14,9 @@
     <div class="content">
         @guest
             <p class="text">登録していただいたメールアドレスに認証メールを送付しました。<br/>メール認証を完了してください。</p>
-            <a class="verify__btn" href="https://mailtrap.io/inboxes">認証はこちらから</a>
+            <a class="verify__btn" href="https://mailtrap.io/inboxes" target="_blank">認証はこちらから</a>
             <form action="{{ route('verification.send.guest') }}" method="POST">
                 @csrf
-                <input type="hidden" name="email" value="{{ old('email', session('email')) }}" />
                 <button class="send-mail__btn" type="submit">認証メールを再送する</button>
             </form>
         @endguest
