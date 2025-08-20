@@ -42,7 +42,7 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('password4'),
                 'created_at' => now(),
                 'updated_at' => now(),
-                'email_verified_at' => now(),
+                'email_verified_at' => null,
             ],
             [
                 'name' => '稲垣五郎',
@@ -50,7 +50,7 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('password5'),
                 'created_at' => now(),
                 'updated_at' => now(),
-                'email_verified_at' => now(),
+                'email_verified_at' => null,
             ],
         ]);
     }
