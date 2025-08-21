@@ -5,7 +5,6 @@
 git clone git@github.com:mutoryoko/FleaMarket.git
 docker compose up -d --build
 ```
-- - -
 
 ## Laravel環境構築
 ```
@@ -13,7 +12,7 @@ docker compose exec php bash
 composer install
 ```
 .env.exampleファイルをコピーし、.envファイルを作成。<br />
-.envファイルにメール、決済サービスの設定を追加する。
+作成した.envファイルに、メールと決済サービスの設定を追加する。
 
 <details open><summary>メールの設定</summary>
 
@@ -42,7 +41,7 @@ php artisan migrate
 php artisan db:seed
 php artisan storage:link
 ```
-- - -
+
 ## テスト環境構築
 .envファイルをコピーして.env.testingを作成。<br />
 .env.testingファイルのAPP_ENVとAPP_KEYを以下に変更。
@@ -64,6 +63,27 @@ php artisan config:clear
 php artisan migrate --env=testing
 ```
 
+## Seederファイルについて
+UsersTableSeederには以下の5名が登録されている。<br />
+未認証のユーザーはメール認証機能の確認に使用できる。
+
+| ユーザー名 | メールアドレス | パスワード | メール認証の済否 |
+| :---: | :---: | :---: | :---: |
+| 鈴木一郎 | ichiro@seeder.com | password1 | 認証済 |
+| 佐藤二郎 | jiro@seeder.com | password2 | 認証済 |
+| 北島三郎 | saburo@seeder.com | password3 | 認証済 |
+| 伊藤四郎 | shiro@seeder.com | password4 | 未認証 |
+| 野口五郎 | goro@seeder.com | password5 | 未認証 |
+
+デフォルトで各ユーザーが出品している商品は以下の通り。
+| ユーザー名 | 出品した商品 |
+| :---: | :---: |
+| 鈴木一郎 | 腕時計・マイク |
+| 佐藤二郎 | HDD・ショルダーバッグ |
+| 北島三郎 | 玉ねぎ3束・タンブラー |
+| 伊藤四郎 | 革靴・コーヒーミル |
+| 野口五郎 | ノートPC・メイクセット |
+
 ## 実行環境
 <ul>
 	<li>PHP: 8.1</li>
@@ -72,11 +92,11 @@ php artisan migrate --env=testing
 	<li>Laravel Framework: 9.52.20</li>
 </ul>
 
-## ER図
-![image](ER.drawio.svg)
-
 ## URL
 <ul>
 	<li>開発環境: <a href="http://localhost">http://localhost</a> </li>
 	<li>phpmyadmin: <a href="http://localhost:8080">http://localhost:8080</a> </li>
 </ul>
+
+## ER図
+<img src="ER.drawio.svg" width=70% />
