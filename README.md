@@ -41,9 +41,9 @@ docker compose up -d --build
 ```
 docker compose exec php bash
 composer install
+cp .env.example .env
 ```
-.env.exampleファイルをコピーし、.envファイルを作成。<br />
-作成した.envファイルに、メールと決済機能の設定を追加する。
+.envファイルの環境変数を変更する。
 &nbsp;
 
 ### メールの設定
@@ -73,8 +73,10 @@ php artisan storage:link
 &nbsp;
 
 ## テスト環境構築
-.envファイルをコピーして.env.testingを作成。<br />
-.env.testingファイルのAPP_ENVとAPP_KEYを以下に変更。
+```
+cp .env .env.testing
+```
+.env.testingファイルのAPP_ENV、APP_KEYを以下に変更。
 ```
 APP_ENV=test
 APP_KEY=
