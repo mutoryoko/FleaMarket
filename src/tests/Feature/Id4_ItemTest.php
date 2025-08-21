@@ -1,0 +1,49 @@
+<?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
+use App\Models\Item;
+use App\Models\Transaction;
+
+//　テストケースID:4　商品一覧取得
+class Id4_ItemTest extends TestCase
+{
+    use RefreshDatabase;
+
+    //　全商品取得
+    public function test_guest_can_access_index()
+    {
+        $items = Item::factory()->count(5)->create();
+
+        $response = $this->get('/');
+
+        foreach ($items as $item) {
+            $response->assertSeeText($item->item_name);
+            $response->assertSee($item->item_image);
+        }
+
+        $response->assertStatus(200);
+    }
+
+    //　購入済の商品にsold表示
+    public function test_sold_is_shown()
+    {
+        $item = Item::factory()->create();
+        Transaction::factory()->create(['item_id' => $item->id]);
+
+        $response = $this->get('/');
+
+        $response->assertSeeText('sold');
+
+        $response->assertStatus(200);
+    }
+
+    //　自分が出品した商品は非表示
+    public function test_myItem_is_not_shown()
+    {
+        //
+    }
+}
