@@ -43,8 +43,7 @@ docker compose exec php bash
 composer install
 cp .env.example .env
 ```
-.envファイルの環境変数を変更する。
-&nbsp;
+.envファイルにメールと決済機能の設定を追加する。
 
 ### メールの設定
 
@@ -68,11 +67,19 @@ STRIPE_SECRET_KEY=テスト用のシークレットキー
 php artisan key:generate
 php artisan migrate
 php artisan db:seed
-php artisan storage:link
 ```
 &nbsp;
 
 ## テスト環境構築
+```
+docker compose exec mysql bash
+mysql -u root -p
+```
+パスワード:rootを入力してMySQLコンテナ内に入る。
+```
+CREATE DATABASE demo_test;
+```
+データベースができたら、MySQLコンテナを抜ける。
 ```
 cp .env .env.testing
 ```
