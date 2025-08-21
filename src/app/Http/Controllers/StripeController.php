@@ -117,11 +117,11 @@ class StripeController extends Controller
                 Transaction::create([
                     'item_id' => $item->id,
                     'buyer_id' => $userId,
+                    'stripe_session_id' => $sessionId, // 二重防止用
                     'payment_method' => 2,
                     'shipping_postcode' => $session->metadata->postcode,
                     'shipping_address' => $session->metadata->address,
                     'shipping_building' => $session->metadata->building,
-                    'stripe_session_id' => $sessionId, // 二重防止用
                 ]);
             }
 

@@ -42,7 +42,7 @@ class MailController extends Controller
         $email = $request->session()->get('unverified_email');
 
         if (!$email) {
-            return back()->withErrors(['status' => 'セッションが切れています。再度ログインしてください。']);
+            return back()->with('status', 'セッションが切れています。再度ログインしてください。');
         }
 
         $user = User::where('email', $email)->firstOrFail();
