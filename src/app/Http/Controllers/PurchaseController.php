@@ -48,22 +48,4 @@ class PurchaseController extends Controller
 
         return to_route('purchase', ['item_id' => $item->id]);
     }
-
-    // // stripe利用のため削除予定
-    // public function buyItem(PurchaseRequest $request, string $id)
-    // {
-    //     $item = Item::findOrFail($id);
-    //     $buyer = Auth::user();
-
-    //     Transaction::create([
-    //         'item_id' => $item->id,
-    //         'buyer_id' => $buyer->id,
-    //         'payment_method' => $request->payment_method,
-    //         'shipping_postcode' => $request->shipping_postcode,
-    //         'shipping_address' => $request->shipping_address,
-    //         'shipping_building' => $request->shipping_building,
-    //     ]);
-
-    //     return to_route('index');
-    // }
 }
