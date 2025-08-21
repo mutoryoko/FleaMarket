@@ -1,38 +1,67 @@
 # FleaMarket App
 
+## 概要
+本アプリは、ユーザーが商品を出品・購入できるフリマアプリです。
+#### 主な機能
+<ul>
+	<li>ユーザー登録・ログイン（メール認証対応）</li>
+	<li>商品一覧・検索機能</li>
+	<li>いいね・コメント機能</li>
+	<li>商品の出品（画像アップロード、カテゴリー・商品の状態設定、価格入力等）</li>
+	<li>商品購入機能（Stripeを利用した決済）</li>
+	<li>マイページ機能（出品商品、購入商品一覧の確認）</li>
+</ul>
+
+#### 実行環境
+<ul>
+	<li>PHP: 8.1</li>
+	<li>mysql: 8.0.26</li>
+	<li>nginx:1.21.1</li>
+	<li>Laravel Framework: 9.52.20</li>
+</ul>
+
+#### URL
+<ul>
+	<li>開発環境: <a href="http://localhost">http://localhost</a> </li>
+	<li>phpmyadmin: <a href="http://localhost:8080">http://localhost:8080</a> </li>
+</ul>
+
+#### ER図
+<img src="ER.drawio.svg" width=70% />
+
+&nbsp;
+
 ## Dockerビルド
 ```
 git clone git@github.com:mutoryoko/FleaMarket.git
 docker compose up -d --build
 ```
-
+&nbsp;
 ## Laravel環境構築
 ```
 docker compose exec php bash
 composer install
 ```
 .env.exampleファイルをコピーし、.envファイルを作成。<br />
-作成した.envファイルに、メールと決済サービスの設定を追加する。
+作成した.envファイルに、メールと決済機能の設定を追加する。
+&nbsp;
 
-<details open><summary>メールの設定</summary>
+### メールの設定
 
-メール機能はMailtrapを想定。<br />
-アカウント作成後、.envファイルを編集する。
+メール機能はMailtrapを想定。アカウント作成後、.envファイルを編集する。
 ```
 MAIL_USERNAME=Mailtrapのユーザー名
 MAIL_PASSWORD=Mailtrapのパスワード
 ```
-</details>
 
-<details open><summary>決済サービスの設定</summary>
+### Stripeの設定
 
-決済機能はStripeを想定。<br />
-Stripeのアカウント作成後、.envファイルに設定を追加する。
+決済機能はStripeを使用。Stripeのアカウント作成後、.envファイルに設定を追加する。
 ```
 STRIPE_KEY=テスト用の公開可能キー
 STRIPE_SECRET_KEY=テスト用のシークレットキー
 ```
-</details>
+&nbsp;
 
 .envファイルを編集後、以下のコマンドを実行。
 ```
@@ -41,6 +70,7 @@ php artisan migrate
 php artisan db:seed
 php artisan storage:link
 ```
+&nbsp;
 
 ## テスト環境構築
 .envファイルをコピーして.env.testingを作成。<br />
@@ -62,6 +92,7 @@ php artisan key:generate --env=testing
 php artisan config:clear
 php artisan migrate --env=testing
 ```
+&nbsp;
 
 ## Seederファイルについて
 UsersTableSeederには以下の5名が登録されている。<br />
@@ -69,34 +100,17 @@ UsersTableSeederには以下の5名が登録されている。<br />
 
 | ユーザー名 | メールアドレス | パスワード | メール認証の済否 |
 | :---: | :---: | :---: | :---: |
+| 管理者 | admin@seeder.com | password0 | 認証済 |
 | 鈴木一郎 | ichiro@seeder.com | password1 | 認証済 |
 | 佐藤二郎 | jiro@seeder.com | password2 | 認証済 |
-| 北島三郎 | saburo@seeder.com | password3 | 認証済 |
+| 北島三郎 | saburo@seeder.com | password3 | 未認証 |
 | 伊藤四郎 | shiro@seeder.com | password4 | 未認証 |
-| 野口五郎 | goro@seeder.com | password5 | 未認証 |
 
 デフォルトで各ユーザーが出品している商品は以下の通り。
 | ユーザー名 | 出品した商品 |
 | :---: | :---: |
-| 鈴木一郎 | 腕時計・マイク |
-| 佐藤二郎 | HDD・ショルダーバッグ |
-| 北島三郎 | 玉ねぎ3束・タンブラー |
-| 伊藤四郎 | 革靴・コーヒーミル |
-| 野口五郎 | ノートPC・メイクセット |
-
-## 実行環境
-<ul>
-	<li>PHP: 8.1</li>
-	<li>mysql: 8.0.26</li>
-	<li>nginx:1.21.1</li>
-	<li>Laravel Framework: 9.52.20</li>
-</ul>
-
-## URL
-<ul>
-	<li>開発環境: <a href="http://localhost">http://localhost</a> </li>
-	<li>phpmyadmin: <a href="http://localhost:8080">http://localhost:8080</a> </li>
-</ul>
-
-## ER図
-<img src="ER.drawio.svg" width=70% />
+| 管理者 | なし |
+| 鈴木一郎 | 腕時計・HDD・玉ねぎ3束 |
+| 佐藤二郎 | 革靴・ノートPC |
+| 北島三郎 | マイク・ショルダーバッグ・タンブラー |
+| 伊藤四郎 | コーヒーミル・メイクセット |
