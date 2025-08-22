@@ -24,8 +24,10 @@ class UserController extends Controller
         $user = User::create($validated);
 
         event(new Registered($user));
+        // セッションに未認証のメールアドレスを保存
+        session(['unverified_email' => $user->email]);
 
-        return to_route('verification.notice')->with('email', $request->email);
+        return to_route('verification.notice');
     }
 
     public function loginForm()
