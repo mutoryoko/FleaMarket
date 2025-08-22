@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CategoriesItemsTableSeeder extends Seeder
+class CategoryItemTableSeeder extends Seeder
 {
     public function run()
     {

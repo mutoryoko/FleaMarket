@@ -9,7 +9,6 @@ use App\Models\Comment;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 
-
 class ItemController extends Controller
 {
     public function index()
@@ -17,7 +16,7 @@ class ItemController extends Controller
         return view('index');
     }
 
-    public function detail(string $id)
+    public function show(string $id)
     {
         $item = Item::findOrFail($id);
         $categories = $item->categories;

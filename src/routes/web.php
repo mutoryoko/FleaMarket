@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ItemController::class, 'index'])->name('index');
 
-Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('detail');
+Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('detail');
 
 Route::controller(UserController::class)->group(function(){
     Route::get('/register', 'registerForm')->name('registerForm');
@@ -40,10 +40,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/comment', [CommentController::class, 'store'])->name('comment');
     });
 
-    Route::prefix('mypage')->name('mypage.')->group(function () {
-        Route::get('/', [MypageController::class, 'index'])->name('index');
-        Route::get('/profile', [MypageController::class, 'edit'])->name('profile.edit');
-        Route::put('/profile', [MypageController::class, 'update'])->name('profile.update');
+    Route::prefix('mypage')->name('mypage.')->controller(MypageController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/profile', 'edit')->name('profile.edit');
+        Route::put('/profile', 'update')->name('profile.update');
     });
 
     Route::prefix('sell')->controller(ItemController::class)->group(function () {

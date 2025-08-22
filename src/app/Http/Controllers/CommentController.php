@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
 use App\Models\Item;
 
-
 class CommentController extends Controller
 {
     public function store(CommentRequest $request, $id)
