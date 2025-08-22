@@ -14,8 +14,6 @@ return new class extends Migration
             $table->foreignId('item_id')->constrained()->cascadeOnDelete();
             $table->string('content');
             $table->timestamps();
-
-            $table->unique(['user_id', 'item_id']);
         });
     }
 

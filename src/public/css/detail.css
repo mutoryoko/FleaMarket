@@ -167,9 +167,11 @@
 }
 
 .comment-content {
+    width: 100%;
     background: rgb(226, 226, 226);
-    padding: 15px;
     border-radius: 3px;
+    line-height: 1.5;
+    padding: 10px 15px;
 }
 
 .no-comment {
