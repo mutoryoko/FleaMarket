@@ -86,7 +86,7 @@
                         @endif
                         <p class="user-name">{{ $comment->user->name}}</p>
                     </div>
-                    <p class="comment-content">{{ $comment->content }}</p>
+                    <p class="comment__content">{{ $comment->content }}</p>
                 @empty
                     <p class="no-comment">コメントはありません</p>
                 @endforelse
@@ -99,7 +99,7 @@
                 @error('content')
                     <p class="error">{{ $message }}</p>
                 @enderror
-                <button class="comment__btn--submit" type="submit">コメントを送信する</button>
+                <button class="comment__btn" type="submit">コメントを送信する</button>
             </form>
 
         </div>

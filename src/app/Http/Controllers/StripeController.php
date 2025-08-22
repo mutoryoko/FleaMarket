@@ -59,7 +59,7 @@ class StripeController extends Controller
             Transaction::create([
                 'item_id' => $itemId,
                 'buyer_id' => $userId,
-                'payment_method' => 1,
+                'payment_method' => 1, //　コンビニ払い
                 'shipping_postcode' => $request->input('shipping_postcode'),
                 'shipping_address' => $request->input('shipping_address'),
                 'shipping_building' => $request->input('shipping_building'),
@@ -117,8 +117,8 @@ class StripeController extends Controller
                 Transaction::create([
                     'item_id' => $item->id,
                     'buyer_id' => $userId,
-                    'stripe_session_id' => $sessionId, // 二重防止用
-                    'payment_method' => 2,
+                    'stripe_session_id' => $sessionId,
+                    'payment_method' => 2, //　カード払い
                     'shipping_postcode' => $session->metadata->postcode,
                     'shipping_address' => $session->metadata->address,
                     'shipping_building' => $session->metadata->building,

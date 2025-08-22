@@ -3,7 +3,7 @@
     padding: 40px 0 0 100px;
 }
 
-.tab-content {
+.tab__content {
     display: flex;
     flex-wrap: wrap;
     gap: 60px 40px;
@@ -38,7 +38,7 @@
         padding: 20px 0 0 40px;
     }
 
-    .tab-content {
+    .tab__content {
         gap: 40px 5%;
         padding: 30px 40px;
     }

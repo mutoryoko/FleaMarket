@@ -7,10 +7,6 @@
 @endsection
 
 @section('content')
-    {{-- メール認証の通知 --}}
-    @if (session('status'))
-        <p class="session">{{ session('status') }}</p>
-    @endif
     <div class="content">
         <h2 class="title">プロフィール設定</h2>
         <form class="user-form" action="{{ route('mypage.profile.update') }}" method="POST" enctype="multipart/form-data">
@@ -47,7 +43,7 @@
                 <label for="building" class="user-form__label"><div>建物名</div></label>
                 <input id="building" class="user-form__input" type="text" name="building" value="{{ old('building', $profile->building ?? '') }}">
             </div>
-            <button class="submit-btn update-btn" type="submit">更新する</button>
+            <button class="submit__btn update__btn" type="submit">更新する</button>
         </form>
     </div>
 @endsection

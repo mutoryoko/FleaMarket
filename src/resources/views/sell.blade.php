@@ -36,7 +36,7 @@
                 $selectedCondition = old('condition', $item->condition ?? '');
                 @endphp
                 <select class="form__select" name="condition">
-                    <option>選択してください</option>
+                    <option value="">選択してください</option>
                     @foreach(conditionOptions() as $value => $label)
                         <option value="{{ $value }}" {{ $selectedCondition == $value ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
@@ -74,7 +74,7 @@
                 @enderror
             </div>
 
-            <button class="submit-btn" type="submit">出品する</button>
+            <button class="submit__btn" type="submit">出品する</button>
         </form>
     </div>
 @endsection

@@ -19,8 +19,8 @@
             </div>
             <h2 class="user-name">{{ $user->name }}</h2>
         </div>
-        <div class="edit-btn">
-            <a class="edit-btn--link" href="{{ route('mypage.profile.edit') }}">プロフィールを編集</a>
+        <div>
+            <a class="edit__btn" href="{{ route('mypage.profile.edit') }}">プロフィールを編集</a>
         </div>
     </div>
 

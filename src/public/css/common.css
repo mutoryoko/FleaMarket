@@ -84,7 +84,7 @@
     margin-top: 6px;
 }
 
-.submit-btn {
+.submit__btn {
     width: 100%;
     background-color: rgb(255, 85, 85);
     font-size: 20px;
@@ -177,7 +177,7 @@
         width: 100%;
     }
 
-    .submit-btn {
+    .submit__btn {
         font-size: 16px;
     }
 

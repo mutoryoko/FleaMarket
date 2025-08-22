@@ -30,7 +30,7 @@
                 <label for="building" class="user-form__label"><div>建物名</div></label>
                 <input id="building" class="user-form__input" type="text" name="building" value="{{ old('building', $profile->building ?? '') }}">
             </div>
-            <button class="submit-btn update-btn" type="submit">更新する</button>
+            <button class="submit__btn update__btn" type="submit">更新する</button>
         </form>
     </div>
 @endsection

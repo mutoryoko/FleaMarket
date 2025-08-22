@@ -68,7 +68,7 @@
                     <button class="isSold" disabled>売り切れ</button>
                 @else
                     <input type="hidden" name="item_id" value="{{ $item->id }}">
-                    <button class="submit-btn" type="submit">購入する</button>
+                    <button class="submit__btn" type="submit">購入する</button>
                 @endif
             </div>
         </form>

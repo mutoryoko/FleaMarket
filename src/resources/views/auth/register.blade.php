@@ -49,7 +49,7 @@
                 @enderror
             </div>
 
-            <button class="submit-btn register-btn" type="submit">登録する</button>
+            <button class="submit__btn register__btn" type="submit">登録する</button>
             <a class="user-form__link" href="{{ route('loginForm') }}">ログインはこちら</a>
         </form>
     </div>

@@ -118,6 +118,7 @@
 
 .category {
     margin-bottom: 10px;
+    flex-wrap: wrap;
 }
 
 .condition {
@@ -129,7 +130,7 @@
     font-size: 14px;
     padding: 5px 15px;
     border-radius: 20px;
-    margin-right: 10px;
+    margin: 0 10px 5px 0;
 }
 
 /* コメント欄 */
@@ -166,7 +167,7 @@
     font-size: 18px;
 }
 
-.comment-content {
+.comment__content {
     width: 100%;
     background: rgb(226, 226, 226);
     border-radius: 3px;
@@ -189,7 +190,7 @@
     padding: 10px;
 }
 
-.comment__btn--submit {
+.comment__btn {
     width: 100%;
     border: none;
     border-radius: 5px;
@@ -248,7 +249,7 @@
 
     .small-ttl,
     .form-label,
-    .comment__btn--submit {
+    .comment__btn {
         font-size: 16px;
     }
 

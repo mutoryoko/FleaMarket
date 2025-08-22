@@ -28,13 +28,13 @@
     object-fit: contain;
 }
 
-.file-upload__wrapper {
+.upload-btn__wrapper {
     display: flex;
     align-items: center;
     margin-left: 40px;
 }
 
-.file-upload__btn {
+.file__upload-btn {
     height: 20px;
     font-size: 18px;
     font-weight: bold;
@@ -47,11 +47,11 @@
     cursor: pointer;
 }
 
-.file__name {
+.file-name {
     font-size: 14px;
 }
 
-.update-btn {
+.update__btn {
     margin-top: 20px;
 }
 
@@ -71,16 +71,16 @@
         height: 100px;
     }
 
-    .file-upload__wrapper {
+    .upload-btn__wrapper {
         margin-left: 30px;
     }
 
-    .file-upload__btn {
+    .file__upload-btn {
         padding: 8px 12px;
         font-size: 16px;
     }
 
-    .file__name {
+    .file-name {
         font-size: 12px;
     }
 }

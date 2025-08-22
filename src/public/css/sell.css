@@ -31,7 +31,7 @@
     margin: 15px auto;
 }
 
-.file-upload__btn {
+.file__upload-btn {
     display: inline-block;
     width: 130px;
     font-size: 18px;
@@ -45,7 +45,7 @@
     cursor: pointer;
 }
 
-.file__name {
+.file-name {
     width: 200px;
     font-size: 14px;
 }
@@ -70,21 +70,16 @@
 .category__label {
     display: inline-block;
     border: 1.5px solid rgb(255, 85, 85);
-    border-radius: 50px;
+    border-radius: 30px;
     color: rgb(255, 85, 85);
-    padding: 7px 15px;
+    padding: 6px 15px;
     margin: 5px;
     cursor: pointer;
 }
 
 .category__check:checked + .category__label {
-    display: inline-block;
     background: rgb(255, 85, 85);
-    border: 1.5px solid rgb(255, 85, 85);
-    border-radius: 20px;
     color: #fff;
-    padding: 6px 15px;
-    cursor: pointer;
 }
 
 .condition__ttl {
@@ -148,7 +143,7 @@
         padding: 15px;
     }
 
-    .file-upload__btn {
+    .file__upload-btn {
         font-size: 16px;
         padding: 10px;
     }
