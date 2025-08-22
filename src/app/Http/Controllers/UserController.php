@@ -51,7 +51,7 @@ class UserController extends Controller
                 return to_route('verification.notice');
             }
 
-            return to_route('myList');
+            return to_route('index', ['tab' => 'mylist']);
         }
 
         return back()->withErrors([

@@ -71,6 +71,11 @@
     color: rgb(40, 131, 241);
 }
 
+.shipping__error {
+    color: red;
+    margin: 10px 0 0 90px;
+}
+
 .postcode,
 .address,
 .building {

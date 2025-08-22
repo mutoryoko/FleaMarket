@@ -58,6 +58,6 @@ class MypageController extends Controller
             Profile::create($data);
         }
 
-        return to_route('myList');
+        return to_route('index', ['tab' => 'mylist']);
     }
 }

@@ -7,7 +7,10 @@
 @endsection
 
 @section('content')
+    @if (session('status'))
+        <p class="session">{{ session('status') }}</p>
+    @endif
     <div class="content">
-        <livewire:recommend-mylist-tabs />
+        <livewire:recommend-mylist-tabs :tab="request('tab')"/>
     </div>
 @endsection

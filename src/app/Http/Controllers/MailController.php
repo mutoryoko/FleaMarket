@@ -32,7 +32,7 @@ class MailController extends Controller
 
         Auth::login($user);
 
-        return to_route('mypage.profile.edit')->with('status', 'メールアドレス認証が完了しました。');
+        return to_route('index', ['tab' => 'mylist'])->with('status', 'メールアドレス認証が完了しました。');
     }
 
     // 未ログイン時の再送信

@@ -8,36 +8,37 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\UserController;
-use App\Http\Livewire\RecommendMylistTabs;
-use App\Http\Livewire\TransactionTabs;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [ItemController::class, 'index'])->name('index');
-Route::get('/?tab=mylist', RecommendMylistTabs::class)->name('myList');
+
 Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('detail');
 
-Route::get('/register', [UserController::class, 'registerForm'])->name('registerForm');
-Route::post('/register', [UserController::class, 'register'])->name('register');
+Route::controller(UserController::class)->group(function(){
+    Route::get('/register', 'registerForm')->name('registerForm');
+    Route::post('/register', 'register')->name('register');
+    Route::get('/login', 'loginForm')->name('loginForm');
+    Route::post('/login', 'login')->name('login');
+});
 
-Route::get('/login', [UserController::class, 'loginForm'])->name('loginForm');
-Route::post('/login', [UserController::class, 'login'])->name('login');
-
-// メール認証リンクのクリック処理（認証完了アクション）
-Route::get('/email/verify/{id}/{hash}', [MailController::class, 'verify'])->middleware(['signed'])->name('verification.verify');
-
-// メール認証画面
-Route::get('/email/verify', [MailController::class, 'notice'])->name('verification.notice');
-
-// 認証メール再送信
-Route::post('/email/verification-notification-guest', [MailController::class, 'sendForGuest'])->middleware(['throttle:6,1'])->name('verification.send.guest');
-Route::post('/email/verification-notification', [MailController::class, 'send'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+Route::prefix('email')->name('verification.')->controller(MailController::class)->group(function(){
+    // メール認証リンクのクリック処理（認証完了アクション）
+    Route::get('/verify/{id}/{hash}', 'verify')->middleware(['signed'])->name('verify');
+    // メール認証画面
+    Route::get('/verify', 'notice')->name('notice');
+    // 認証メール再送信
+    Route::post('/verification-notification-guest', 'sendForGuest')->middleware(['throttle:6,1'])->name('send.guest');
+    Route::post('/verification-notification', 'send')->middleware(['auth', 'throttle:6,1'])->name('send');
+});
 
 Route::middleware(['auth'])->group(function () {
-    Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('like');
-    Route::delete('/item/{item_id}/unlike', [LikeController::class, 'destroy'])->name('unlike');
-
-    Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])->name('comment');
+    // いいね。コメント処理
+    Route::prefix('item/{item_id}')->group(function(){
+        Route::post('/like', [LikeController::class, 'store'])->name('like');
+        Route::delete('/unlike', [LikeController::class, 'destroy'])->name('unlike');
+        Route::post('/comment', [CommentController::class, 'store'])->name('comment');
+    });
 
     Route::prefix('mypage')->name('mypage.')->group(function () {
         Route::get('/', [MypageController::class, 'index'])->name('index');
@@ -45,19 +46,23 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/profile', [MypageController::class, 'update'])->name('profile.update');
     });
 
-    Route::get('/sell', [ItemController::class, 'sellForm'])->name('sellForm');
-    Route::post('/sell', [ItemController::class, 'store'])->name('sell');
+    Route::prefix('sell')->controller(ItemController::class)->group(function () {
+        Route::get('/', 'sellForm')->name('sellForm');
+        Route::post('/', 'store')->name('sell');
+    });
 
-    Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->name('purchase');
-    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'edit'
-    ])->name('address.edit');
-    Route::put('/purchase/address/{item_id}', [PurchaseController::class, 'update'
-    ])->name('address.update');
+    Route::prefix('purchase')->controller(PurchaseController::class)->group(function () {
+        Route::get('/{item_id}', 'index')->name('purchase');
+        Route::get('/address/{item_id}', 'edit')->name('address.edit');
+        Route::put('/address/{item_id}', 'update')->name('address.update');
+    });
 
     // stripe決済
-    Route::post('/checkout', [StripeController::class, 'checkout'])->name('checkout');
-    Route::get('/checkout/success', [StripeController::class, 'success'])->name('checkout.success');
-    Route::get('/checkout/cancel', [StripeController::class, 'cancel'])->name('checkout.cancel');
+    Route::prefix('checkout')->controller(StripeController::class)->group(function(){
+        Route::post('/', 'checkout')->name('checkout');
+        Route::get('/success', 'success')->name('checkout.success');
+        Route::get('/cancel', 'cancel')->name('checkout.cancel');
+    });
 
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 });

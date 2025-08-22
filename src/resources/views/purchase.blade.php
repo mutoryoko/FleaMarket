@@ -40,14 +40,16 @@
                         <h3 class="small-ttl">配送先</h3>
                         <a class="shipping__link" href="{{ route('address.edit', ['item_id' => $item->id]) }}">変更する</a>
                     </div>
-                    <p class="postcode">〒{{ $profile->postcode }}</p>
-                    <input name="shipping_postcode" type="hidden" value="{{ $profile->postcode }}">
-                    <p class="address">{{ $profile->address }}</p>
-                    <input name="shipping_address" type="hidden" value="{{ $profile->address }}">
+                    <p class="postcode">〒{{ $profile->postcode ?? '' }}</p>
+                    <input name="shipping_postcode" type="hidden" value="{{ $profile->postcode ?? '' }}">
+                    <p class="address">{{ $profile->address ?? '' }}</p>
+                    <input name="shipping_address" type="hidden" value="{{ $profile->address ?? '' }}">
                     <p class="building">{{ $profile->building ?? '' }}</p>
-                    <input name="shipping_building" type="hidden" value="{{ $profile->building }}">
+                    <input name="shipping_building" type="hidden" value="{{ $profile->building ?? '' }}">
                     @if ($errors->hasAny(['shipping_postcode', 'shipping_address']))
-                        <p class="error">{{ $message }}</p>
+                        <p class="shipping__error">
+                            {{ $errors->first('shipping_postcode') ?: $errors->first('shipping_address') }}
+                        </p>
                     @endif
                 </div>
             </div>

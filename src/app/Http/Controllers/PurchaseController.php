@@ -39,11 +39,10 @@ class PurchaseController extends Controller
     {
         $item = Item::findOrFail($id);
         $user = Auth::user();
-        $profile = $user->profile;
 
         $updateData = $request->validated();
-
-        $profile->update($updateData);
+        /** @var \App\Models\User $user */
+        $user->profile()->updateOrCreate([], $updateData);
 
         return to_route('purchase', ['item_id' => $item->id]);
     }
