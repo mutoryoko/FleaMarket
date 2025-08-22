@@ -39,11 +39,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])->name('comment');
 
-    Route::get('/mypage', [MypageController::class, 'index'])->name('profile');
-    Route::get('/mypage/profile', [MypageController::class, 'edit'])->name('profile.edit');
-    Route::put('/mypage/profile', [MypageController::class, 'update'])->name('profile.update');
-    Route::get('/mypage?page=sell', TransactionTabs::class)->name('mypage.sell');
-    Route::get('/mypage?page=buy', TransactionTabs::class)->name('mypage.buy');
+    Route::prefix('mypage')->name('mypage.')->group(function () {
+        Route::get('/', [MypageController::class, 'index'])->name('index');
+        Route::get('/profile', [MypageController::class, 'edit'])->name('profile.edit');
+        Route::put('/profile', [MypageController::class, 'update'])->name('profile.update');
+    });
 
     Route::get('/sell', [ItemController::class, 'sellForm'])->name('sellForm');
     Route::post('/sell', [ItemController::class, 'store'])->name('sell');

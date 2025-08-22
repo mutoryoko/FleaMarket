@@ -13,7 +13,7 @@
     @endif
     <div class="content">
         <h2 class="title">プロフィール設定</h2>
-        <form class="user-form" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+        <form class="user-form" action="{{ route('mypage.profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
             <div class="user-form__item">

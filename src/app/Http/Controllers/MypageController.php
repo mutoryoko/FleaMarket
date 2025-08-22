@@ -21,7 +21,7 @@ class MypageController extends Controller
     {
         $profileData = $this->getProfile();
 
-        return view('mypage.profile', $profileData);
+        return view('mypage.index', $profileData);
     }
 
     public function edit()

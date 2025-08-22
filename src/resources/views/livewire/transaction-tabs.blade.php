@@ -1,9 +1,9 @@
 <div>
     <div class="tabs">
-        <a href="{{ route('mypage.sell') }}" class="{{ $tab === 'selling' ? 'active' : '' }} sell-tab">
+        <a href="{{ route('mypage.index', ['page' => 'sell']) }}" class="{{ $tab === 'selling' ? 'active' : '' }} sell-tab">
             出品した商品
         </a>
-        <a href="{{ route('mypage.buy') }}" class="{{ $tab === 'buying' ? 'active' : '' }} buy-tab">
+        <a href="{{ route('mypage.index', ['page' => 'buy']) }}" class="{{ $tab === 'buying' ? 'active' : '' }} buy-tab">
             購入した商品
         </a>
     </div>

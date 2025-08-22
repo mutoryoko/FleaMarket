@@ -50,6 +50,6 @@ class ItemController extends Controller
 
         $item->categories()->attach($categoryIds);
 
-        return to_route('profile');
+        return to_route('mypage.index');
     }
 }
