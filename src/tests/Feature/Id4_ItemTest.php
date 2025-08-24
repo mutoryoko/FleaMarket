@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\User;
 use App\Models\Item;
 use App\Models\Transaction;
 
@@ -44,6 +45,27 @@ class Id4_ItemTest extends TestCase
     //　自分が出品した商品は非表示
     public function test_myItem_is_not_shown()
     {
-        //
+        $user = User::factory()->create([
+            'email' => 'test@example.com',
+            'password' => bcrypt('password'),
+        ]);
+
+        $this->actingAs($user);
+
+        $myItem = Item::factory()->create([
+            'user_id' => $user->id,
+            'item_name' => '自分の商品',
+        ]);
+
+        $otherUser = User::factory()->create();
+        $otherItem = Item::factory()->create([
+            'user_id' => $otherUser->id,
+            'item_name' => '他人の商品',
+        ]);
+
+        $response = $this->get('/');
+
+        $response->assertDontSee('自分の商品');
+        $response->assertSee('他人の商品');
     }
 }
