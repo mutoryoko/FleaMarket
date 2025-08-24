@@ -65,6 +65,8 @@ class Id4ItemTest extends TestCase
 
         $response = $this->get('/');
 
+        $response->assertStatus(200);
+
         $response->assertDontSee('自分の商品');
         $response->assertSee('他人の商品');
     }
