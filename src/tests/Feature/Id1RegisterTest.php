@@ -7,10 +7,11 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 // テストケースID:1　会員登録機能
-class Id1_RegisterTest extends TestCase
+class Id1RegisterTest extends TestCase
 {
     use RefreshDatabase;
 
+    //　名前のエラー
     public function test_show_error_when_name_is_missing()
     {
         $response = $this->post(route('register', [
@@ -22,9 +23,10 @@ class Id1_RegisterTest extends TestCase
 
         $response->assertSessionHasErrors(['name']);
 
-        $this->get(route('register'))->assertSee('お名前を入力してください');
+        $this->get(route('registerForm'))->assertSee('お名前を入力してください');
     }
 
+    //　メールアドレスのエラー
     public function test_show_error_when_email_is_missing()
     {
         $response = $this->post(route('register', [
@@ -36,9 +38,10 @@ class Id1_RegisterTest extends TestCase
 
         $response->assertSessionHasErrors(['email']);
 
-        $this->get(route('register'))->assertSee('メールアドレスを入力してください');
+        $this->get(route('registerForm'))->assertSee('メールアドレスを入力してください');
     }
 
+    //　パスワードのエラー
     public function test_show_error_when_password_is_missing()
     {
         $response = $this->post(route('register', [
@@ -50,9 +53,10 @@ class Id1_RegisterTest extends TestCase
 
         $response->assertSessionHasErrors(['password']);
 
-        $this->get(route('register'))->assertSee('パスワードを入力してください');
+        $this->get(route('registerForm'))->assertSee('パスワードを入力してください');
     }
 
+    //　パスワードのエラー（7文字以下）
     public function test_register_fails_with_short_password()
     {
         $response = $this->post(route('register', [
@@ -64,23 +68,25 @@ class Id1_RegisterTest extends TestCase
 
         $response->assertSessionHasErrors(['password']);
 
-        $this->get(route('register'))->assertSee('パスワードは8文字以上で入力してください');
+        $this->get(route('registerForm'))->assertSee('パスワードは8文字以上で入力してください');
     }
 
-    public function test_register_fails_with_different_password()
+    //　パスワードが一致しないエラー
+    public function test_register_fails_with_wrong_password()
     {
         $response = $this->post(route('register', [
             'name' => 'test-user',
             'email' => 'test@example.com',
             'password' => 'password',
-            'password_confirmation' => 'password123',
+            'password_confirmation' => 'wrong-password',
         ]));
 
         $response->assertSessionHasErrors(['password']);
 
-        $this->get(route('register'))->assertSee('パスワードと一致しません');
+        $this->get(route('registerForm'))->assertSee('パスワードと一致しません');
     }
 
+    //　会員登録
     public function test_user_can_register()
     {
         $response = $this->post(route('register', [
@@ -94,7 +100,7 @@ class Id1_RegisterTest extends TestCase
             'email' => 'test@example.com',
         ]);
 
-        // メール機能ありのため、プロフィール設定画面から変更
+        // メール機能ありのため、メール認証誘導画面へ変更
         $response->assertRedirect('/email/verify');
     }
 }

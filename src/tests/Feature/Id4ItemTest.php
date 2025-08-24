@@ -10,7 +10,7 @@ use App\Models\Item;
 use App\Models\Transaction;
 
 //　テストケースID:4　商品一覧取得
-class Id4_ItemTest extends TestCase
+class Id4ItemTest extends TestCase
 {
     use RefreshDatabase;
 

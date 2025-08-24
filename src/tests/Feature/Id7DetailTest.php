@@ -12,7 +12,7 @@ use App\Models\Category;
 use App\Models\Comment;
 
 //　テストケースID:7　商品詳細情報取得
-class Id7_DetailTest extends TestCase
+class Id7DetailTest extends TestCase
 {
     use RefreshDatabase;
     //　必要な情報を表示
@@ -49,7 +49,7 @@ class Id7_DetailTest extends TestCase
         $response->assertSeeText((string)$item->likes()->count());
         $response->assertSeeText((string)$comment->count());
         $response->assertSeeText($category->name);
-        $response->assertSeeText($item->condition);
+        $response->assertSee($item->condition);
         $response->assertSee($comment->user->profile->user_image);
         $response->assertSeeText($comment->user->user_name);
         $response->assertSeeText($comment->content);
