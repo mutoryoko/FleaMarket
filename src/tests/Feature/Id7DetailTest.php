@@ -19,7 +19,7 @@ class Id7DetailTest extends TestCase
     public function test_guest_can_access_detail()
     {
         $item = Item::factory()->create();
-        $users = User::factory()->count(5)->create();
+        $users = User::factory()->count(3)->create();
 
         foreach($users as $user){
             Profile::factory()->create([
@@ -33,7 +33,7 @@ class Id7DetailTest extends TestCase
         }
 
         $item->likes()->attach(
-            User::factory()->count(5)->create()->pluck('id')
+            User::factory()->count(3)->create()->pluck('id')
         );
 
         $category = Category::factory()->create();

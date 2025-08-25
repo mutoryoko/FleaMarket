@@ -24,14 +24,14 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="like-btn">
-                                <img class="like-icon__img" src="{{ asset('storage/materials/star-icon-yellow.png') }}" alt="いいね済みのアイコン">
+                                <img class="like-icon__img" src="{{ asset('storage/materials/like-on.png') }}" alt="いいね済みのアイコン">
                             </button>
                         </form>
                     @else
                         <form class="like-form" action="{{ route('like', ['item_id' => $item->id] )}}" method="POST">
                             @csrf
                             <button type="submit" class="like-btn">
-                                <img class="like-icon__img" src="{{ asset('storage/materials/star-icon.png') }}" alt="いいね前のアイコン">
+                                <img class="like-icon__img" src="{{ asset('storage/materials/like-off.png') }}" alt="いいね前のアイコン">
                             </button>
                         </form>
                     @endif
