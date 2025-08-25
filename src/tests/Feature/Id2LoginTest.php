@@ -15,7 +15,7 @@ class Id2LoginTest extends TestCase
     // メールアドレスのエラー
     public function test_show_error_when_email_is_missing()
     {
-        $user = User::factory()->create([
+        User::factory()->create([
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
         ]);
@@ -33,7 +33,7 @@ class Id2LoginTest extends TestCase
     // パスワードのエラー
     public function test_show_error_when_password_is_missing()
     {
-        $user = User::factory()->create([
+        User::factory()->create([
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
         ]);
@@ -51,7 +51,7 @@ class Id2LoginTest extends TestCase
     // 入力情報が間違っているエラー
     public function test_login_fails_with_invalid_credentials()
     {
-        $user = User::factory()->create([
+        User::factory()->create([
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
         ]);
@@ -74,7 +74,7 @@ class Id2LoginTest extends TestCase
             'password' => bcrypt('password'),
         ]);
 
-        $response = $this->post('/login', [
+        $this->post('/login', [
             'email' => 'test@example.com',
             'password' => 'password',
         ]);

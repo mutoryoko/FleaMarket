@@ -50,15 +50,16 @@ class Id4ItemTest extends TestCase
             'password' => bcrypt('password'),
         ]);
 
+        // ログイン
         $this->actingAs($user);
 
-        $myItem = Item::factory()->create([
+        Item::factory()->create([
             'user_id' => $user->id,
             'item_name' => '自分の商品',
         ]);
 
         $otherUser = User::factory()->create();
-        $otherItem = Item::factory()->create([
+        Item::factory()->create([
             'user_id' => $otherUser->id,
             'item_name' => '他人の商品',
         ]);
