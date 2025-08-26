@@ -47,10 +47,16 @@ cp .env.example .env
 
 ### メールの設定
 
-メール機能はMailtrapを想定。アカウント作成後、.envファイルを編集する。
+メール機能はMailtrapを想定。アカウント作成後、下記を参考に.envファイルを編集する。
 ```
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=587または2525
 MAIL_USERNAME=Mailtrapのユーザー名
 MAIL_PASSWORD=Mailtrapのパスワード
+MAIL_ENCRYPTION=tls　（Laravel9〜は省略可）
+MAIL_FROM_ADDRESS="no-reply@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
 ```
 
 ### Stripeの設定
@@ -81,6 +87,7 @@ CREATE DATABASE demo_test;
 ```
 データベースができたら、MySQLコンテナを抜ける。
 ```
+docker compose exec php bash
 cp .env .env.testing
 ```
 .env.testingファイルのAPP_ENV、APP_KEYを以下に変更。
@@ -96,7 +103,6 @@ DB_PASSWORD=root
 ```
 .env.testingを編集後、以下のコマンドを実行。
 ```
-docker compose exec php bash
 php artisan key:generate --env=testing
 php artisan config:clear
 php artisan migrate --env=testing
