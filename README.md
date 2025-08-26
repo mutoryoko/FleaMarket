@@ -66,6 +66,7 @@ MAIL_FROM_NAME="${APP_NAME}"
 STRIPE_KEY=テスト用の公開可能キー
 STRIPE_SECRET_KEY=テスト用のシークレットキー
 ```
+
 &nbsp;
 
 .envファイルを編集後、以下のコマンドを実行。
@@ -106,6 +107,8 @@ DB_PASSWORD=root
 php artisan key:generate --env=testing
 php artisan config:clear
 php artisan migrate --env=testing
+
+php artisan test
 ```
 &nbsp;
 
@@ -115,17 +118,35 @@ UsersTableSeederには以下の5名が登録されている。<br />
 
 | ユーザー名 | メールアドレス | パスワード | メール認証の済否 |
 | :---: | :---: | :---: | :---: |
-| 管理者 | admin@seeder.com | password0 | 認証済 |
 | 鈴木一郎 | ichiro@seeder.com | password1 | 認証済 |
 | 佐藤二郎 | jiro@seeder.com | password2 | 認証済 |
-| 北島三郎 | saburo@seeder.com | password3 | 未認証 |
+| 北島三郎 | saburo@seeder.com | password3 | 認証済 |
 | 伊藤四郎 | shiro@seeder.com | password4 | 未認証 |
+| 稲垣五郎 | goro@seeder.com | password5 | 未認証 |
 
 デフォルトで各ユーザーが出品している商品は以下の通り。
 | ユーザー名 | 出品した商品 |
 | :---: | :---: |
-| 管理者 | なし |
 | 鈴木一郎 | 腕時計・HDD・玉ねぎ3束 |
 | 佐藤二郎 | 革靴・ノートPC |
 | 北島三郎 | マイク・ショルダーバッグ・タンブラー |
 | 伊藤四郎 | コーヒーミル・メイクセット |
+| 稲垣五郎 | なし |
+&nbsp;
+
+### 本アプリに関する注意事項
+※商品購入画面で支払い方法の選択して購入する際、Stripeの仕様上、支払い方法の選択によって購入処理の流れが異なります。<br />
+
+「カード払い」の場合：
+1. 購入ボタンを押す。
+2. Stripeの決済画面へ遷移し、支払うボタンを押す。
+3. 購入処理が実行され、購入済みとなる。
+
+「コンビニ払い」場合：
+1. 購入ボタンを押す。
+2. 購入処理が実行され、購入済みとなる。
+3. Stripeの画面へと遷移。（その後ユーザーが戻るボタンで戻るか、ブラウザを閉じる）
+&nbsp;
+
+※【案件シート】テストケース一覧表のID:1<br />
+会員情報登録後の画面遷移ですが、メール機能を実装しているため、<br />プロフィール設定画面ではなく、メール認証誘導画面へ遷移します。<br />テストもメール認証誘導画面へ遷移することを前提として作っています。
