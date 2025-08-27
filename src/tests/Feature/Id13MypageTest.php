@@ -18,15 +18,15 @@ class Id13MypageTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $profile = Profile::factory()->create([
+        Profile::factory()->create([
             'user_id' => $user->id,
         ]);
 
-        $soldItems = Item::factory(3)->create([
+        $soldItems = Item::factory()->count(3)->create([
             'user_id' => $user->id,
         ]);
 
-        $boughtItems = Transaction::factory(3)->create([
+        $boughtItems = Transaction::factory()->count(3)->create([
             'buyer_id' => $user->id,
         ]);
 
