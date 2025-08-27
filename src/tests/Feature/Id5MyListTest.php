@@ -3,13 +3,12 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Item;
 use App\Models\Transaction;
 
-//　テストケースID:5　マイリスト
+//　テストケースID:5　マイリスト一覧取得
 class Id5MyListTest extends TestCase
 {
     use RefreshDatabase;
@@ -21,17 +20,16 @@ class Id5MyListTest extends TestCase
         $notLikedItem = Item::factory()->create();
 
         $user = User::factory()->create();
-
-        $likedItem->likes()->attach($user->id);
-
         $this->actingAs($user);
+
+        $user->likes()->attach($likedItem->id);
 
         $response = $this->get(route('index', ['tab' => 'mylist']));
         $response->assertStatus(200);
 
         $response->assertSee($likedItem->item_name);
         $response->assertSee($likedItem->item_image);
-        $response->assertDontSee($notLikedItem->item_name);
+        $response->assertDontSee($notLikedItem->item_name); //エラー箇所
         $response->assertDontSee($notLikedItem->item_image);
     }
 

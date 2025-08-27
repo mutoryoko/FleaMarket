@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 
@@ -25,9 +24,9 @@ class Id2LoginTest extends TestCase
             'password' => 'password',
         ]);
 
-        $response->assertSessionHasErrors(['email']);
-
-        $this->get(route('loginForm'))->assertSee('メールアドレスを入力してください');
+        $response->assertSessionHasErrors([
+            'email' => 'メールアドレスを入力してください',
+        ]);
     }
 
     // パスワードのエラー
@@ -43,9 +42,9 @@ class Id2LoginTest extends TestCase
             'password' => '',
         ]);
 
-        $response->assertSessionHasErrors(['password']);
-
-        $this->get(route('loginForm'))->assertSee('パスワードを入力してください');
+        $response->assertSessionHasErrors([
+            'password' => 'パスワードを入力してください',
+        ]);
     }
 
     // 入力情報が間違っているエラー
@@ -61,9 +60,9 @@ class Id2LoginTest extends TestCase
             'password' => 'wrong-password',
         ]);
 
-        $response->assertSessionHasErrors(['email']);
-
-        $this->get(route('loginForm'))->assertSee('ログイン情報が登録されていません');
+        $response->assertSessionHasErrors([
+            'email' => 'ログイン情報が登録されていません',
+        ]);
     }
 
     // ログイン処理
