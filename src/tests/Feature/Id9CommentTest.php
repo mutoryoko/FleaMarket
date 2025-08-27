@@ -58,6 +58,26 @@ class Id9CommentTest extends TestCase
         $this->assertCount(0, $item->fresh()->comments);
     }
 
+    // コメントが空の場合のエラー表示
+    public function test_show_error_when_comment_is_missing()
+    {
+        $item = Item::factory()->create();
+
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this->post(route('comment', $item->id), [
+            'content' => '',
+        ]);
+
+        $response->assertSessionHasErrors([
+            'content' => 'コメントを入力してください',
+        ]);
+
+        $this->assertDatabaseCount('comments', 0);
+    }
+
+    // コメントが255文字以上の場合のエラー表示
     public function test_comment_must_not_exceed_255_characters()
     {
         $item = Item::factory()->create();
@@ -71,7 +91,9 @@ class Id9CommentTest extends TestCase
             'content' => $tooLongComment,
         ]);
 
-        $response->assertSessionHasErrors(['content']);
+        $response->assertSessionHasErrors([
+            'content' => 'コメントは255文字以内で入力してください',
+        ]);
 
         $this->assertDatabaseCount('comments', 0);
     }
