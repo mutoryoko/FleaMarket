@@ -43,6 +43,8 @@ class PurchaseController extends Controller
         $updateData = $request->validated();
         /** @var \App\Models\User $user */
         $user->profile()->updateOrCreate([], $updateData);
+        // データベースの更新後、メモリ上の$userモデルが持つprofileリレーションを再読み込み
+        $user->load('profile');
 
         return to_route('purchase', ['item_id' => $item->id]);
     }

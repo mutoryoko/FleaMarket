@@ -9,7 +9,7 @@ use App\Models\Profile;
 use App\Models\Item;
 use App\Models\Transaction;
 
-//　テストケースID:13　ユーザー情報取得
+// テストケースID:13 ユーザー情報取得
 class Id13MypageTest extends TestCase
 {
     use RefreshDatabase;

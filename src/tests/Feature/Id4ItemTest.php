@@ -8,12 +8,12 @@ use App\Models\User;
 use App\Models\Item;
 use App\Models\Transaction;
 
-//　テストケースID:4　商品一覧取得
+// テストケースID:4　商品一覧取得
 class Id4ItemTest extends TestCase
 {
     use RefreshDatabase;
 
-    //　全商品取得
+    // 全商品取得
     public function test_guest_can_access_index()
     {
         $items = Item::factory()->count(5)->create();
@@ -28,7 +28,7 @@ class Id4ItemTest extends TestCase
         $response->assertStatus(200);
     }
 
-    //　購入済の商品にsold表示
+    // 購入済の商品にsold表示
     public function test_sold_is_shown()
     {
         $item = Item::factory()->create();
@@ -41,7 +41,7 @@ class Id4ItemTest extends TestCase
         $response->assertStatus(200);
     }
 
-    //　自分が出品した商品は非表示
+    // 自分が出品した商品は非表示
     public function test_myItem_is_not_shown()
     {
         $user = User::factory()->create([

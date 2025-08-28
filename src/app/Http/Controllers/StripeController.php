@@ -53,13 +53,13 @@ class StripeController extends Controller
 
             return redirect($session->url, 303);
         }
-        //　コンビニ支払いの場合
+        // コンビニ支払いの場合
         elseif($request->payment_method === 'konbini') {
             // 今回はstripeに移動する前にDB登録
             Transaction::create([
                 'item_id' => $itemId,
                 'buyer_id' => $userId,
-                'payment_method' => 1, //　コンビニ払い
+                'payment_method' => 1, // コンビニ払い
                 'shipping_postcode' => $request->input('shipping_postcode'),
                 'shipping_address' => $request->input('shipping_address'),
                 'shipping_building' => $request->input('shipping_building'),
@@ -118,7 +118,7 @@ class StripeController extends Controller
                     'item_id' => $item->id,
                     'buyer_id' => $userId,
                     'stripe_session_id' => $sessionId,
-                    'payment_method' => 2, //　カード払い
+                    'payment_method' => 2, // カード払い
                     'shipping_postcode' => $session->metadata->postcode,
                     'shipping_address' => $session->metadata->address,
                     'shipping_building' => $session->metadata->building,

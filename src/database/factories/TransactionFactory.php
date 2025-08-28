@@ -16,7 +16,7 @@ class TransactionFactory extends Factory
         return [
             'item_id' => Item::factory(),
             'buyer_id' => User::factory(),
-            'payment_method' => '1',
+            'payment_method' => 1, // コンビニ支払い
             'shipping_postcode' => $this->faker->numerify('###-####'),
             'shipping_address' => $this->faker->prefecture . $this->faker->city . $this->faker->streetAddress,
         ];
