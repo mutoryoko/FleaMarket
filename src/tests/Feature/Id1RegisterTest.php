@@ -94,12 +94,11 @@ class Id1RegisterTest extends TestCase
             'password' => 'password',
             'password_confirmation' => 'password',
         ]));
+        // メール機能ありのため、メール認証誘導画面へ変更
+        $response->assertRedirect('/email/verify');
 
         $this->assertDatabaseHas('users', [
             'email' => 'test@example.com',
         ]);
-
-        // メール機能ありのため、メール認証誘導画面へ変更
-        $response->assertRedirect('/email/verify');
     }
 }
