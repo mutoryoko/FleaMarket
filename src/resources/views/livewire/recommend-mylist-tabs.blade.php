@@ -28,7 +28,7 @@
                 <p>商品がありません</p>
             @endforelse
         @elseif ($activeTab === 'mylist')
-            @forelse($myListItems as $item)
+            @forelse($items as $item)
                 <div class="item-card">
                     <div class="item-image__wrapper">
                         <a href="{{ route('detail', ['item_id' => $item->id]) }}">

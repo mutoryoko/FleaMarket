@@ -33,33 +33,36 @@ class RecommendMylistTabs extends Component
 
     public function render()
     {
-        $query = Item::query();
-
-        if ($this->activeTab === 'recommend') {
-            $query->where('user_id', '!=', Auth::id());
-        } elseif ($this->activeTab === 'mylist') {
-            $query->whereHas('likes', function ($q) {
-                $q->where('user_id', Auth::id());
-            });
-        }
-
-        if ($this->search !== '') {
-            $query->where('item_name', 'like', '%' . $this->search . '%');
-        }
-
-        $items = $query->get(['id', 'item_name', 'item_image']);
-
         /** @var \App\Models\User|null $user */
         $user = Auth::user();
-        $likedItemIds = $user ? $user->likes()->pluck('item_id')->toArray() : [];
-        $myListItems = $items->whereIn('id', $likedItemIds);
+
+        $itemsQuery = Item::query();
+        $myListItemsQuery = null;
+
+        if ($this->activeTab === 'recommend') {
+            if ($user) {
+                $itemsQuery->where('user_id', '!=', $user->id);
+            }
+        }
+        elseif ($this->activeTab === 'mylist') {
+            if ($user) {
+                $myListItemsQuery = $user->likes();
+            }
+            // ゲストの場合はnullのまま
+        }
+        $searchableQuery = $this->activeTab === 'mylist' ? $myListItemsQuery : $itemsQuery;
+
+        if ($searchableQuery && $this->search !== '') {
+            $searchableQuery->where('item_name', 'like', '%' . $this->search . '%');
+        }
+
+        $items = $searchableQuery ? $searchableQuery->get(['items.id', 'items.item_name', 'items.item_image']) : collect();
 
         $soldItemIds = Transaction::pluck('item_id')->toArray();
 
         return view('livewire.recommend-mylist-tabs', [
             'activeTab' => $this->activeTab,
             'items' => $items,
-            'myListItems' => $myListItems,
             'soldItemIds' => $soldItemIds,
         ]);
     }

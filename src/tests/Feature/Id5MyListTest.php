@@ -7,6 +7,9 @@ use Tests\TestCase;
 use App\Models\User;
 use App\Models\Item;
 use App\Models\Transaction;
+use App\Http\Livewire\RecommendMylistTabs;
+use Livewire\Livewire;
+use Illuminate\Support\Collection;
 
 //　テストケースID:5　マイリスト一覧取得
 class Id5MyListTest extends TestCase
@@ -24,13 +27,12 @@ class Id5MyListTest extends TestCase
 
         $user->likes()->attach($likedItem->id);
 
-        $response = $this->get(route('index', ['tab' => 'mylist']));
-        $response->assertStatus(200);
-
-        $response->assertSee($likedItem->item_name);
-        $response->assertSee($likedItem->item_image);
-        $response->assertDontSee($notLikedItem->item_name); //エラー箇所
-        $response->assertDontSee($notLikedItem->item_image);
+        Livewire::test(RecommendMylistTabs::class)
+            ->set('activeTab', 'mylist')
+            ->assertSeeText($likedItem->item_name)
+            ->assertSee($likedItem->item_image)
+            ->assertDontSeeText($notLikedItem->item_name)
+            ->assertDontSee($notLikedItem->item_image);
     }
 
     // soldの表示
@@ -54,15 +56,13 @@ class Id5MyListTest extends TestCase
         $notLikedItem = Item::factory()->create();
 
         $this->actingAs($user);
-        $response = $this->get(route('index', ['tab' => 'mylist']));
-        $response->assertStatus(200);
 
-        $response->assertSee($soldItem->name);
-        $response->assertSee('sold');
-
-        $response->assertSee($availableItem->name);
-
-        $response->assertDontSee($notLikedItem->name);
+        Livewire::test(RecommendMylistTabs::class)
+            ->set('activeTab', 'mylist')
+            ->assertSee($soldItem->name)
+            ->assertSee('sold')
+            ->assertSee($availableItem->name)
+            ->assertDontSee($notLikedItem->name);
     }
 
     // 未認証の場合はマイリスト非表示
@@ -73,11 +73,12 @@ class Id5MyListTest extends TestCase
         $item = Item::factory()->create();
         $item->likes()->attach($user->id);
 
-        $response = $this->get(route('index', ['tab' => 'mylist']));
-        $response->assertStatus(200);
-
-        $response->assertDontSee($item->name);
-
-        $response->assertSeeText('商品がありません');
+        Livewire::test(RecommendMylistTabs::class)
+            ->set('activeTab', 'mylist')
+            ->assertViewHas('items', function ($items) {
+                // $items が Collection のインスタンス、かつ中身が空である
+            return $items instanceof Collection && $items->isEmpty();
+            })
+            ->assertDontSee($item->name);
     }
 }

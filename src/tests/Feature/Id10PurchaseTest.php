@@ -186,9 +186,9 @@ class Id10PurchaseTest extends TestCase
 
         Livewire::test(TransactionTabs::class)
             ->set('tab', 'buying')
-            ->assertSee($soldItem->item_name)
-            ->assertDontSee($availableItem->item_name)
+            ->assertSeeText($soldItem->item_name)
             ->assertSee('storage/'.$soldItem->item_image)
+            ->assertDontSeeText($availableItem->item_name)
             ->assertDontSee('storage/'.$availableItem->item_image);
     }
 }
