@@ -16,7 +16,7 @@ class ItemFactory extends Factory
             'user_id' => User::factory(),
             'item_name' => $this->faker->word,
             'brand' => $this->faker->word,
-            'item_image' => 'item-images/' . $this->faker->lexify('item_image_????.jpg'),
+            'item_image' => 'item-images/' . $this->faker->lexify('image_?????.jpg'),
             'price' => $this->faker->numberBetween(100, 10000),
             'condition' => $this->faker->numberBetween(1, 4),
             'description' => $this->faker->text(),

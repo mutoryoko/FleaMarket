@@ -7,6 +7,7 @@ use Tests\TestCase;
 use App\Models\User;
 use App\Models\Item;
 use App\Models\Transaction;
+use Symfony\Component\DomCrawler\Crawler;
 
 // テストケースID:4　商品一覧取得
 class Id4ItemTest extends TestCase
@@ -29,16 +30,38 @@ class Id4ItemTest extends TestCase
     }
 
     // 購入済の商品にsold表示
-    public function test_sold_is_shown()
+    public function test_sold_item_should_display_sold_label()
     {
-        $item = Item::factory()->create();
-        Transaction::factory()->create(['item_id' => $item->id]);
+        $soldItem = Item::factory()->create();
+        $availableItem = Item::factory()->create();
 
-        $response = $this->get('/');
+        Transaction::factory()->create([
+            'item_id' => $soldItem->id,
+        ]);
 
-        $response->assertSeeText('sold');
-
+        $response = $this->get(route('index'));
         $response->assertStatus(200);
+
+        $response->assertSee($soldItem->item_image);
+        $response->assertSeeText($soldItem->name);
+        $response->assertSee($availableItem->item_image);
+        $response->assertSeeText($availableItem->name);
+
+        // DomCrawlerでHTMLを解析
+        $crawler = new Crawler($response->getContent());
+
+        // .soldクラスを持つ要素が1つ存在することを確認
+        $this->assertCount(
+            1, $crawler->filter("#item-{$soldItem->id} .sold")
+        );
+        // .soldクラスを持つ要素が存在しないことを確認
+        $this->assertCount(
+            0, $crawler->filter("#item-{$availableItem->id} .sold")
+        );
+        // soldのテキスト確認
+        $this->assertEquals(
+            'sold', $crawler->filter("#item-{$soldItem->id} .sold")->text()
+        );
     }
 
     // 自分が出品した商品は非表示

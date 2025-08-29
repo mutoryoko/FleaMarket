@@ -38,7 +38,7 @@ class Id5MyListTest extends TestCase
     {
         $user = User::factory()->create();
 
-        //いいね済み　&　購入済み商品
+        // いいね済み & 購入済み商品
         $soldItem = Item::factory()->create();
         $soldItem->likes()->attach($user->id);
         Transaction::factory()->create([
@@ -46,11 +46,11 @@ class Id5MyListTest extends TestCase
             'buyer_id' => $user->id,
         ]);
 
-        //いいね済み　　&　未購入商品
+        // いいね済み & 未購入商品
         $availableItem = Item::factory()->create();
         $availableItem->likes()->attach($user->id);
 
-        //　いいねしていない商品
+        // いいねしていない商品
         $notLikedItem = Item::factory()->create();
 
         $this->actingAs($user);
@@ -65,7 +65,7 @@ class Id5MyListTest extends TestCase
         $response->assertDontSee($notLikedItem->name);
     }
 
-    //　未認証の場合はマイリスト非表示
+    // 未認証の場合はマイリスト非表示
     public function test_guest_user_sees_empty_my_list()
     {
         // 誰かが「いいね」している商品を作成
