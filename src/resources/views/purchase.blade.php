@@ -22,19 +22,25 @@
                 </div>
                 <div class="payment-method">
                     <h3 class="small-ttl">支払い方法</h3>
-                    <select name="payment_method" class="payment__select" id="payment_method">
-                        <option value="">選択してください</option>
-                        <option value="konbini" {{ old('payment_method') == '1' ? 'selected' : '' }}>
-                            コンビニ払い
-                        </option>
-                        <option value="card" {{ old('payment_method') == '2' ? 'selected' : '' }}>
-                            カード払い
-                        </option>
-                    </select>
+                    <details class="custom-dropdown">
+                        <summary class="dropdown__default">
+                            <span>{{ $selectedPaymentName ?? '選択してください' }}</span>
+                            <span class="arrow">▼</span>
+                        </summary>
+                        <div class="dropdown__options">
+                            @foreach($paymentMethods as $key => $name)
+                                {{-- クエリパラメータ付きのリンクを生成 --}}
+                                <a class="payment-method__link" href="{{ request()->fullUrlWithQuery(['payment_method' => $key]) }}">{{ $name }}</a>
+                            @endforeach
+                        </div>
+                    </details>
+                    <input type="hidden" name="payment_method" value="{{ $selectedPaymentKey }}">
+
                     @error('payment_method')
                         <span class="error">{{ $message }}</span>
                     @enderror
                 </div>
+
                 <div class="shipping-info">
                     <div class="shipping__head">
                         <h3 class="small-ttl">配送先</h3>
@@ -61,7 +67,7 @@
                     </tr>
                     <tr class="table-row">
                         <th class="table-th">支払い方法</th>
-                        <td class="table-td" id="selected-payment-method">選択されていません</td>
+                        <td class="table-td" id="selected-payment-method">{{ $selectedPaymentName ?? '選択されていません' }}</td>
                     </tr>
                 </table>
                 @if($isSold)
@@ -73,26 +79,4 @@
             </div>
         </form>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const paymentSelect = document.getElementById('payment_method');
-            const paymentDisplay = document.getElementById('selected-payment-method');
-
-            const methodNames = {
-                'konbini': 'コンビニ払い',
-                'card': 'カード払い'
-            };
-
-            const selected = paymentSelect.value;
-            if (selected && methodNames[selected]) {
-                paymentDisplay.textContent = methodNames[selected];
-            }
-
-            paymentSelect.addEventListener('change', function () {
-                const selectedValue = this.value;
-                paymentDisplay.textContent = methodNames[selectedValue] || '選択されていません';
-            });
-        });
-    </script>
 @endsection

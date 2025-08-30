@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddressRequest;
+use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
@@ -18,13 +19,28 @@ class PurchaseController extends Controller
         return compact('item', 'user', 'profile');
     }
 
-    public function index(string $id)
+    public function index(Request $request, string $id)
     {
         $data = $this->getItemAndProfile($id);
 
+        $paymentMethods = [
+            'konbini' => 'コンビニ払い',
+            'card' => 'カード払い',
+        ];
+
+        // クエリパラメータから選択された支払い方法のキーを取得
+        $selectedPaymentKey = $request->query('payment_method');
+        // キーに対応する表示名を取得
+        $selectedPaymentName = $paymentMethods[$selectedPaymentKey] ?? null;
+
         $isSold = Transaction::where('item_id', $id)->exists();
 
-        return view('purchase', array_merge($data, compact('isSold')));
+        return view('purchase', array_merge($data, compact(
+            'isSold',
+            'paymentMethods',
+            'selectedPaymentKey',
+            'selectedPaymentName'
+        )));
     }
 
     public function edit(string $id)
