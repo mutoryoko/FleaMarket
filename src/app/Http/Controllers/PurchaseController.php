@@ -24,8 +24,8 @@ class PurchaseController extends Controller
         $data = $this->getItemAndProfile($id);
 
         $paymentMethods = [
-            'konbini' => 'コンビニ払い',
-            'card' => 'カード払い',
+            'konbini' => 'コンビニ支払い',
+            'card' => 'カード支払い',
         ];
 
         // クエリパラメータから選択された支払い方法のキーを取得
