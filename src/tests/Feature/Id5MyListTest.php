@@ -19,7 +19,10 @@ class Id5MyListTest extends TestCase
     // いいねした商品の表示
     public function test_show_items_liked_by_user()
     {
-        $likedItem = Item::factory()->create();
+        $likedItem = Item::factory()->create([
+            'item_name' => 'Test Item',
+            'item_image' => 'item-images/test.jpg',
+        ]);
         $notLikedItem = Item::factory()->create();
 
         $user = User::factory()->create();
