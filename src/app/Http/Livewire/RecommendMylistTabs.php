@@ -46,7 +46,7 @@ class RecommendMylistTabs extends Component
         }
         elseif ($this->activeTab === 'mylist') {
             if ($user) {
-                $myListItemsQuery = $user->likes();
+                $myListItemsQuery = $user->likes()->where('items.user_id', '!=', $user->id);
             }
             // ゲストの場合はnullのまま
         }
