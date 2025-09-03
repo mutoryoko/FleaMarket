@@ -17,7 +17,7 @@
                             <img class="item-image" src="{{ asset('storage/'.$sellingItem->item_image) }}" alt="商品画像">
                         </a>
                     </div>
-                    <h2 class="item-name">{{ $sellingItem->item_name }}</h2>
+                    <p class="item-name">{{ $sellingItem->item_name }}</p>
                 </div>
             @empty
                 <p>出品した商品がありません。</p>
@@ -30,7 +30,7 @@
                             <img class="item-image" src="{{ asset('storage/'.$buyingItem->item_image) }}" alt="商品画像">
                         </a>
                     </div>
-                    <h2 class="item-name">{{ $buyingItem->item_name }}</h2>
+                    <p class="item-name">{{ $buyingItem->item_name }}</p>
                 </div>
             @empty
                 <p>購入した商品がありません。</p>

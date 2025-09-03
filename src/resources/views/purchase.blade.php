@@ -16,12 +16,12 @@
                         <img class="item-image" src="{{ asset('storage/'.$item->item_image) }}" alt="商品画像" />
                     </div>
                     <div>
-                        <h2 class="item-name">{{ $item->item_name }}</h2>
+                        <h1 class="item-name">{{ $item->item_name }}</h1>
                         <p class="item-price"><span class="yen">¥</span>{{ number_format($item->price) }}</p>
                     </div>
                 </div>
                 <div class="payment-method">
-                    <h3 class="small-ttl">支払い方法</h3>
+                    <h2 class="small-ttl">支払い方法</h2>
                     <details class="custom-dropdown">
                         <summary class="dropdown__default">
                             <span>{{ $selectedPaymentName ?? '選択してください' }}</span>
@@ -43,7 +43,7 @@
 
                 <div class="shipping-info">
                     <div class="shipping__head">
-                        <h3 class="small-ttl">配送先</h3>
+                        <h2 class="small-ttl">配送先</h2>
                         <a class="shipping__link" href="{{ route('address.edit', ['item_id' => $item->id]) }}">変更する</a>
                     </div>
                     <p class="postcode">〒{{ $profile->postcode ?? '' }}</p>

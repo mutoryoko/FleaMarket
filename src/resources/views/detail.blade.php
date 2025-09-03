@@ -12,7 +12,7 @@
             <img class="item-image" src="{{ asset('storage/'.$item->item_image) }}" alt="商品画像" />
         </div>
         <div class="item-info__wrapper">
-            <h2 class="item-name">{{ $item->item_name }}</h2>
+            <h1 class="item-name">{{ $item->item_name }}</h1>
             <p class="item-brand">{{ $item->brand ?? '' }}</p>
             <p class="item-price"><span class="yen">¥</span>{{ number_format($item->price) }}<span class="tax">（税込）</span></p>
 
@@ -53,26 +53,26 @@
             </div>
 
             <div>
-                <h3 class="ttl">商品説明</h3>
+                <h2 class="ttl">商品説明</h2>
                 <p class="description-content">{{ $item->description }}</p>
             </div>
             <div>
-                <h3 class="ttl">商品の情報</h3>
+                <h2 class="ttl">商品の情報</h2>
                 <div class="category">
-                    <h4 class="small-ttl">カテゴリー</h4>
+                    <h3 class="small-ttl">カテゴリー</h3>
                     @foreach ($categories as $category)
                         <p class="category__name">{{ $category->name }}</p>
                     @endforeach
                 </div>
                 <div class="condition">
-                    <h4 class="small-ttl">商品の状態</h4>
+                    <h3 class="small-ttl">商品の状態</h3>
                     {{-- app/Helpers/helper.phpにテキストあり --}}
                     <p class="condition__text">{{ $item->condition_text }}</p>
                 </div>
             </div>
 
             <div class="item-comments">
-                <h3 class="comments-counter">コメント（{{ $comments->count() }}）</h3>
+                <h2 class="comments-counter">コメント（{{ $comments->count() }}）</h2>
                 @forelse($comments as $comment)
                     <div class="user-info">
                         @if($comment->user->profile && $comment->user->profile->user_image)

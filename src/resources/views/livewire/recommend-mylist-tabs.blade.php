@@ -17,11 +17,11 @@
                         </a>
                     </div>
                     <div id="item-{{ $item->id }}">
-                        <h2 class="item-name">{{ $item->item_name }}
+                        <p class="item-name">{{ $item->item_name }}
                             @if(in_array($item->id, $soldItemIds))
                                 <span class="sold">sold</span>
                             @endif
-                        </h2>
+                        </p>
                     </div>
                 </div>
             @empty
@@ -35,11 +35,11 @@
                             <img class="item-image" src="{{ asset('storage/'.$item->item_image) }}" alt="商品画像" />
                         </a>
                     </div>
-                    <h2 class="item-name">{{ $item->item_name }}
+                    <p class="item-name">{{ $item->item_name }}
                         @if(in_array($item->id, $soldItemIds))
                             <span class="sold">sold</span>
                         @endif
-                    </h2>
+                    </p>
                 </div>
             @empty
                 <p>商品がありません</p>

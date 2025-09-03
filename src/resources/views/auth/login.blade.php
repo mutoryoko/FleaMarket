@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="content">
-        <h2 class="title">ログイン</h2>
+        <h1 class="title">ログイン</h1>
         <form class="user-form" action="{{ route('login') }}" method="POST">
             @csrf
             <div class="user-form__item">
