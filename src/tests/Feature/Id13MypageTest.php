@@ -18,7 +18,7 @@ class Id13MypageTest extends TestCase
     {
         $user = User::factory()->create();
 
-        Profile::factory()->create([
+        $profile = Profile::factory()->create([
             'user_id' => $user->id,
         ]);
 
@@ -37,6 +37,9 @@ class Id13MypageTest extends TestCase
         $response = $this->get(route('mypage.index'));
         $response->assertStatus(200);
 
+        $response->assertSee($profile->user_image);
+        $response->assertSeeText($user->name);
+
         foreach($soldItems as $soldItem){
             $response->assertSeeText($soldItem->name);
         }
@@ -48,6 +51,9 @@ class Id13MypageTest extends TestCase
         $response = $this->get(route('mypage.index', ['page' => 'sell']));
         $response->assertStatus(200);
 
+        $response->assertSee($profile->user_image);
+        $response->assertSeeText($user->name);
+
         foreach ($soldItems as $soldItem) {
             $response->assertSeeText($soldItem->name);
         }
@@ -58,6 +64,9 @@ class Id13MypageTest extends TestCase
         // 購入商品タブ
         $response = $this->get(route('mypage.index', ['page' => 'buy']));
         $response->assertStatus(200);
+
+        $response->assertSee($profile->user_image);
+        $response->assertSeeText($user->name);
 
         foreach ($boughtItems as $boughtItem) {
             $response->assertSeeText($boughtItem->name);
