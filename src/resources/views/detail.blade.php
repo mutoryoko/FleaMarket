@@ -81,7 +81,7 @@
                             </div>
                         @else
                             <div class="user-image__wrapper">
-                                <img src="{{ asset('storage/profile-images/no-image.png')}}" alt="no-image">
+                                <img src="{{ asset('storage/profile-images/no-image.png')}}" alt="no-image" class="user-image">
                             </div>
                         @endif
                         <p class="user-name">{{ $comment->user->name}}</p>
